@@ -6,6 +6,8 @@ This list gives only the most used options, for a complete overview use
 configure -h
 ```
 
+For an overview of the full installation process, please see the [Installation](https://github.com/holke/t8code/wiki/Installation) page.
+
 ### Options
 
 
