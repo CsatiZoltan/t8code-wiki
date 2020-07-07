@@ -54,6 +54,15 @@ For a debugging mode with static linkage (makes using gdb and valgrind more comf
 
 `configure --enable-mpi --enable-debug --enable-static --disable-shared CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g"`
 
+Note: The debugging mode introduces a lot of safetychecks and drastically reduces the code performance. Do not use it
+for production runs.
+If you want to use a debugger or valgrind, but do not want to perform all additional safetychecks of the debugging mode,
+use the above configure line without `--enable-debug`.
+
+For a serial configuration that links against the netcdf library:
+
+`configure CFLAGS=-O3 CXXFLAGS=-O3 --with-netcdf`
+
 ### Notes on blas
 
 t8code automatically links against lapack and blas, but does not use them at the current state.
