@@ -52,7 +52,7 @@ cd ~/t8code_build
 ```
 
 You can choose from various options to configure t8code.
-For an overview please see TODO: CREATE NEW WIKIPAGE FOR CONFIGURE OPTIONS AND LINK HERE
+For a more elaborate overview please see the [Configure options](https://github.com/holke/t8code/wiki/Configure-Options) wiki page.
 
 The most common options are
 
