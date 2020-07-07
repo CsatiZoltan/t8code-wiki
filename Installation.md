@@ -18,7 +18,7 @@ To install t8code from github on a linux machine, first clone the repository, fo
 git clone https://github.com/holke/t8code
 ```
 
-### Initialize the submodule
+### Initialize the submodules
 
 t8code uses [libsc](https://github.com/cburstedde/libsc) and [p4est](https://github.com/cburstedde/p4est) as submodules.
 To download and initialize these, use
