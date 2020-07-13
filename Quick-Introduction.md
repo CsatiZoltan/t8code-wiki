@@ -23,7 +23,7 @@ We will also need an MPI communicator object and choose `MPI_COMM_WORLD`.
 Since the MPI call are wrapped by the sc library, we use `sc_MPI_COMM_WORLD`.
 
 ```C++
-sc_MPI_Comm comm = sc_MPI_COMM_WORLD
+sc_MPI_Comm comm = sc_MPI_COMM_WORLD;
 ```
 
 ### Building a simple mesh
