@@ -13,6 +13,15 @@ each tree in a given coarse mesh is refined to the same refinement level.
 This is usually the first step in creating a forest and the forest can then later be adapted
 to any given criterion (see step 3).
 
+
+
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_Cubelvl3cmesh.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_Cubelvl3.png" height="350">
+</p>
+
+From `cmesh` (left) to uniform `forest` (right).
+
 ### The ingredients
 
 To build a uniform forest, we need 3 ingredients:
