@@ -19,6 +19,11 @@ elements. Due to the tree-like nature of recursive refinement, we call the eleme
 The `cmesh` will (usually) not change during a computation. 
 A `cmesh` can be partitioned among the processes or each process can hold a copy of the complete `cmesh`.
 
+
+
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_cmesh.png" height="400">
+
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_4procs.png" height="400">
 ### Creating a simple coarse mesh
 
 `t8code` offers different ways to create coarse meshes, which can be found in `t8_cmesh.h`
@@ -71,4 +76,4 @@ which will create the files `prefix.pvtu` and `prefix_0000.vtu`. If the `cmesh` 
 
 To view it with `Paraview`, open the file `prefix.pvtu`. The `t8_step1_coarsemesh` example will create the file `t8_step1_tetcube.pvtu`.
 
-[[pictures/tutorials/Step1-ParaviewTreeid.png]]
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step1-ParaviewTreeid.png" height="400">
