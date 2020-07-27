@@ -20,10 +20,17 @@ The `cmesh` will (usually) not change during a computation.
 A `cmesh` can be partitioned among the processes or each process can hold a copy of the complete `cmesh`.
 
 
-
+<p align="center">
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_cmesh.png" height="400">
-
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_4procs.png" height="400">
+</p>
+
+These two pictures illustrate the coarse and the forest mesh for a square shaped domain with a circular whole.
+**Left**: The coarse mesh that describes the geometry and element shapes. **Right**: The forest mesh. Each element (tree) in the
+coarse mesh is refined to a certain refinement level. In this example the refinement criterion was chosen to refine elements that are
+close to the domain boundary.
+The colors represent a distribution of the elements among 4 MPI processes.
+
 ### Creating a simple coarse mesh
 
 `t8code` offers different ways to create coarse meshes, which can be found in `t8_cmesh.h`
