@@ -104,8 +104,8 @@ which will create the file `prefix.pvtu` and for each MPI rank a file `prefix_MP
 In our example `prefix = t8_step2_uniform_forest` and when you open the `t8_step2_uniform_forest.pvtu` file in Paraview you should be able to see this:
 
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_5ranks.png" height="400">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_treeid.png" height="400">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_5ranks.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_treeid.png" height="350">
 </p>
 
 **Left**: The uniform level 3 forest on 5 MPI ranks. The colors correspond to different MPI ranks.
