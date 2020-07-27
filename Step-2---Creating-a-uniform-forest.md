@@ -98,7 +98,7 @@ To output our forest to `.vtu` files we simply call
 ```C
   t8_forest_write_vtk (forest, prefix);
 ```
-`
+
 which will create the file `prefix.pvtu` and for each MPI rank a file `prefix_MPIRANK.vtu`.
 
 In our example `prefix = t8_step2_uniform_forest` and when you open the `t8_step2_uniform_forest.pvtu` file in Paraview you should be able to see this:
