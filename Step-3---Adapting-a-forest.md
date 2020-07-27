@@ -107,7 +107,7 @@ int                 t8_step3_adapt_callback (t8_forest_t forest,
 
 This function will be called for each element (or family) while the forest gets adapted.
 Its parameters are
-| | |
+| Parameter | Description |
 |-|-|
 | forest | The new forest that is currently under construction |
 | forest_from | The old forest that is to be adapted |
@@ -117,7 +117,7 @@ Its parameters are
 | num_elements | How many elements are currently considered (either 1 or a family) |
 | elements | The elements that are currently considered for adaptation |
 
-To explain these a bit: A `forest` store its elements in different arrays. One for each (process local) tree. Thus, in order to find an element we need the number of its tree and the index of it
+To explain these a bit: A `forest` stores its elements in different arrays. One for each (process local) tree. Thus, in order to find an element we need the number of its tree and the index of it
 within this tree. These are `which_tree` and `lelement_id`.
 We have already seen `t8_scheme_cxx_t`, which specifies the refinement scheme. This stores for each
 element shape one member of type `t8_eclass_scheme_c` which provides the necessary functions
