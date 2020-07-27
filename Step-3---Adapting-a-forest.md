@@ -104,7 +104,9 @@ int                 t8_step3_adapt_callback (t8_forest_t forest,
                                              int num_elements,
                                              t8_element_t * elements[]);
 ```
-The parameters are
+
+This function will be called for each element (or family) while the forest gets adapted.
+Its parameters are
 | | |
 |-|-|
 | forest | The new forest that is currently under construction |
