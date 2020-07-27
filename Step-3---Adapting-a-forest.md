@@ -26,7 +26,7 @@ The colors correspond to the refinement levels.
 
 ### Adapting a forest
 
-When adapting a forest, we as the user are responsible for defining a suitable adaptation criterion in terms of a `t8_adapt_fn` callback function.
+When adapting a forest, we as the user are responsible for defining a suitable adaptation criterion in terms of a `t8_forest_adapt_t` callback function.
 
 `t8code` will iterate through all elements of the forest and call the provided callback function once per element.
 If the return value of the callback is `0` then the element will be kept in the forest. If the return value is `>0` then the element
