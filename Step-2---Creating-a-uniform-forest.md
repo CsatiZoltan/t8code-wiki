@@ -2,6 +2,8 @@
 
 After creating a `cmesh` in the step 1 example, we will now build our first forest mesh.
 
+You will find the code to this example in `example/tutorials/step2_uniform_forest.cxx` and it creates the executable `example/tutorials/step2_uniform_forest`.
+
 As we discussed in [step 1](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh) the forest 
 mesh is the actual AMR mesh on which an application will operate.
 
