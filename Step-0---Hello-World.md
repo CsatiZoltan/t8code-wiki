@@ -10,6 +10,8 @@ We then use `t8_global_productionf` to print a message on the root process.
 
 At the end of our program, we need to finalize `libsc` and then `MPI`.
 
+Note that `libsc` wraps all `MPI` calls and data structure, which is why we prefix these with `sc` or `SC`.
+
 
 ```C
 #include <t8.h>
