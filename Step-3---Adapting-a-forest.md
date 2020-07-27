@@ -81,7 +81,7 @@ In this case, just call
 ```C
 t8_forest_ref (forest);
 ```
-to manually increase the reference counter.
+before adapting it to manually increase the reference counter and prevent it from destruction.
 
 Analoguously you can dereference a `forest` - and hence also destroy it, if its count reaches 0 - with
 ```C
