@@ -18,3 +18,62 @@ elements. Due to the tree-like nature of recursive refinement, we call the eleme
 
 The `cmesh` will (usually) not change during a computation. 
 A `cmesh` can be partitioned among the processes or each process can hold a copy of the complete `cmesh`.
+
+
+
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_cmesh.png" height="400">
+
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_4procs.png" height="400">
+### Creating a simple coarse mesh
+
+`t8code` offers different ways to create coarse meshes, which can be found in `t8_cmesh.h`
+
+The most important are
+ - reading files from mesh generators `gmsh`, `Tetgen` or `TRIANLGE`
+ - Building a `cmesh` by hand by specifying its elements and neighbor connections
+ - Using one of the provided `t8_cmesh_new_*` functions
+
+In this example we use `t8_cmesh_new_hypercube` to create a `cmesh` that models a cube domain.
+
+```C
+  cmesh = t8_cmesh_new_hypercube (T8_ECLASS_TET, comm, 0, 0, 0);
+```
+
+It offers various parameters that control what kind of cube is created and how it is meshed.
+It also gets an `sc_MPI_Comm` parameter to specify on which processes this `cmesh` should live (usually sc_MPI_COMM_WORLD).
+
+The first parameter `T8_ECLASS_TET` specifies the kind of geometric elements to use to model the cube and also 
+changes the dimension.
+`t8code` supports eight different basic element shapes for the `cmesh`, see also `t8_eclass.h`:
+
+| element shape | description | Number of elements in cube |
+|---------------| ----------- | ---------------------------|
+| T8_ECLASS_VERTEX | 0D points | 1 |
+| T8_ECLASS_LINE | 1D lines | 1 |
+| T8_ECLASS_QUAD | 2D quadrilaterals | 1 |
+| T8_ECLASS_TRIANGLE | 2D triangles | 2 |
+| T8_ECLASS_HEX | 3D hexahedra | 1 |
+| T8_ECLASS_TET | 3D tetrahedra | 6 |
+| T8_ECLASS_PRISM | 3D prisms | 2 |
+| T8_ECLASS_PYRAMID | 3D pyramids | 3 |
+
+Each of these can be choosen as first parameter for `t8_cmesh_new_hypercube` and will create a `[0,1]^d` cube of the specified dimension
+and element type.
+
+The other parameters are flags that control whether the `cmesh` should be created on root and broadcasted to the other processes, whether it should be partitioned among the processes, and whether it should have periodic boundaries.
+
+### Writing a cmesh to .vtu
+
+After creating the `cmesh` we can write it out to `.vtu` files in order to view it in `Paraview`.
+
+We do this with the function call
+```C
+  t8_cmesh_vtk_write_file (cmesh, prefix, 1.0);
+```
+
+which will create the files `prefix.pvtu` and `prefix_0000.vtu`. If the `cmesh` would be partitioned then it would create one file
+`prefix_MPIRANK.vtu` for each MPI rank. Since in thise example it is not partitioned, we only get the file from the root process with rank `0`.
+
+To view it with `Paraview`, open the file `prefix.pvtu`. The `t8_step1_coarsemesh` example will create the file `t8_step1_tetcube.pvtu`.
+
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step1-ParaviewTreeid.png" height="400">
