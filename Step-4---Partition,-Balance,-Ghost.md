@@ -77,7 +77,7 @@ Therefore, in this example we will apply the adaptation two times, resulting in 
 in the inner sphere, level l elements in the middle and level l - 2 element in the outer sphere
 (and probably some, but not many, level l-1 and level l+1 elements in between).
 This forest will be unbalanced and we will then apply the balance routine to it.
-Note that balance changes the local number of elements and thus also change the load balance
+Note that balance changes the local number of elements and thus may also change the load balance
 and require repartitioning.
 Balance is usually the most expensive of t8code's mesh manipulation algorithms.
 
