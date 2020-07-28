@@ -132,3 +132,12 @@ t8_forest_commit (new_forest);
 ```
 
 The t8_forest_new functions are just wrappers around this process.
+
+If we want to balance a forest, we use `t8_forest_set_balance` which we apply here to the twice adapted forest:
+```C++
+t8_forest_t unbalanced_forest = t8_step3_adapt_forest (forest);
+t8_forest_t balanced_forest;
+t8_forest_init (&balanced_forest);
+t8_forest_set_balance (balanced_forest, unbalanced_forest, 0);
+t8_forest_commit (balanced_forest);
+```
