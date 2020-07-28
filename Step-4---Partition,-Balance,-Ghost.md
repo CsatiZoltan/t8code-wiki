@@ -106,8 +106,8 @@ Usually, there are three steps involved in creating a forest:
 This function will prepare a forest by setting default values for its members and 
 initializing necessary structures.
 ```C++
-t8_forest_t forest_new;
-t8_forest_init (&forest_new);
+t8_forest_t new_forest;
+t8_forest_init (&new_forest);
 ```
 
 2. Set all properties that the forest should have.
@@ -119,7 +119,7 @@ The order in which you call the set functions does not matter.
 In the example we have an adapted forest `forest` that we want to partition and create a ghost layer for:
 
 ```C++
-t8_forest_set_partition (forest_new, forest, 0);
+t8_forest_set_partition (new_forest, forest, 0);
 t8_forest_set_ghost (new_forest, 1, T8_GHOST_FACES);
 ```
 
@@ -128,7 +128,7 @@ In this step the forest is actually created after setting all
 desired properties. The forest cannot be changed after it was committed.
 
 ```C++
-t8_forest_commit (forest_new);
+t8_forest_commit (new_forest);
 ```
 
 The t8_forest_new functions are just wrappers around this process.
