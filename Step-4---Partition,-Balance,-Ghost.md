@@ -160,9 +160,9 @@ t8_forest_commit (new_forest);
 
 Adapt, Partition, Balance, Ghost
 
-The order in which you call the `t8_forest_set*` functions will **not** affect the order in which they are executed.
+The order in which you call the `t8_forest_set*` functions for the main algorithms will **not** affect the order in which they are executed.
 
-If multiple `t8_forest_set*` functions are set, the order in which they are executed is always:
+If multiple `t8_forest_set*` functions are set, the order in which the main algorithms are executed is always:
 
 1. Adapt
 2. Partition
