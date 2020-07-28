@@ -67,28 +67,6 @@ The two `0` parameters are flags that specify
   until no element will further be refined or coarsened. 
 - Create face ghosts. If this is true, `forest_adapt` will create a layer of (face) ghost elements.
 
-### Reference counting
-
-After calling `t8_forest_new_adapt` the old `forest` object will be destroyed.
-This is due to `t8code`'s internal reference counting.
-Each `forest` counts how often it is referenced, starting with 1 when it is constructed.
-Using a `forest` to construct a new forest from it will decrease this reference count by 1, basically saying 'i do not need this forest anymore'.
-If the reference count reaches 0 the `forest` is destroyed.
-
-Often you will want to keep the `forest` after adapting. For example because you stored element
-data (such as function values in a CFD solver) and you still need to properly interpolate this data onto the new adapted forest.
-In this case, just call
-```C
-t8_forest_ref (forest);
-```
-before adapting it to manually increase the reference counter and prevent it from destruction.
-
-Analoguously you can dereference a `forest` - and hence also destroy it, if its count reaches 0 - with
-```C
-t8_forest_unref (&forest);
-```
-
-The same applies to other structures such as `t8_cmesh_t` and `t8_scheme_cxx_t`.
 
 ### The adaptation callback
 
@@ -191,3 +169,27 @@ Finally, we apply our criterion:
   /* Do not change this element. */
   return 0;
 ```
+
+
+### Side Note: Reference counting
+
+After calling `t8_forest_new_adapt` the old `forest` object will be destroyed.
+This is due to `t8code`'s internal reference counting.
+Each `forest` counts how often it is referenced, starting with 1 when it is constructed.
+Using a `forest` to construct a new forest from it will decrease this reference count by 1, basically saying 'i do not need this forest anymore'.
+If the reference count reaches 0 the `forest` is destroyed.
+
+Often you will want to keep the `forest` after adapting. For example because you stored element
+data (such as function values in a CFD solver) and you still need to properly interpolate this data onto the new adapted forest.
+In this case, just call
+```C
+t8_forest_ref (forest);
+```
+before adapting it to manually increase the reference counter and prevent it from destruction.
+
+Analoguously you can dereference a `forest` - and hence also destroy it, if its count reaches 0 - with
+```C
+t8_forest_unref (&forest);
+```
+
+The same applies to other structures such as `t8_cmesh_t` and `t8_scheme_cxx_t`.
