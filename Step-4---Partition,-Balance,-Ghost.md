@@ -91,3 +91,44 @@ Balance is usually the most expensive of t8code's mesh manipulation algorithms.
 </p>
 Left: The unbalanced forest after applying the adaptation criterion two times.
 Right: The forest after `Balance`. Colors represent refinement levels.
+
+### Applying the algorithms to a forest
+
+So far we have seen t8_forest_new_* functions to create forests.
+These directly returned a new forest.
+However, t8code offers us more control over the creation of forests.
+For example we can control whether or not a forest should have a ghost layer,
+be balanced/partitioned from another forest, etc.
+
+Usually, there are three steps involved in creating a forest:
+
+1. Initialize the forest with `t8_forest_init`.
+This function will prepare a forest by setting default values for its members and 
+initializing necessary structures.
+```C++
+t8_forest_t forest_new;
+t8_forest_init (&forest_new);
+```
+
+2. Set all properties that the forest should have.
+Here we can for example set a cmesh and refinement scheme or specify that the
+forest should be adapted/partitioned/balanced from another forest etc.
+See the `t8_forest_set_*` functions in `t8_forest.h`.
+The order in which you call the set functions does not matter.
+
+In the example we have an adapted forest `forest` that we want to partition and create a ghost layer for:
+
+```C++
+t8_forest_set_partition (forest_new, forest, 0);
+t8_forest_set_ghost (new_forest, 1, T8_GHOST_FACES);
+```
+
+3. Commit the forest with t8_forest_commit. 
+In this step the forest is actually created after setting all
+desired properties. The forest cannot be changed after it was committed.
+
+```C++
+t8_forest_commit (forest_new);
+```
+
+The t8_forest_new functions are just wrappers around this process.
