@@ -61,4 +61,33 @@ you can set a threshhold on the MPI rank to view only the elements of process 4 
 on treeid to only view those elements with treeid = -1.
 
 ### Balance 
-Iterates through the mesh and refines elements until any two neighboring elements have level difference at most +-1.
+
+A forest fulfills the (face) balance property if (and only if) for each element its (face) neighbors
+have refinement level at most +1 or -1 in comparison to the element's level.
+The balance property is often broken after adaptation. The Balance algorithm iterates through
+the mesh and restores the balance property by refining elements if necessary.
+Balance will never coarsen any elements and
+t8code does not balance a forest by default.
+
+In this example, the initial uniform forest is balanced since every element has the same refinement level l.
+Our adaptation criterion is such that (usually) after one step of adaptation the forest will still be balanced,
+since we have level l+1 elements in the inner sphere, level l elements in the middle and level l+1 elements
+outside. This may not be the case for very small initial refinement levels or with different radius thresholds (why don't you try it out?).
+Therefore, in this example we will apply the adaptation two times, resulting in level l+2 elements
+in the inner sphere, level l elements in the middle and level l - 2 element in the outer sphere
+(and probably some, but not many, level l-1 and level l+1 elements in between).
+This forest will be unbalanced and we will then apply the balance routine to it.
+Note that balance changes the local number of elements and thus also change the load balance
+and require repartitioning.
+Balance is usually the most expensive of t8code's mesh manipulation algorithms.
+
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step4_unbalanced.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step4_balanced.png" height="350">
+</p>
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step4_unbalanced_clip.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step4_balanced_clip.png" height="350">
+</p>
+Left: The unbalanced forest after applying the adaptation criterion two times.
+Right: The forest after `Balance`. Colors represent refinement levels.
