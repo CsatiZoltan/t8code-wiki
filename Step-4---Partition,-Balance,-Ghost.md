@@ -153,7 +153,7 @@ t8_forest_t new_forest;
 t8_forest_init (&new_forest);
 t8_forest_set_adapt (new_forest, forest, CALLBACK, recursive_flag);
 t8_forest_set_partition (new_forest, forest, 0);
-t8_forest_set_balance (new_forest, forest, partition_flag);
+t8_forest_set_balance (new_forest, forest, no_partition_flag);
 t8_forest_set_ghost (new_forest, 1, T8_GHOST_FACES);
 t8_forest_commit (new_forest);
 ```
@@ -169,6 +169,6 @@ If multiple `t8_forest_set*` functions are set, the order in which they are exec
 3. Balance
 4. Ghost
 
-If you want the forest to be partitioned after `Balance` you can specify by setting the third parameter of `t8_forest_set_balance`
-(`partition_flag`) to true.
+If you want the forest to be partitioned after `Balance` you can specify that by setting the third parameter of `t8_forest_set_balance`
+(`no_partition_flag`) to 0.
 
