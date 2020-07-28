@@ -94,7 +94,7 @@ Right: The forest after `Balance`. Colors represent refinement levels.
 
 ### Applying the algorithms to a forest
 
-So far we have seen t8_forest_new_* functions to create forests.
+So far we have seen `t8_forest_new_*` functions to create forests.
 These directly returned a new forest.
 However, t8code offers us more control over the creation of forests.
 For example we can control whether or not a forest should have a ghost layer,
@@ -141,3 +141,34 @@ t8_forest_init (&balanced_forest);
 t8_forest_set_balance (balanced_forest, unbalanced_forest, 0);
 t8_forest_commit (balanced_forest);
 ```
+
+If you want to adapt a forest, use `t8_forest_set_adapt*` which gets an adaptation callback as parameter.
+
+### Order of execution
+
+You can mix the `t8_forest_set*` functions together as you wish (with a few exceptions that are well documented in `t8_forest.h`).
+We can thus in one step adapt a forest, balance it, partition it and create a ghost layer with
+```C++
+t8_forest_t new_forest;
+t8_forest_init (&new_forest);
+t8_forest_set_adapt (new_forest, forest, CALLBACK, recursive_flag);
+t8_forest_set_partition (new_forest, forest, 0);
+t8_forest_set_balance (new_forest, forest, partition_flag);
+t8_forest_set_ghost (new_forest, 1, T8_GHOST_FACES);
+t8_forest_commit (new_forest);
+```
+
+Adapt, Partition, Balance, Ghost
+
+The order in which you call the `t8_forest_set*` functions will **not** affect the order in which they are executed.
+
+If multiple `t8_forest_set*` functions are set, the order in which they are executed is always:
+
+1. Adapt
+2. Partition
+3. Balance
+4. Ghost
+
+If you want the forest to be partitioned after `Balance` you can specify by setting the third parameter of `t8_forest_set_balance`
+(`partition_flag`) to true.
+
