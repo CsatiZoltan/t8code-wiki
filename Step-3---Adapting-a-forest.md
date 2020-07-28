@@ -170,6 +170,10 @@ Finally, we apply our criterion:
   return 0;
 ```
 
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step3_adaptForest_lvlcolorhalf.png" height="450">
+</p>
+In this view we cut into the cube and show how the adaptation criterion affects the elements inside.
 
 ### Side Note: Reference counting
 
