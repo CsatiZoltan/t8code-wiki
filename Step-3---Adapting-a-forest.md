@@ -66,7 +66,7 @@ The `adapt_data` argument is user defined data that we can pass onto `forest_ada
 
 The two `0` parameters are flags that specify
 - Recursive adaptation. If this is true, the adapt callback will be called recursively for the elements
-  until no element will further be refined or coarsened. 
+  until no element will further be refined or coarsened. Hence, we can refine or coarsen more than one level.
 - Create face ghosts. If this is true, `forest_adapt` will create a layer of (face) ghost elements.
 
 
