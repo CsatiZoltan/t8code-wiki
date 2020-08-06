@@ -50,6 +50,8 @@ A square element (left) is refined into its 4 children (right).
 </p>
 A triangle family (left) is coarsened into their parent (right).
 
+
+
 Let us for now take the adaptation callback as a black box. We will describe it in detail at the end of
 this page.
 
