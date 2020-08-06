@@ -126,7 +126,7 @@ t8_tutorial_search_callback (t8_forest_t forest,
 In our example this is the callback that does the actual computation.
 It is called once for each particle that may be contained in the element (these are the active particles).
 
-We check whether the current particle is actually contained in the element. If yes, the we return true,
+We check whether the current particle is actually contained in the element using the `t8_forest_element_point_inside` function. If yes, the we return true,
 and the particle will remain active for this element. Thus we will check in which children it is contained.
 If no, then we return false, deactivating the particle and it will not be checked again for any of the element's
 children.
