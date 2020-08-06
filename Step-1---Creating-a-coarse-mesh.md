@@ -84,3 +84,5 @@ which will create the files `prefix.pvtu` and `prefix_0000.vtu`. If the `cmesh` 
 To view it with `Paraview`, open the file `prefix.pvtu`. The `t8_step1_coarsemesh` example will create the file `t8_step1_tetcube.pvtu`.
 
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step1-ParaviewTreeid.png" height="400">
+
+As we can see our geometry is a three dimensional cube that consists of six tetrahedral trees.
