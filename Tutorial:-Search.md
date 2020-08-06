@@ -23,6 +23,16 @@ This way, we can exclude whole portions of the mesh from the search early on and
 You can see in the output of the executable that the number of searched elements is
 significantly smaller than the actual number of elements.
 
+
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Search_forest.png" height="250">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Search_forest_clip.png" height="250">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Search_forest_particles.png" height="250">
+</p>
+
+Left to right: The forest that we use in this example. A cut through the forest to show the inside (colors represent refinement levels.)
+The elements that we searched for that contain particles (colors represent number of particles).
+
 ## Callback functions and queries
   
   In each (process local) tree of the forest, search will create the level 0 element that
