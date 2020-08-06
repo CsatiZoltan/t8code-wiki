@@ -21,7 +21,8 @@ Due to the tree-based structure of t8codes meshes, the search is performed hiera
 checking on each level whether or not to continue the search.
 This way, we can exclude whole portions of the mesh from the search early on and thus have a significant performance advantage compared to linearly searching through all elements as would be necessary with unstructured meshes.
 You can see in the output of the executable that the number of searched elements is
-significantly smaller than the actual number of elements.
+significantly smaller than the actual number of elements:
+To search for 2000 particles in a forest with 141,052 elements, the search looked at 16,448.
 
 
 <p align="center">
