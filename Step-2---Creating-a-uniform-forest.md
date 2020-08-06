@@ -20,7 +20,7 @@ to any given criterion (see step 3).
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_Cubelvl3.png" height="350">
 </p>
 
-From `cmesh` (left) to uniform `forest` (right).
+From `cmesh` (left, two prisms) to uniform `forest` (right, refinement level 3).
 
 ### The ingredients
 
