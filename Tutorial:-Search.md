@@ -41,6 +41,22 @@ significantly smaller than the actual number of elements.
   If the query object returns 0, this query object will get deactivated for this element and its
   recursive children. The recursion stops when no queries are active anymore (independently of the return value of the per element callback).
 
+  Both callbacks have the same signature.
+  When they are called informations about the currently searched element, whether or not it is a leaf
+  and its descendants that are leafs are provided.
+  In query mode a pointer to the current query and its index in the query array are also provided.
+
+```C++
+int         search_callback (t8_forest_t forest,          // The forest
+                             t8_locidx_t ltreeid,         // The current tree
+                             const t8_element_t *element, // The element to be searched
+                             const int is_leaf,           // True if the element is a leaf (an actual element in our forest)
+                             t8_element_array_t *leaf_elements, // The leafs in the forest that are descendants (arise from recursive refining) of element
+                             t8_locidx_t tree_leaf_index, // The tree local index of the first leaf in leaf_elements
+                             void *query,                 // The current query (NULL in element callback mode)
+                             size_t query_index)          // The index of the current query in the query array (invalid in element callback mode)
+```
+
 ## Particles
 
 We want to create random particles in the mesh and search for the elements containing them.
@@ -104,4 +120,51 @@ t8_tutorial_search_callback (t8_forest_t forest,
   return 1;
 }
 ```
-should be se
+
+### The query callback
+
+In our example this is the callback that does the actual computation.
+It is called once for each particle that may be contained in the element (these are the active particles).
+
+We check whether the current particle is actually contained in the element. If yes, the we return true,
+and the particle will remain active for this element. Thus we will check in which children it is contained.
+If no, then we return false, deactivating the particle and it will not be checked again for any of the element's
+children.
+If we return false for every active particle of an element, the search will stop for the element and all of its descendants.
+
+We also get the information whether or not the currently searched element is a leaf element in the forest.
+If it is and we find that the particle is contained in the element, we have found an element that contains a particle.
+What we do now is to add the particle to the particle counter of this element.
+
+The important part of the callback is:
+```C++
+  /* Cast the query pointer to a particle pointer. */
+  t8_tutorial_search_particle_t *particle =
+    (t8_tutorial_search_particle_t *) query;
+  /* Test whether this particle is inside this element. */
+  particle_is_inside_element =
+    t8_forest_element_point_inside (forest, ltreeid, element, tree_vertices,
+                                    particle->coordinates, tolerance);
+  if (particle_is_inside_element) {
+    if (is_leaf) {
+      /* The particle is inside and this element is a leaf element.
+       * We mark the particle for being inside the partition and we increase
+       * the particles_per_element counter of this element. */
+      /* In order to find the index of the element inside the array, we compute the
+       * index of the first element of this tree plus the index of the element whithin
+       * the tree. */
+      t8_locidx_t         element_index =
+        t8_forest_get_tree_element_offset (forest, ltreeid) + tree_leaf_index;
+      particle->is_inside_partition = 1;
+      *(double *) t8_sc_array_index_locidx (particles_per_element,
+                                            element_index) += 1;
+    }
+    /* The particles is inside the element. This query should remain active.
+     * If this element is not a leaf the search will continue with its children. */
+    user_data->count++;
+    return 1;
+  }
+  /* The particle is not inside the element. Deactivate this query.
+   * If no active queries are left, the search will stop for this element and its children. */
+  return 0;
+```
