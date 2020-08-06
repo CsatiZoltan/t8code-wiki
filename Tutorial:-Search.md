@@ -35,26 +35,29 @@ Left to right: The forest that we use in this example. A cut through the forest 
 The elements that we searched for that contain particles (colors represent number of particles).
 
 ## Callback functions and queries
+
+  All we have to do to use search is to define what a query is (if we use any) and 
+  implement two callback functions (one if we do not have queries), the element callback and the query callback.
   
   In each (process local) tree of the forest, search will create the level 0 element that
-  coincides with the tree and call the search-callback function on it.
-  In the callback we decide whether to continue the search or not.
+  coincides with the tree and call the element callback function on it.
+  In the element callback we decide whether to continue the search or not.
   If we continue the search, the children of this level 0 element are created and the
-  search callback will be called for them -- again deciding whether to continue or not.
+  element callback will be called for them -- again deciding whether to continue or not.
   This process repeats recursively and stops at those fine elements that are actually contained
   in the forest (leaf elements).
   
-  Additionally, the search algorithm can be given an array of 'queries' and a query-callback. 
-  These queries can be arbitrarily defined data. In our case this will be the array of particles.
-  If queries and a query-callback are provided, then for each element first the search-callback
+  Additionally, the search algorithm can be given an array of 'queries' and a query callback. 
+  These queries can be arbitrarily defined data. In our case the queries will be our particles.
+  If queries and a query callback are provided, then for each element first the element callback
   is called to decide whether or not to continue searching. If it returns true, the query-callback
   will be called once for each active query object. 
   If the query object returns 0, this query object will get deactivated for this element and its
   recursive children. The recursion stops when no queries are active anymore (independently of the return value of the per element callback).
 
   Both callbacks have the same signature.
-  When they are called informations about the currently searched element, whether or not it is a leaf
-  and its descendants that are leafs are provided.
+  When they are called information about the currently searched element, whether or not it is a leaf
+  and its descendants that are leafs is provided.
   In query mode a pointer to the current query and its index in the query array are also provided.
 
 ```C++
