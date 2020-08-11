@@ -182,3 +182,28 @@ The important part of the callback is:
    * If no active queries are left, the search will stop for this element and its children. */
   return 0;
 ```
+
+## The actual search
+
+All that is left to do for us now is to initialize our user data and start the search:
+
+```C++
+  
+  t8_tutorial_search_user_data_t user_data;
+
+  /* Initialize the particles per element as an array of one double per local element. */
+  sc_array_init_count (user_data.particles_per_element, sizeof (double),
+                       num_local_elements);
+  /* Set each entry to 0 */
+  for (ielement = 0; ielement < num_local_elements; ++ielement) {
+    *(double *) t8_sc_array_index_locidx (user_data.particles_per_element, ielement) = 0;
+  }
+  /* Intialize the number of searched elments to 0. */
+  user_data.num_elements_searched = 0;
+  /* Set the forest's user data pointer. */
+  t8_forest_set_user_data (forest, &user_data);
+  /* Perform the search of the forest. The second argument is the search callback function,
+   * then the query callback function and the last argument is the array of queries. */
+  t8_forest_search (forest, t8_tutorial_search_callback,
+                    t8_tutorial_search_query_callback, particles);
+```
