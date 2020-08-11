@@ -202,6 +202,10 @@ All that is left to do for us now is to initialize our user data and start the s
   user_data.num_elements_searched = 0;
   /* Set the forest's user data pointer. */
   t8_forest_set_user_data (forest, &user_data);
+```
+
+To perform the search we call `t8_forest_search`:
+```C++
   /* Perform the search of the forest. The second argument is the search callback function,
    * then the query callback function and the last argument is the array of queries. */
   t8_forest_search (forest, t8_tutorial_search_callback,
