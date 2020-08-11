@@ -17,7 +17,7 @@ Examples of this feature include:
 In this tutorial we will create random particles inside our mesh, then use search to find those elements that contain particles and
 count for each element how many particles it contains.
 
-Due to the tree-based structure of t8codes meshes, the search is performed hierarchically from the coarsest level down to the elements,
+Due to the tree-based structure of t8codes meshes we can search the mesh hierarchically from the coarsest level down to the elements,
 checking on each level whether or not to continue the search.
 This way, we can exclude whole portions of the mesh from the search early on and thus have a significant performance advantage compared to linearly searching through all elements as would be necessary with unstructured meshes.
 You can see in the output of the executable that the number of searched elements is
