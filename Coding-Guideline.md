@@ -15,6 +15,5 @@ We use C-Style multiple line comments throughout.
  */
 
 /* Each comment line should start and end with a space. */
-
 /*Because this looks ugly.*/
 ```
