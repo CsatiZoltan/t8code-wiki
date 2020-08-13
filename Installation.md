@@ -95,6 +95,10 @@ To do so, run
 ```bash
 make check
 ```
+or
+```bash
+make check -j
+```
 
 If any of the tests fail, something in the configuration or on your system does not work properly and you should not use t8code in this configuration.
 
