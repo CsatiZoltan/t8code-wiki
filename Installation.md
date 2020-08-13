@@ -74,7 +74,7 @@ configure CFLAGS="-O3" CXXFLAGS="-O3" --enable-mpi
 For a debugging mode configuration (mostly used by developers), you can use
 
 ```bash
-configure CFLAGS="-O0 -g" CXXFLAGS="-O0 -g" --enable-mpi --enable-debug
+configure CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g" --enable-mpi --enable-debug
 ```
 
 
