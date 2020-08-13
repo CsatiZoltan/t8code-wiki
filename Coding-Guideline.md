@@ -1,6 +1,20 @@
-## Coding Guidelines
+# Coding Guidelines
 
-### Comments
+## Comments
+
+Every function should be well documented.
+This includes a description of what the function does
+and of its parameters.
+```C++
+/* Implements the integers identity function.
+ * \param [in] x  The input value.
+ * \return        The value \a x will be returned.
+ */
+int identity (int x) 
+{
+  return x;
+}
+```
 
 We use C-Style multiple line comments throughout.
 
@@ -17,3 +31,6 @@ We use C-Style multiple line comments throughout.
 /* Each comment line should start and end with a space. */
 /*Because this looks ugly.*/
 ```
+
+### Doxygen
+
