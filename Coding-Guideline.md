@@ -1,5 +1,91 @@
 # Coding Guidelines
 
+## Indentation
+
+`t8code` comes with its own indentation script `t8indent` that you should use to indent all code files.
+You find it in the `scripts` folder of the main repository.
+
+In order to indent a file `src/t8_foo.c` call
+
+```bash
+$ ./scripts/t8indent src/t8_foo.c
+```
+
+Sometimes the indentation script cannot indent a part of the code properly, or produces ugly results.
+
+So you need to double check the file after indentation.
+
+If you encounter a piece of code that is not indented properly, you can use the `/* *INDENT-OFF* */` and `/* *INDENT-ON* */`
+comments to deactivate indentation for a part of the code:
+
+```C++
+/* *INDENT-OFF* */
+/* Now the code here will be left unchanged by t8indent */
+
+/* *INDENT-ON* */
+
+/* The code here will be indented by t8indent */
+```
+
+You can `grep` the code base for these keyword in order to see some of the fails of `t8indent`.
+
+### Git indentation workflow
+
+We provide a git hook that automatically prevents you from committing unindented files.
+You should install this commit hook by copying it to the `.git/hooks` directory.
+
+```bash
+$ cp ./scripts/pre-commit .git/hooks
+```
+
+If you now try to commit an indented file you will get a message such as this one:
+```bash
+$ git add src/t8_foo.c
+$ git commit -m 'A useful commit message'
+Checking file src/t8_foo.c
+File src/t8_foo.c is not indented.
+```
+So now we need to indent the file.
+
+```bash
+$ ./scripts/t8indent src/t8_foo.c
+```
+
+Check the changes and add them. We can use the `git add -p` feature for this:
+```bash
+$ git add -p ./src/t8_foo.c
+```
+
+It is important that you do not mix indentation of code that has nothing to do with you actual
+commit into the commit.
+So make sure to only include those indented parts of the code you are currently editing into the commit.
+
+If you are finished with your commit and there are still indentation changes left, you can commite them alltogether
+in a single indent commit.
+
+Let us do a quick example. Suppose we added a function `foo` to `t8_foo.c`, but other parts of the file are unindented
+(of course not you, but other developers are to blame for this shameful error ;) ).
+
+```bash
+# Add you changes to the commit
+$ git add src/t8_foo.c
+# Try to commit you changes
+$ git commit -m 'Added function foo to t8_foo.c' # Please use a more descriptive commit message
+Checking file src/t8_foo.c
+File src/t8_foo.c is not indented.
+# Indent the file
+./scripts/t8indent src/t8_foo.c
+# Add the changes to the foo function part to our commit
+git add -p # Now interactively accept only the changes to the foo part
+# Commit again, this time it should work
+$ git commit -m 'Added function foo to t8_foo.c'
+# Now add the other changes of indent
+$ git add src/t8_foo.c
+# And commit them as an indentation commit
+$ git commit -m 'Indented t8_foo.c'
+```
+
+
 ## Comments
 
 Every function should be well documented.
