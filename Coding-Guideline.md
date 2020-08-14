@@ -12,9 +12,7 @@ $ ./scripts/t8indent src/t8_foo.c
 ```
 
 Sometimes the indentation script cannot indent a part of the code properly, or produces ugly results.
-
 So you need to double check the file after indentation.
-
 If you encounter a piece of code that is not indented properly, you can use the `/* *INDENT-OFF* */` and `/* *INDENT-ON* */`
 comments to deactivate indentation for a part of the code:
 
@@ -56,18 +54,18 @@ Check the changes and add them. We can use the `git add -p` feature for this:
 $ git add -p ./src/t8_foo.c
 ```
 
-It is important that you do not mix indentation of code that has nothing to do with you actual
+It is important that you do not mix indentation of code that has nothing to do with your actual
 commit into the commit.
 So make sure to only include those indented parts of the code you are currently editing into the commit.
 
-If you are finished with your commit and there are still indentation changes left, you can commite them alltogether
+If you are finished with your commit and there are still indentation changes left, you can commit them all together
 in a single indent commit.
 
 Let us do a quick example. Suppose we added a function `foo` to `t8_foo.c`, but other parts of the file are unindented
 (of course not you, but other developers are to blame for this shameful error ;) ).
 
 ```bash
-# Add you changes to the commit
+# Add your changes to the commit
 $ git add src/t8_foo.c
 # Try to commit you changes
 $ git commit -m 'Added function foo to t8_foo.c' # Please use a more descriptive commit message
