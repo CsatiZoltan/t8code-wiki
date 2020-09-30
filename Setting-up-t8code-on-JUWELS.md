@@ -56,7 +56,7 @@ srun -n ${NPROCS} $EXEC $ARGS
 ```
 
 Save this in a file named (for example) `basic_2Nodes.pbs`.
-We can then submit the job with `sbatch`:
+You can then submit the job with `sbatch`:
 
 ```
 sbatch basic_2Nodes.pbs
