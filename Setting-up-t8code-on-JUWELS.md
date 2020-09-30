@@ -1,6 +1,6 @@
 ## How to setup and run t8code on the JUWELS supercomputer
 
-Setting up t8code on JUWELS is relatively simple. Basically, you can basically follow the Setup guide.
+Setting up `t8code` on JUWELS is relatively simple. Basically, you can basically follow the [Setup guide](https://github.com/holke/t8code/wiki/Installation).
 
 ### Required modules
 
