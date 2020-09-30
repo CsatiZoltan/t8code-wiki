@@ -27,7 +27,7 @@ If you do not explicitely need to link any `blas` or `lapack` code deactivate li
 
 JUWELS uses the Slurm batch system. To set up a job you need to write a `.pbs` file.
 
-Here is a simple example for the `example/basic/t8_basic` code:
+Here is a simple example file to run `example/basic/t8_basic`:
 
 ```
 #!/bin/bash -x
@@ -54,5 +54,7 @@ echo $EXEC $ARGS
 echo -------------------
 srun -n ${NPROCS} $EXEC $ARGS
 ```
+
+Save this in a file named (for example) `basic_2Nodes.pbs`
 
 
