@@ -44,8 +44,8 @@ NODES=2
 PPN=48
 NPROCS=$((NODES*PPN))
 
-
-EXEC=../example/basic/t8_basic_hcube
+# Edit this path to match your installation
+EXEC=/path/to/your/t8code/example/basic/t8_basic_hcube
 
 ARGS="-l4 -e5"
 echo -------------------
@@ -55,6 +55,11 @@ echo -------------------
 srun -n ${NPROCS} $EXEC $ARGS
 ```
 
-Save this in a file named (for example) `basic_2Nodes.pbs`
+Save this in a file named (for example) `basic_2Nodes.pbs`.
+We can then submit the job with `sbatch`:
+
+```
+sbatch basic_2Nodes.pbs
+```
 
 
