@@ -123,6 +123,8 @@ We use C-Style multiple line comments throughout.
 
 ### Naming guidelines
 
+#### Prefix
+
 We use the prefix `t8` to indicate `t8code`'s namespace. Thus, every function, struct and class should have a `t8` prefix.
 
 ```
@@ -140,3 +142,17 @@ struct t8_struct
 Functions that belong to a particular struct interface should all have the same prefix which should be related to the struct.
 
 For example all functions in the forest API have `t8_forest` as a prefix.
+
+#### Naming scheme
+
+We use the lowercase [snake_case](https://en.wikipedia.org/wiki/Snake_case) naming convention for functions, structs, classes and variable names:
+
+```
+t8_prefix_explanatory_name
+```
+
+For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
+
+```
+T8_MACRO_NAME
+```
