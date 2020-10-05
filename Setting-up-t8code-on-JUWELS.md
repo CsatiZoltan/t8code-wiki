@@ -17,7 +17,7 @@ Make sure that these modules are loaded each time you run code.
 
 Use your favourite configure options and run `make`.
 
-If you do not explicitely need to link any `blas` or `lapack` code deactivate linking with the configure flags
+If you do not explicitely need to link any `blas` or `lapack` code, deactivate linking with the configure flags
 ```
 --without-blas
 --without-lapack
