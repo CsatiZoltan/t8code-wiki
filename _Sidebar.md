@@ -9,6 +9,6 @@
  > [Setup t8code on JUWELS](https://github.com/holke/t8code/wiki/Setting-up-t8code-on-JUWELS)
 
 
-### Devloper's Guide
+### Developer's Guide
 
  > [Coding Guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline)
