@@ -137,3 +137,6 @@ struct t8_struct
 };
 ```
 
+Functions that belong to a particular struct interface should all have the same prefix which should be related to the struct.
+
+For example all functions in the forest API have `t8_forest` as a prefix.
