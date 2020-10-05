@@ -121,5 +121,19 @@ We use C-Style multiple line comments throughout.
 /*Because this looks ugly.*/
 ```
 
-### Doxygen
+### Naming guidelines
+
+We use the prefix `t8` to indicate `t8code`'s namespace. Thus, every function, struct and class should have a `t8` prefix.
+
+```
+t8_foo (int x)
+{
+   /* Do something useful */
+}
+
+struct t8_struct
+{
+  int foo;
+};
+```
 
