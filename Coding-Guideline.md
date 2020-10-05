@@ -62,7 +62,7 @@ If you are finished with your commit and there are still indentation changes lef
 in a single indent commit.
 
 Let us do a quick example. Suppose we added a function `foo` to `t8_foo.c`, but other parts of the file are unindented
-(of course not you, but other developers are to blame for this shameful error ;) ).
+(of course not you, but other developers, are to blame for this shameful error ;) ).
 
 ```bash
 # Add your changes to the commit
