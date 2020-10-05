@@ -67,7 +67,7 @@ Let us do a quick example. Suppose we added a function `foo` to `t8_foo.c`, but 
 ```bash
 # Add your changes to the commit
 $ git add src/t8_foo.c
-# Try to commit you changes
+# Try to commit your changes
 $ git commit -m 'Added function foo to t8_foo.c' # Please use a more descriptive commit message
 Checking file src/t8_foo.c
 File src/t8_foo.c is not indented.
