@@ -47,7 +47,7 @@ main (int argc, char **argv)
 
 ### Logging
 
-To output a message on the root process in this Hello World examples we use the function `t8_global_productionf`.
+To output a message on the root process in this Hello World example we use the function `t8_global_productionf`.
 
 `t8code` offers various logging function and logging levels via `libsc`.
 
