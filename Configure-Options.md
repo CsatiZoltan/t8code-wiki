@@ -46,9 +46,9 @@ For an overview of the full installation process, please see the [Installation](
 
 ### Example configurations
 
-For a parallel release mode with local installation path `~/t8code_install`:
+For a parallel release mode with local installation path `$HOME/t8code_install`:
 
-`configure --enable-mpi CFLAGS=-O3 CXXFLAGS=-O3 --prefix=~/t8code_install`
+`configure --enable-mpi CFLAGS=-O3 CXXFLAGS=-O3 --prefix=$HOME/t8code_install`
 
 For a debugging mode with static linkage (makes using gdb and valgrind more comfortable):
 
