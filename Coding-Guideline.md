@@ -83,6 +83,9 @@ $ git add src/t8_foo.c
 $ git commit -m 'Indented t8_foo.c'
 ```
 
+Despite all effort, the indentation hook sometimes just wont work properly.
+If you really need to commit code that does not pass the indent test. and you know what you are doing, you can use `git commit --no-verify`.
+
 
 ## Comments
 
