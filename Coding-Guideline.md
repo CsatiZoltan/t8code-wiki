@@ -124,6 +124,14 @@ We use C-Style multiple line comments throughout.
 /*Because this looks ugly.*/
 ```
 
+### Memory handling
+
+`t8code` implements its own memory handling routines.
+To allocate and free memory, we use the `T8_ALLOC*` and `T8_FREE` macros.
+
+All our code must be free of memory leaks. Check your code with `valgrind` and `valgrind --leak-check=full` for any memory leaks.
+
+
 ### Naming guidelines
 
 #### Prefix
