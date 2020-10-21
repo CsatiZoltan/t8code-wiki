@@ -103,3 +103,22 @@ make check -j
 If any of the tests fail, something in the configuration or on your system does not work properly and you should not use t8code in this configuration.
 
 If you cannot figure out, what causes the problem, feel free to contact the developers.
+
+### Linking against t8code
+
+To use t8code as an external library and link against it, first you need to install it according to the above instructions or obtain an installation via another way.
+Your code must link against t8code, p4est, libsc, libz and libm.
+Usually 
+[p4est](www.github.com/cburstedde/p4est) and [libsc](www.github.com/cburstedde/sc) are shipped with t8code. If you did not obtain them with t8code you need to install them seperately.
+
+For the sake of the argument let's say the install folder is $HOME/t8code_install.
+1. Add the library folder to `LD_LIBRARY_PATH`:
+```bash
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/t8code_install/lib
+```
+2. Add these to your compile line
+```bash
+-I$HOME/t8code_install/include
+-L$HOME/t8code_install/lib
+-lt8code -lp4est -lsc -lm -lz
+```
