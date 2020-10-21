@@ -87,6 +87,7 @@ Despite all effort, the indentation hook sometimes just wont work properly.
 If you really need to commit code that does not pass the indent test. and you know what you are doing, you can use `git commit --no-verify`.
 
 
+
 ## Comments
 
 Every function should be well documented.
