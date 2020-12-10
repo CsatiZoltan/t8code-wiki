@@ -1,3 +1,5 @@
+WARNING: This article is work in progress. The information depicted here may be incomplete or wrong.
+
 ## Tree indexing
 
 t8code uses different indexing schemes for its trees, which we discuss in this section.
