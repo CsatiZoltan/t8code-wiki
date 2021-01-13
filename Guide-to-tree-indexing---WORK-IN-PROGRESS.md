@@ -6,6 +6,8 @@ t8code uses different indexing schemes for its trees, which we discuss in this s
 
 We have two types of trees: Coarse trees as elements in the coarse mesh and forest trees in the forest. These correspond to each other in that each coarse tree gives rise to exactly one forest tree.
 
+Additionally, we have ghost trees. These are trees that (possibly) contain ghost elements. The coarse mesh and the forest mesh may have ghost trees.
+
 ### global id
 
 All trees are enumerated globally from 0 to T-1. This enumeration is independent of any partition and the same for the forest coarse trees
@@ -76,19 +78,16 @@ Attention: `t8_forest_get_local_id` will not return a ghost id. If the global in
 The following table gives an overview on `t8code` function that convert between different
 tree ids:
 
-| Function  | Converts from  | to  |
-|---|---|---|
-| t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  |
-| t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  |
-| t8_forest_get_local_id | Global id  | Forest local id  |
-| t8_forest_global_tree_id | Forest local id | Global id |
-| t8_cmesh_get_local_id | Global id  | Cmesh local id  |
-| t8_cmesh_get_global_id | Cmesh local id | Global id |
-| t8_forest_ghost_get_ghost_treeid | Global id | Forest ghost id |
-| t8_forest_ghost_get_global_treeid | Forest ghost id | Global id |
-| t8_forest_global_tree_id | ??? | ??? |
-| t8_cmesh_get_global_id | ??? | ??? |
-| t8_cmesh_get_local_id | ??? | ??? |
+| Function  | Converts from  | to  | remark |
+|---|---|---|---|
+| t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  ||
+| t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  ||
+| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for ghost trees |
+| t8_forest_global_tree_id | Forest local or ghost id | Global id | Add ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) to ghost index |
+| t8_cmesh_get_local_id | Global id  | Cmesh local or ghost id | Adds ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index|
+| t8_cmesh_get_global_id | Cmesh local or ghost id | Global id | Add ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index |
+| t8_forest_ghost_get_ghost_treeid | Global id | Forest ghost id ||
+| t8_forest_ghost_get_global_treeid | Forest ghost id | Global id ||
 
 
 
