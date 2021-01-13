@@ -47,6 +47,8 @@ Thus, the global id of tree i on process p is the same as the global id of p's f
 
 ### Ghosts
 
+!!! TODO: A tree can occur twice: As a local tree and as a ghost tree.
+
 Additionally to the local trees in the coarse mesh and forest there may also be ghost trees.
 Their ids are handled in the same way as local tree ids (with `t8_locidx_t`) and most functions that accept a local tree
 id as input also accept a ghost tree id.
@@ -69,8 +71,24 @@ Use the following functions to convert between global and ghost ids:
 
 Attention: `t8_forest_get_local_id` will not return a ghost id. If the global input tree corresponds to a ghost tree, then the return value will be negative.
 
+### Coverting functions
 
+The following table gives an overview on `t8code` function that convert between different
+tree ids:
 
+| Function  | Converts from  | to  |
+|---|---|---|
+| t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  |
+| t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  |
+| t8_forest_get_local_id | Global id  | Forest local id  |
+| t8_forest_global_tree_id | Forest local id | Global id |
+| t8_cmesh_get_local_id | Global id  | Cmesh local id  |
+| t8_cmesh_get_global_id | Cmesh local id | Global id |
+| t8_forest_ghost_get_ghost_treeid | Global id | Forest ghost id |
+| t8_forest_ghost_get_global_treeid | Forest ghost id | Global id |
+| t8_forest_global_tree_id | ??? | ??? |
+| t8_cmesh_get_global_id | ??? | ??? |
+| t8_cmesh_get_local_id | ??? | ??? |
 
 
 
