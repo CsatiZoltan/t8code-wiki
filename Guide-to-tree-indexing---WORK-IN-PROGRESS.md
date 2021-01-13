@@ -34,18 +34,8 @@ If  a `cmesh` interface functions calls for a local tree id then a coarse mesh l
 function calls for a local tree id then a forest local tree id must be provided.
 To convert between both, use the functions `t8_forest_ltreeid_to_cmesh_ltreeid` and `t8_forest_cmesh_ltreeid_to_ltreeid`.
 
-#### Converting from local to global
-
-Use the following functions to convert between global and local ids:
-
- - `t8_forest_get_local_id` -- Converts a global id into a forest local id.
- - `t8_forest_global_tree_id` -- Converts a forest local id into a global id.
- - `t8_cmesh_get_local_id` -- Converts a global id into a cmesh local id.
- - `t8_cmesh_get_global_id` -- Converts a cmesh local id into a global id.
 
 
-Since the partitioning is computed according to the space-filling curve index, the order of the trees will not change.
-Thus, the global id of tree i on process p is the same as the global id of p's first tree plus i (`gid(i) = gid(0) + i`).
 
 ### Ghosts
 
@@ -78,18 +68,6 @@ If local trees and ghosts are handled together in the same context, for example 
 (respectively ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc})).
 For example if a process has 3 local trees and 2 ghosts and we want to know the global id of the second (ghost index 1), we call t8_forest_global_tree_id with 4 as input parameter.
 
-#### Converting from ghost id to global
-
-Use the following functions to convert between global and ghost ids:
-
- - `t8_forest_ghost_get_ghost_treeid` -- Given a global tree id compute the forest ghost id.
- - `t8_forest_ghost_get_global_treeid` -- Given a forest ghost id compute the global tree id.
- - `t8_forest_global_tree_id` -- As above, use the ghost id plus T_pf as input.
- - `t8_cmesh_get_global_id` -- As above, use the ghost id plus T_pc as input.
- - `t8_cmesh_get_local_id` -- As above, returns the ghost id plus T_pc.
-
-Attention: `t8_forest_get_local_id` will not return a ghost id. If the global input tree corresponds to a ghost tree, then the return value will be negative.
-
 ### Converting functions
 
 The following table gives an overview on `t8code` function that convert between different
@@ -107,4 +85,5 @@ tree ids:
 | t8_forest_ghost_get_global_treeid | Forest ghost id | Global id ||
 
 
-
+Since the partitioning is computed according to the space-filling curve index, the order of the trees will not change.
+Thus, the global id of tree i on process p is the same as the global id of p's first tree plus i (`gid(i) = gid(0) + i`).
