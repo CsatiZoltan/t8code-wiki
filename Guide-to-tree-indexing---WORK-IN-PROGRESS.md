@@ -77,13 +77,16 @@ tree ids:
 |---|---|---|---|
 | t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  ||
 | t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  ||
-| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for ghost trees |
+| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for ghost trees that are not local|
 | t8_forest_global_tree_id | Forest local or ghost id | Global id | Add ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) to ghost index |
 | t8_cmesh_get_local_id | Global id  | Cmesh local or ghost id | Adds ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index|
 | t8_cmesh_get_global_id | Cmesh local or ghost id | Global id | Add ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index |
 | t8_forest_ghost_get_ghost_treeid | Global id | Forest ghost id ||
 | t8_forest_ghost_get_global_treeid | Forest ghost id | Global id ||
 
+Because a global tree can be a forest local tree and ghost tree at the same time a conversion from global id to local or ghost id is not unique.
+Hence, in contrary to the coarse mesh, we need to use two different functions `t8_forest_get_local_id` and `t8_forest_ghost_get_ghost_treeid`
+to convert global ids.
 
 Since the partitioning is computed according to the space-filling curve index, the order of the trees will not change.
 Thus, the global id of tree i on process p is the same as the global id of p's first tree plus i (`gid(i) = gid(0) + i`).
