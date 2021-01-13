@@ -46,7 +46,7 @@ If a forest is partitioned, its ghost trees are those trees that contain ghost e
 Note, that 
 1. A forest may not have ghost elements in the ghost trees of the coarse mesh. Thus, even if a coarse mesh and forest have the same local
    trees, they do not necessarily have the same ghost trees.
-2. A tree that is a coarse mesh local tree cannot be a coarse mesh ghost tree and vice versa.
+2. A tree that is a coarse mesh local tree cannot be a coarse mesh ghost tree.
 3. A tree can be a forest local tree and a forest ghost tree on the same time, if the forest has local and ghost elements in this tree.
 
 Ghost tree ids are handled in the same way as local tree ids (with `t8_locidx_t`) and most functions that accept a local tree
