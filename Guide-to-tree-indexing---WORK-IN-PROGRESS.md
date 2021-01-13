@@ -9,7 +9,7 @@ We have two types of trees: Coarse trees as elements in the coarse mesh and fore
 ### global id
 
 All trees are enumerated globally from 0 to T-1. This enumeration is independent of any partition and the same for the forest coarse trees
-(i.e. global forest tree k corresponds to global coarse tree k).
+(i.e. global forest tree `i` corresponds to global coarse tree `i`).
 
 We call this index the 'global tree id' and use a `t8_gloidx_t` type to store it.
 Variables storing a global tree id are often called `gtreeid`, `global_id` or similar.
