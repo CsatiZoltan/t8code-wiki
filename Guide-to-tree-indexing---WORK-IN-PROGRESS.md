@@ -6,6 +6,7 @@ t8code uses different indexing schemes for its trees, which we discuss in this s
 
 We have two types of trees: Coarse trees as elements in the coarse mesh and forest trees in the forest. These correspond to each other in that each coarse tree gives rise to exactly one forest tree.
 
+![http://chart.apis.google.com/chart?cht=tx&chl=E=mc^2](EMC2)
 
 ### global id
 
