@@ -71,7 +71,7 @@ Use the following functions to convert between global and ghost ids:
 
 Attention: `t8_forest_get_local_id` will not return a ghost id. If the global input tree corresponds to a ghost tree, then the return value will be negative.
 
-### Coverting functions
+### Converting functions
 
 The following table gives an overview on `t8code` function that convert between different
 tree ids:
