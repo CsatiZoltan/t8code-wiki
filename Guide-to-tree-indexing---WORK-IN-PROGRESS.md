@@ -4,13 +4,13 @@ WARNING: This article is work in progress. The information depicted here may be 
 
 t8code uses different indexing schemes for its trees, which we discuss in this section.
 
-We have two types of trees: Coarse trees as elements in the coarse mesh and forest trees in the forest. These correspond to each in that each coarse tree gives rise to exactly one forest tree.
+We have two types of trees: Coarse trees as elements in the coarse mesh and forest trees in the forest. These correspond to each other in that each coarse tree gives rise to exactly one forest tree.
 
 
 ### global id
 
 All trees are enumerated globally from 0 to T-1. This enumeration is independent of any partition and the same for the forest coarse trees
-(i.e. global forest tree i corresponds to global coarse tree i).
+(i.e. global forest tree j corresponds to global coarse tree j).
 
 We call this index the 'global tree id' and use a `t8_gloidx_t` type to store it.
 Variables storing a global tree id are often called `gtreeid`, `global_id` or similar.
