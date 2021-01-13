@@ -49,16 +49,33 @@ Thus, the global id of tree i on process p is the same as the global id of p's f
 
 ### Ghosts
 
-!!! TODO: A tree can occur twice: As a local tree and as a ghost tree.
-
 Additionally to the local trees in the coarse mesh and forest there may also be ghost trees.
-Their ids are handled in the same way as local tree ids (with `t8_locidx_t`) and most functions that accept a local tree
+If a coarse mesh is partitioned, its ghost trees are those trees that are (face-) neighbors of the local trees.
+If a forest is partitioned, its ghost trees are those trees that contain ghost elements.
+
+Note, that 
+1. A forest may not have ghost elements in the ghost trees of the coarse mesh. Thus, even if a coarse mesh and forest have the same local
+   trees, they do not necessarily have the same ghost trees.
+2. A tree that is a coarse mesh local tree cannot be a coarse mesh ghost tree and vice versa.
+3. A tree can be a forest local tree and a forest ghost tree on the same time, if the forest has local and ghost elements in this tree.
+
+Ghost tree ids are handled in the same way as local tree ids (with `t8_locidx_t`) and most functions that accept a local tree
 id as input also accept a ghost tree id.
 
-Suppose process p has G_pf ghosts in the forest and G_pc ghosts in the coarse mesh.
-Then their ghosts are enumerate 0 to G_pf - 1 and 0 to G_pc - 1. In contrast to the local trees the ghosts are not in a particular order.
+Suppose process p has
+![G_pf](http://chart.apis.google.com/chart?cht=tx&chl=G_{pf})
+ghosts in the forest and 
+![G_pc](http://chart.apis.google.com/chart?cht=tx&chl=G_{pc})
+ghosts in the coarse mesh.
+Then their ghosts are enumerate 0 to 
+![G_pf - 1](http://chart.apis.google.com/chart?cht=tx&chl=G_{pf-1}) 
+and 0 to 
+![G_pc-1](http://chart.apis.google.com/chart?cht=tx&chl=G_{pc}-1). 
+In contrast to the local trees the ghost trees are not in a particular order.
 
-If local trees and ghosts are handled together in the same context, for example by a function that accepts both as input (such as `t8_forest_global_tree_id`), then the ghost id is added to T_pf (respectively T_pc).
+If local trees and ghosts are handled together in the same context, for example by a function that accepts both as input (such as `t8_forest_global_tree_id`), then the ghost id is added to 
+![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf})
+(respectively ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc})).
 For example if a process has 3 local trees and 2 ghosts and we want to know the global id of the second (ghost index 1), we call t8_forest_global_tree_id with 4 as input parameter.
 
 #### Converting from ghost id to global
