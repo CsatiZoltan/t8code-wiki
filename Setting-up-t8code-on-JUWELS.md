@@ -8,10 +8,11 @@ Before compiling `t8code` you must load an MPI environment, we suggest loading t
 
 ```
 module load Intel
-module load ParaStationMPI/5.2
+module load ParaStationMPI/5.4.7-1
 ```
 
 Make sure that these modules are loaded each time you run code.
+
 
 ### Configure and compile
 
