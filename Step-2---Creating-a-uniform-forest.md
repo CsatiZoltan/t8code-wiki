@@ -89,16 +89,6 @@ Note that due to using `t8_global_productionf` opposed to `t8_productionf` only 
 
 If you use `t8_productionf` instead, you can compare the local element numbers for different processes.
 
-**Side note Index types**:
-
- To index `t8code` elements (or similar entities such as ghosts or trees) we have two integer types that are
-used:
-
-**t8_locidx_t** is used for everything that is process local, such as local number of elements or trees.
-
-**t8_gloidx_t** is used for everything that is global across all processes, such as global number of elements or trees.
-
-There is also the third type **t8_linearidx_t** that is explicitely used to store space-filling curve indices.
 
 ### Writing the forest to .vtu
 
