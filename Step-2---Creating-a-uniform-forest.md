@@ -75,14 +75,14 @@ We now want to get the global number of elements (1024) and the number of proces
 To do this we use the two function calls:
 
 ```C
-  t8_gloidx_t global_num_elements = t8_forest_get_global_num_elements (forest);
   t8_locidx_t local_num_elements = t8_forest_get_num_element (forest);
+  t8_gloidx_t global_num_elements = t8_forest_get_global_num_elements (forest);
 ```
 
 which we then print with:
 ```C
-  t8_global_productionf (" [step2] Global number of elements:\t%li\n", global_num_elements);
   t8_global_productionf (" [step2] Local number of elements:\t\t%i\n", local_num_elements);
+  t8_global_productionf (" [step2] Global number of elements:\t%li\n", global_num_elements);
 ```
 
 Note that due to using `t8_global_productionf` opposed to `t8_productionf` only rank 0 will print its local number of elements.
