@@ -78,8 +78,8 @@ We now want to get the global number of trees (6) and the number of process loca
 To do this we use the two function calls:
 
 ```C
-  t8_gloidx_t global_num_trees = t8_cmesh_get_num_trees (cmesh);
   t8_locidx_t local_num_trees = t8_cmesh_get_num_local_trees (cmesh);
+  t8_gloidx_t global_num_trees = t8_cmesh_get_num_trees (cmesh);
 ```
 
 which we then print with:
