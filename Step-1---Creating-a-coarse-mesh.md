@@ -69,6 +69,29 @@ and element type.
 
 The other parameters are flags that control whether the `cmesh` should be created on root and broadcasted to the other processes, whether it should be partitioned among the processes, and whether it should have periodic boundaries.
 
+### Getting the number of trees
+
+In `t8_cmesh.h` you find various functions to gather information about our coarse mesh.
+
+We now want to get the global number of trees (6) and the number of process local trees (depends on the number of processes and whether the coarse mesh is partitioned or not, ca. 6/#ranks) and print them.
+
+To do this we use the two function calls:
+
+```C
+  t8_gloidx_t local_num_trees = t8_cmesh_get_num_local_trees (cmesh);
+  t8_locidx_t global_num_trees = t8_cmesh_get_num_trees (cmesh);
+```
+
+which we then print with:
+```C
+  t8_global_productionf (" [step2] Local number of trees:\t%i\n", local_num_trees);
+  t8_global_productionf (" [step2] Global number of trees:\t%li\n", global_num_trees);
+```
+
+Note that due to using `t8_global_productionf` opposed to `t8_productionf` only rank 0 will print its local number of trees.
+
+If you use `t8_productionf` instead, you can compare the local tree numbers for different processes.
+
 ### Writing a cmesh to .vtu
 
 After creating the `cmesh` we can write it out to `.vtu` files in order to view it in `Paraview`.
