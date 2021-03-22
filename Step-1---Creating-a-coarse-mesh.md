@@ -26,7 +26,7 @@ A `cmesh` can be partitioned among the processes or each process can hold a copy
 </p>
 
 These two pictures illustrate the coarse and the forest mesh for a square shaped domain with a circular whole.
-**Left**: The coarse mesh that describes the geometry and element shapes. **Right**: The forest mesh. Each element (tree) in the
+**Left**: The coarse mesh that describes the geometry and tree shapes. **Right**: The forest mesh. Each tree in the
 coarse mesh is refined to a certain refinement level. In this example the refinement criterion was chosen to refine elements that are
 close to the domain boundary.
 The colors represent a distribution of the elements among 4 MPI processes.
@@ -37,7 +37,7 @@ The colors represent a distribution of the elements among 4 MPI processes.
 
 The most important are
  - reading files from mesh generators `gmsh`, `Tetgen` or `TRIANLGE`
- - Building a `cmesh` by hand by specifying its elements and neighbor connections
+ - Building a `cmesh` by hand by specifying its trees and neighbor connections
  - Using one of the provided `t8_cmesh_new_*` functions
 
 In this example we use `t8_cmesh_new_hypercube` to create a `cmesh` that models a cube domain.
@@ -49,9 +49,9 @@ In this example we use `t8_cmesh_new_hypercube` to create a `cmesh` that models 
 It offers various parameters that control what kind of cube is created and how it is meshed.
 It also gets an `sc_MPI_Comm` parameter to specify on which processes this `cmesh` should live (usually sc_MPI_COMM_WORLD).
 
-The first parameter `T8_ECLASS_TET` specifies the kind of geometric elements to use to model the cube and also 
+The first parameter `T8_ECLASS_TET` specifies the kind of geometric trees to use to model the cube and also 
 changes the dimension.
-`t8code` supports eight different basic element shapes for the `cmesh`, see also `t8_eclass.h`:
+`t8code` supports eight different basic tree shapes for the `cmesh`, see also `t8_eclass.h`:
 
 | element shape | description | Number of elements in cube |
 |---------------| ----------- | ---------------------------|
@@ -65,7 +65,7 @@ changes the dimension.
 | T8_ECLASS_PYRAMID | 3D pyramids | 3 |
 
 Each of these can be choosen as first parameter for `t8_cmesh_new_hypercube` and will create a `[0,1]^d` cube of the specified dimension
-and element type.
+and tree type.
 
 The other parameters are flags that control whether the `cmesh` should be created on root and broadcasted to the other processes, whether it should be partitioned among the processes, and whether it should have periodic boundaries.
 
