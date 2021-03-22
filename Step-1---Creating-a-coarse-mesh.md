@@ -95,6 +95,17 @@ If you use `t8_productionf` instead, you can compare the local tree numbers for 
 Also note that since in this example the coarse mesh is not partitioned, each process has a complete copy of the coarse mesh and 
 hence each process has 6 local and 6 global trees.
 
+**Side note Index types**:
+
+ To index `t8code` trees (or similar entities such as elements or ghosts) we have two integer types that are
+used:
+
+**t8_locidx_t** is used for everything that is process local, such as local number of elements or trees.
+
+**t8_gloidx_t** is used for everything that is global across all processes, such as global number of elements or trees.
+
+There is also the third type **t8_linearidx_t** that is explicitely used to store space-filling curve indices.
+
 ### Writing a cmesh to .vtu
 
 After creating the `cmesh` we can write it out to `.vtu` files in order to view it in `Paraview`.
