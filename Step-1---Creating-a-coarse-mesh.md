@@ -92,6 +92,9 @@ Note that due to using `t8_global_productionf` opposed to `t8_productionf` only 
 
 If you use `t8_productionf` instead, you can compare the local tree numbers for different processes.
 
+Also note that since in this example the coarse mesh is not partitioned, each process has a complete copy of the coarse mesh and 
+hence each process has 6 local and 6 global trees.
+
 ### Writing a cmesh to .vtu
 
 After creating the `cmesh` we can write it out to `.vtu` files in order to view it in `Paraview`.
