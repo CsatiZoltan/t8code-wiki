@@ -64,17 +64,19 @@ The most common options are
 | --prefix=PATH   | Provide an installation prefix |
 | CFLAGS=         | Provide C compiler flags |
 | CXXFLAGS=       |   Provide C++ compiler flags |
+| CC=             | Set the C compiler |
+| CXX=            | Set the C++ compiler |
 
 For a quick release mode configuration we recommend:
 
 ```bash
-configure CFLAGS="-O3" CXXFLAGS="-O3" --enable-mpi
+configure CFLAGS="-O3" CXXFLAGS="-O3" --enable-mpi CC=mpicc CXX=mpicxx
 ```
 
 For a debugging mode configuration (mostly used by developers), you can use
 
 ```bash
-configure CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g" --enable-mpi --enable-debug
+configure CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g" --enable-mpi --enable-debug CC=mpicc CXX=mpicxx
 ```
 
 
