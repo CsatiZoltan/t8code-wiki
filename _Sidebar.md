@@ -20,6 +20,7 @@
 
  > [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)
 
+ > [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
 ### Developer's Guide
 
