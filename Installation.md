@@ -76,9 +76,10 @@ configure CFLAGS="-O3" CXXFLAGS="-O3" --enable-mpi CC=mpicc CXX=mpicxx
 For a debugging mode configuration (mostly used by developers), you can use
 
 ```bash
-configure CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g" --enable-mpi --enable-debug CC=mpicc CXX=mpicxx
+configure CFLAGS="-Wall -O0 -g" CXXFLAGS="-Wall -O0 -g" --enable-mpi --enable-debug --enable-static --disable-shared CC=mpicc CXX=mpicxx
 ```
 
+Note: `enable-static` and `disable-shared` allow you to properly use debugging tools such as `gdb` or `valgrind`.
 
 ### Build t8code
 
