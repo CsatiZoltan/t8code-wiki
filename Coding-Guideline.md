@@ -169,6 +169,19 @@ For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
 T8_MACRO_NAME
 ```
 
+### Assertions and debugging mode
+
+The debugging mode (configure option `--enable-debug`) can and should be used to perform runtime checks.
+
+You can recognize the debugging mode because the macro `T8_ENABLE_DEBUG` is set.
+
+```C
+#ifdef T8_ENABLE_DEBUG
+/* Code that is only executed in debugging mode */
+#endif
+```
+
+
 ### General rules
 
 * Output parameters in function declaration should come after input parameters.
