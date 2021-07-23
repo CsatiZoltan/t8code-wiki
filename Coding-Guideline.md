@@ -168,3 +168,7 @@ For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
 ```
 T8_MACRO_NAME
 ```
+
+### General rules
+
+* Output parameters in function declaration should come after input parameters.
