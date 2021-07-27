@@ -18,7 +18,7 @@ For an overview of the full installation process, please see the [Installation](
 | --enable-shared[=PKGS] | build shared libraries | yes |
 | --enable-static[=PKGS] | build static libraries | yes |
 | --enable-mpi   |  enable MPI parallel code | false |
-| --enable-debug |  enable debugging mode (Note: This will drastically reduce performance) | false |
+| --enable-debug |  enable debugging mode (Note: This will drastically reduce performance) See also the [Developer guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline#debugging-mode)| false |
 | --with-LIB[=ARG] | enable linking with LIB | yes |
 | --without-LIB    | disable linking with LIB (same as --with-LIB=no) | |
 | --prefix=PATH   | Provide an installation prefix | |
