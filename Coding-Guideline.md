@@ -169,7 +169,7 @@ For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
 T8_MACRO_NAME
 ```
 
-### Assertions and debugging mode
+### Debugging mode
 
 The debugging mode (configure option `--enable-debug`) can and should be used to perform runtime checks.
 
@@ -180,6 +180,30 @@ You can recognize the debugging mode because the macro `T8_ENABLE_DEBUG` is set.
 /* Code that is only executed in debugging mode */
 #endif
 ```
+
+Debugging mode is not performance critical and you can use it for expensive checks.
+
+Note, however, that these will not be executed in release mode (without `--enable-debug`), so it should only be used for code that is not required for the successful operation of t8code.
+
+### Assertions
+
+You can use assertions via the macro `T8_ASSERT (expr)`. This macro is only active in debugging mode.
+If `expr` is true, nothing happens. If `expr` is false the code will abort and provide you with information where the abort occured.
+
+A typical usage of assertions is to check for implicit assumptions.
+Consider a function `void t8_foo (t8_forest_t forest);` that operates on a forest, but requires the forest to be committed.
+We can use `T8_ASSERT` to check the incoming argument in debugging mode.
+
+```C
+void t8_foo (t8_forest_t forest)
+{
+  T8_ASSERT (t8_forest_is_committed (forest));
+  /* Remaining code */
+}
+```
+This will catch a missusage of the function in debugging mode (but not in release mode).
+
+We recommend to use assertions frequently.
 
 
 ### General rules
