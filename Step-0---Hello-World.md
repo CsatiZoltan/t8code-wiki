@@ -49,7 +49,7 @@ main (int argc, char **argv)
 
 To output a message on the root process in this Hello World example we use the function `t8_global_productionf`.
 
-`t8code` offers various logging function and logging levels via `libsc`.
+`t8code` offers various logging functions and logging levels via `libsc`.
 
 In short, logging functions of the form `t8_global_*` (`t8_global_essentialf`, `t8_global_errorf`, etc.) only print on the root process, while logging functions without the `global` print on each process with the MPI rank as part of the message (`t8_productionf`, `t8_essentialf`, `t8_errorf`, `t8_debugf`). For a description of all logging functions see `t8.h`.
 
