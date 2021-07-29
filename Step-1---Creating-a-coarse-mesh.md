@@ -36,7 +36,7 @@ The colors represent a distribution of the elements among 4 MPI processes.
 `t8code` offers different ways to create coarse meshes, which can be found in `t8_cmesh.h`
 
 The most important are
- - reading files from mesh generators `gmsh`, `Tetgen` or `TRIANLGE`
+ - reading files from mesh generators `gmsh`, `Tetgen` or `TRIANGLE`
  - Building a `cmesh` by hand by specifying its trees and neighbor connections
  - Using one of the provided `t8_cmesh_new_*` functions
 
