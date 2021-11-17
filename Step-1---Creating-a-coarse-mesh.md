@@ -25,7 +25,7 @@ A `cmesh` can be partitioned among the processes or each process can hold a copy
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/circlemeshhybrid_4procs.png" height="400">
 </p>
 
-These two pictures illustrate the coarse and the forest mesh for a square shaped domain with a circular whole.
+These two pictures illustrate the coarse and the forest mesh for a square shaped domain with a circular hole.
 **Left**: The coarse mesh that describes the geometry and tree shapes. **Right**: The forest mesh. Each tree in the
 coarse mesh is refined to a certain refinement level. In this example the refinement criterion was chosen to refine elements that are
 close to the domain boundary.
