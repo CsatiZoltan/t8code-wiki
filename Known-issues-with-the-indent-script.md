@@ -23,9 +23,15 @@ which is not valid code.
 
 ### Custom data types
 
+The `indent` program sometimes has problems to recognize custom data type (i.e. typedefs) resulting in misindentations.
+To prevent these, add the custom data types to the file `scripts/t8indent_custom_datatypes.txt`.
+
+The problems occurring with unrecognized data types are listed below.
+
 #### modifiers
 
 If `indent` does not recognize a data type, indentation of function return values fails when additional modifiers are used:
+
 ```C
 static my_own_type 
 foo()
@@ -49,7 +55,7 @@ foo()
 
 #### pointers
 
-Pointers to custom data types get an extra space that we do not want.
+Pointers to unknown data types get an extra space that we do not want.
 
 Wrongly indented by `indent`:
 ```
