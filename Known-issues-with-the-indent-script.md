@@ -23,7 +23,9 @@ which is not valid code.
 
 ### Custom data types
 
-If `indent` does not recognize a data type, indentation of function return values failes when additional modifiers are used:
+#### modifiers
+
+If `indent` does not recognize a data type, indentation of function return values fails when additional modifiers are used:
 ```C
 static my_own_type 
 foo()
@@ -43,4 +45,18 @@ static my_own_type
 foo()
 {
 }
+```
+
+#### pointers
+
+Pointers to custom data types get an extra space that we do not want.
+
+Wrongly indented by `indent`:
+```
+t8_forest_t * pforest;
+```
+
+Correct indentation:
+```
+t8_forest_t *pforest;
 ```
