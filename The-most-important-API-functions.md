@@ -33,6 +33,8 @@ t8_cmesh_set_tree_vertices
 ```
 Call these functions between `t8_cmesh_init` and `t8_cmesh_commit` to build a `cmesh` from scratch.
 
+You can find examples for some of these functions in the [Step 1](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh) tutorial.
+
 # Forest
 
 The forest interface.
@@ -62,4 +64,19 @@ To unreference a forest manually when it is no longer needed, use `t8_forest_unr
 ```
 t8_forest_vtk_write_file
 ```
-Can be used to create a VTK output.
+can be used to create a VTK output.
+
+See also the [Step 2](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest), [Step 3](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest) and [Step 4](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost) tutorials.
+
+## Data handling
+
+These are the most important function to deal with user data:
+
+```
+t8_forest_iterate_replace
+t8_forest_partition_data
+t8_forest_ghost_exchange_data
+t8_forest_iterate_faces (currently not tested)
+t8_forest_search
+```
+
