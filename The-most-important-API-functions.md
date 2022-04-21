@@ -32,3 +32,34 @@ t8_cmesh_register_geometry
 t8_cmesh_set_tree_vertices
 ```
 Call these functions between `t8_cmesh_init` and `t8_cmesh_commit` to build a `cmesh` from scratch.
+
+# Forest
+
+The forest interface.
+
+## General
+
+The most important functions for constructing and modifying a forest:
+
+```
+t8_forest_new_uniform
+t8_forest_new_adapt
+t8_forest_init
+t8_forest_set_user_data
+t8_forest_get_user_data
+t8_forest_set_user_function
+t8_forest_get_user_function
+t8_forest_set_adapt
+t8_forest_set_balance
+t8_forest_set_ghost
+t8_forest_set_partition
+t8_forest_commit
+```
+
+Forests are usually unreferenced (thus, possibly deleted) when they are used as input to construct a new forest (for example when you adapt a forest). To keep a forest alive beyond such an operation, use `t8_forest_ref` before.
+To unreference a forest manually when it is no longer needed, use `t8_forest_unref`.
+
+```
+t8_forest_vtk_write_file
+```
+Can be used to create a VTK output.
