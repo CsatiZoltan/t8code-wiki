@@ -8,7 +8,7 @@ The list may not be complete. If you feel a function is missing from this list, 
 
 The coarse mesh interface.
 
-## Creating a mesh
+## Creating a cmesh
 
 ```
 t8_cmesh_new…
@@ -80,3 +80,50 @@ t8_forest_iterate_faces (currently not tested)
 t8_forest_search
 ```
 
+`iterate_replace` is used to interpolate data between different forests (that arise from each other via adapting).
+
+`partition_data` is used to repartition user data after the forest partition has changed.
+
+`ghost_exchange_data` communicates date from local elements to remote processes that have these elements as ghosts.
+
+`t8_forest_search` carries out a recursive search to identify matching elements according to a user defined criterion. See also the [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search).
+
+
+### Unsorted List - work on progress
+
+ACCESS
+t8_forest_get_num_local_trees
+t8_forest_get_tree_class
+t8_forest_get_eclass_scheme
+t8_forest_get_tree_num_elements
+t8_forest_get_local_num_elements
+t8_forest_get_global_num_elements
+t8_forest_get_element_in_tree
+t8_forest_get_tree_element_offset
+t8_forest_get_num_ghosts
+t8_forest_leaf_face_neighbors
+t8_forest_element_face_neighbor # Should be  called "virtual"/"same level" oder so, um missverständnis zu vermeiden
+
+GEOMETRY
+t8_forest_element_centroid
+t8_forest_element_volume
+t8_forest_element_coordinate
+t8_forest_element_diam
+t8_forest_element_face_centroid
+t8_forest_element_face_normal
+t8_forest_element_face_area
+t8_forest_element_point_inside
+
+ELEMENT SCHEME
+t8_element_level
+t8_element_shape
+t8_element_num_corners
+t8_element_num_faces
+t8_element_max_num_faces
+t8_element_num_children
+t8_element_num_face_children
+t8_element_face_shape
+t8_element_tree_face
+t8_element_boundary_face
+t8_element_is_root_boundary
+t8_element_vertex_reference_coords
