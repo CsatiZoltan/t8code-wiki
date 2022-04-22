@@ -32,12 +32,16 @@ Here is a simple example file to run `example/basic/t8_basic` on 2 nodes with 48
 
 ```
 #!/bin/bash -x
-#SBATCH --account=slmet
+#SBATCH --account=ACCOUNTNAME
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=48
-#SBATCH --output=mpi-out_Timings_N2.%j
-#SBATCH --error=mpi-err_Timings_N2.%j
+#SBATCH --output=mpi-out_basic_N2.%j
+#SBATCH --error=mpi-err_basic_N2.%j
 #SBATCH --time=00:10:00
+
+# Make sure to replace ACCOUNTNAME with you JUWELS billing account.
+# `--nodes` and `--ntasks-per-node` are the number of compute nodes and MPI ranks per node for this job.
+# `--output` and `--error` denote output files for the standard output and error stream, %j denotes the JUWELS jobid.
 
 
 # UPDATE THESE WHEN YOU UPDATE THE CONFIG ABOVE
