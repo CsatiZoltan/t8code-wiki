@@ -88,10 +88,9 @@ t8_forest_search
 
 `t8_forest_search` carries out a recursive search to identify matching elements according to a user defined criterion. See also the [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search).
 
+## Access
 
-### Unsorted List - work on progress
-
-ACCESS
+Getters to query certain values:
 ```
 t8_forest_get_num_local_trees
 t8_forest_get_tree_class
@@ -102,11 +101,20 @@ t8_forest_get_global_num_elements
 t8_forest_get_element_in_tree
 t8_forest_get_tree_element_offset
 t8_forest_get_num_ghosts
-t8_forest_leaf_face_neighbors
-t8_forest_element_face_neighbor # Should be  called "virtual"/"same level" oder so, um missverständnis zu vermeiden
 ```
 
-GEOMETRY
+Computing neighbor elements:
+
+```
+t8_forest_leaf_face_neighbors
+t8_forest_element_face_neighbor
+```
+Note that `t8_forest_leaf_face_neighbors` returns all face neighbors of an element that exist as leaves in the forest as an array.
+`t8_forest_element_face_neighbor` returns a single same level face neighbor element that may not exist as a leaf in the forest.
+
+## Geometry
+
+Functions to compute geometry information of a single element, these are currently all computed as linear approximations based on the geometrically correct vertex and midpoint coordinates of an element.
 
 ```
 t8_forest_element_centroid
@@ -119,7 +127,9 @@ t8_forest_element_face_area
 t8_forest_element_point_inside
 ```
 
-ELEMENT SCHEME
+# Element interface
+
+The element scheme interface offers functions that operate on a per element level.
 
 ```
 t8_element_level
