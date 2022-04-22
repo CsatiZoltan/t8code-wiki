@@ -45,11 +45,12 @@ Here is a simple example file to run `example/basic/t8_basic` on 2 nodes with 48
 
 
 # UPDATE THESE WHEN YOU UPDATE THE CONFIG ABOVE
-NODES=2 # Number of compute nodes. Corresponds to '--nodes=2'
-PPN=48  # Number of MPI ranks per node. Corresponds to '--ntasks-per-node=48'
+NODES=2 # Number of compute nodes. Corresponds to '--nodes=2'.
+PPN=48  # Number of MPI ranks per node. Corresponds to '--ntasks-per-node=48'.
 NPROCS=$((NODES*PPN))
 
-# Edit this path to match your installation
+# The executable to run.
+# Edit this path to match your installation.
 EXEC=/path/to/your/t8code/example/basic/t8_basic
 
 # Arguments to pass to the program.
