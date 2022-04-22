@@ -22,6 +22,14 @@
 
  > [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
+### User guides
+
+ > [Tree Indexing](https://github.com/holke/t8code/wiki/Tree-indexing)
+
+ > [Running on JUWELS using Slurm](https://github.com/holke/t8code/wiki/Setting-up-t8code-on-JUWELS-(or-other-Slurm-based-systems))
+
+ > [Overview of the most used API functions](https://github.com/holke/t8code/wiki/The-most-important-API-functions)
+
 ### Developer's Guide
 
  > [Coding Guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline)
