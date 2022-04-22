@@ -4,11 +4,11 @@ Setting up `t8code` on JUWELS is relatively simple. Basically, you can follow th
 
 ### Required modules
 
-Before compiling `t8code` you must load an MPI environment, we suggest loading the `Intel` and `ParaStationMPI/5.2` modules:
+Before compiling `t8code` you must load an MPI environment, we suggest loading the `Intel` and newest `ParaStationMPI` modules, at time of writing this was version `5.5.0-1-mt`.
 
 ```
 module load Intel
-module load ParaStationMPI/5.4.7-1
+module load ParaStationMPI/5.5.0-1-mt
 ```
 
 Make sure that these modules are loaded each time you run code.
