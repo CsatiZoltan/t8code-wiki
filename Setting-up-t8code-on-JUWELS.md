@@ -40,13 +40,13 @@ Here is a simple example file to run `example/basic/t8_basic` on 2 nodes with 48
 #SBATCH --time=00:10:00
 
 # Make sure to replace ACCOUNTNAME with you JUWELS billing account.
-# `--nodes` and `--ntasks-per-node` are the number of compute nodes and MPI ranks per node for this job.
-# `--output` and `--error` denote output files for the standard output and error stream, %j denotes the JUWELS jobid.
+# '--nodes' and '--ntasks-per-node' are the number of compute nodes and MPI ranks per node for this job.
+# '--output' and '--error' denote output files for the standard output and error stream, %j denotes the JUWELS jobid.
 
 
 # UPDATE THESE WHEN YOU UPDATE THE CONFIG ABOVE
-NODES=2 # Number of compute nodes. Corresponds to --nodes=2
-PPN=48  # Number of MPI ranks per node. Corresponds to --ntasks-per-node=48
+NODES=2 # Number of compute nodes. Corresponds to '--nodes=2'
+PPN=48  # Number of MPI ranks per node. Corresponds to '--ntasks-per-node=48'
 NPROCS=$((NODES*PPN))
 
 # Edit this path to match your installation
