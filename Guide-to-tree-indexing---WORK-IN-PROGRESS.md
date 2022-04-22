@@ -6,11 +6,11 @@ t8code uses different indexing schemes for its trees, which we discuss in this s
 
 We have two types of trees: Coarse trees as elements in the coarse mesh and forest trees in the forest. These correspond to each other in that each coarse tree gives rise to exactly one forest tree.
 
-Additionally, we have ghost trees. These are trees that (possibly) contain ghost elements. The coarse mesh and the forest mesh may have ghost trees.
+Additionally, we have ghost trees. These are trees that (possibly) contain ghost elements. The coarse mesh and the forest mesh may have ghost trees. These may not correspond to each other since the coarse mesh may have more ghost trees than the forest mesh. This is due to the coarse mesh counting each face neighbor of a local tree as a ghost (if it is not a local tree itself), but these trees may not contain forest ghost elements and thus not be counted as forest ghost trees.
 
 ### global id
 
-All trees are enumerated globally from 0 to T-1. This enumeration is independent of any partition and the same for the forest coarse trees
+All trees are enumerated globally from 0 to T-1. This enumeration is independent of any partition and the same for the forest and coarse trees
 (i.e. global forest tree `i` corresponds to global coarse tree `i`).
 
 We call this index the 'global tree id' and use a `t8_gloidx_t` type to store it.
@@ -30,7 +30,7 @@ We use the `t8_locidx_t` type to store local tree ids and often call variables s
 
 It is important to understand that even if both the coarse mesh and the forest are partitioned, their partitions may not be equal.
 Thus, the forest tree with local id `i` may not be the same as the coarse mesh tree with local id `i`.
-If  a `cmesh` interface functions calls for a local tree id then a coarse mesh local tree id must be provided and if a `forest` interface
+If  a `cmesh` interface function calls for a local tree id then a coarse mesh local tree id must be provided and if a `forest` interface
 function calls for a local tree id then a forest local tree id must be provided.
 To convert between both, use the functions `t8_forest_ltreeid_to_cmesh_ltreeid` and `t8_forest_cmesh_ltreeid_to_ltreeid`.
 
@@ -40,7 +40,7 @@ To convert between both, use the functions `t8_forest_ltreeid_to_cmesh_ltreeid` 
 ### Ghosts
 
 Additionally to the local trees in the coarse mesh and forest there may also be ghost trees.
-If a coarse mesh is partitioned, its ghost trees are those trees that are (face-) neighbors of the local trees.
+If a coarse mesh is partitioned, its ghost trees are those non-local trees that are (face-) neighbors of the local trees.
 If a forest is partitioned, its ghost trees are those trees that contain ghost elements.
 
 Note, that 
@@ -57,7 +57,7 @@ Suppose process p has
 ghosts in the forest and 
 ![G_pc](http://chart.apis.google.com/chart?cht=tx&chl=G_{pc})
 ghosts in the coarse mesh.
-Then their ghosts are enumerate 0 to 
+Then their ghosts are enumerated 0 to 
 ![G_pf - 1](http://chart.apis.google.com/chart?cht=tx&chl=G_{pf-1}) 
 and 0 to 
 ![G_pc-1](http://chart.apis.google.com/chart?cht=tx&chl=G_{pc}-1). 
