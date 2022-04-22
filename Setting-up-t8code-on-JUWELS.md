@@ -11,7 +11,7 @@ module load Intel
 module load ParaStationMPI/5.5.0-1-mt
 ```
 
-Make sure that these modules are loaded each time you run code.
+Make sure that these modules are loaded each time you compile or run code.
 
 
 ### Configure and compile
