@@ -1,5 +1,3 @@
-WARNING: This article is work in progress. The information depicted here may be incomplete or wrong.
-
 ## Tree indexing
 
 t8code uses different indexing schemes for its trees, which we discuss in this section.
@@ -67,6 +65,8 @@ If local trees and ghosts are handled together in the same context, for example 
 ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf})
 (respectively ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc})).
 For example if a process has 3 local trees and 2 ghosts and we want to know the global id of the second ghost tree (ghost index 1), we call t8_forest_global_tree_id with 4 as input parameter.
+
+You can query ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) and ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) with the functions `t8_forest_get_num_local_trees` and `t8_cmesh_get_num_local_trees`.
 
 ### Converting functions
 
