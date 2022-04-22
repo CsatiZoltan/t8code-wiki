@@ -26,7 +26,7 @@ If you do not explicitely need to link any `blas` or `lapack` code, deactivate l
 
 ### Running an example
 
-JUWELS uses the Slurm batch system. To set up a job you need to write a `.pbs` file.
+JUWELS uses the Slurm batch system. To set up a job you need to write a Slurm job file.
 
 Here is a simple example file to run `example/basic/t8_basic` on 2 nodes with 48 processes per node:
 
@@ -41,18 +41,24 @@ Here is a simple example file to run `example/basic/t8_basic` on 2 nodes with 48
 
 
 # UPDATE THESE WHEN YOU UPDATE THE CONFIG ABOVE
-NODES=2
-PPN=48
+NODES=2 # Number of compute nodes. Corresponds to --nodes=2
+PPN=48  # Number of MPI ranks per node. Corresponds to --ntasks-per-node=48
 NPROCS=$((NODES*PPN))
 
 # Edit this path to match your installation
-EXEC=/path/to/your/t8code/example/basic/t8_basic_hcube
+EXEC=/path/to/your/t8code/example/basic/t8_basic
 
-ARGS="-l4 -e5"
+# Arguments to pass to the program.
+# In this case we want to build a 3 dimensional forest.
+ARGS="-d3"
+
+# Logging
 echo -------------------
 echo Starting new run
 echo $EXEC $ARGS
 echo -------------------
+
+# Starting the parallel job.
 srun -n ${NPROCS} $EXEC $ARGS
 ```
 
