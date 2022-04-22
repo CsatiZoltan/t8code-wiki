@@ -66,7 +66,7 @@ In contrast to the local trees the ghost trees are not in a particular order.
 If local trees and ghosts are handled together in the same context, for example by a function that accepts both as input (such as `t8_forest_global_tree_id`), then the ghost id is added to 
 ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf})
 (respectively ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc})).
-For example if a process has 3 local trees and 2 ghosts and we want to know the global id of the second (ghost index 1), we call t8_forest_global_tree_id with 4 as input parameter.
+For example if a process has 3 local trees and 2 ghosts and we want to know the global id of the second ghost tree (ghost index 1), we call t8_forest_global_tree_id with 4 as input parameter.
 
 ### Converting functions
 
@@ -77,7 +77,7 @@ tree ids:
 |---|---|---|---|
 | t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  ||
 | t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  ||
-| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for ghost trees that are not local|
+| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for non-local trees (including ghosts)|
 | t8_forest_global_tree_id | Forest local or ghost id | Global id | Add ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) to ghost index |
 | t8_cmesh_get_local_id | Global id  | Cmesh local or ghost id | Adds ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index|
 | t8_cmesh_get_global_id | Cmesh local or ghost id | Global id | Add ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index |
@@ -89,4 +89,4 @@ Hence, in contrary to the coarse mesh, we need to use two different functions `t
 to convert global ids.
 
 Since the partitioning is computed according to the space-filling curve index, the order of the trees will not change.
-Thus, the global id of tree i on process p is the same as the global id of p's first tree plus i (`gid(i) = gid(0) + i`).
+Thus, the global id of tree `i` on process p is the same as the global id of p's first tree plus `i` (`gid(i) = gid(0) + i`).
