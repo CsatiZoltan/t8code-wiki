@@ -81,6 +81,7 @@ int                 t8_step3_adapt_callback (t8_forest_t forest,
                                              t8_locidx_t which_tree,
                                              t8_locidx_t lelement_id,
                                              t8_eclass_scheme_c * ts,
+                                             int is_family,
                                              int num_elements,
                                              t8_element_t * elements[]);
 ```
@@ -94,6 +95,7 @@ Its parameters are
 | which_tree | Index of the current tree in `forest_from` |
 | lelement_id | Index of the current element in the elements of the current tree |
 | ts | The refinement scheme for this particular element shape |
+| is_family | 1, if the input element to the callback is the first element in a family. 0, if not.  |
 | num_elements | How many elements are currently considered (either 1 or a family) |
 | elements | The elements that are currently considered for adaptation |
 
@@ -163,8 +165,8 @@ Finally, we apply our criterion:
     /* Refine this element. */
     return 1;
   }
-  else if (num_elements > 1 && dist > adapt_data->coarsen_if_outside_radius) {
-    /* Coarsen this family. Note that we check for num_elements > 1 before, since returning < 0
+  else if (is_family && dist > adapt_data->coarsen_if_outside_radius) {
+    /* Coarsen this family. Note that we check for is_family before, since returning < 0
      * if we do not have a family as input is illegal. */
     return -1;
   }
