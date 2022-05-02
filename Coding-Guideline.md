@@ -27,6 +27,8 @@ comments to deactivate indentation for a part of the code:
 
 You can `grep` the code base for these keyword in order to see some of the fails of `t8indent`.
 
+Additional scripts to help with indentation, can be found in the `scripts` folder, see also the corresponding [README file.](https://github.com/holke/t8code/tree/develop/scripts#readme)
+
 ### Git indentation workflow
 
 We provide a git hook that automatically prevents you from committing unindented files.
