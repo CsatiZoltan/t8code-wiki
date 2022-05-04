@@ -171,6 +171,15 @@ For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
 T8_MACRO_NAME
 ```
 
+#### Loop variables
+
+As all variables loop variables should get an explanatory name.
+Especially integer type loop variables should start with a small `i`, `j`, or `k`.
+
+Good examples: `iface_number, jelement`
+
+Bad example: `i`
+
 ### Debugging mode
 
 The debugging mode (configure option `--enable-debug`) can and should be used to perform runtime checks.
