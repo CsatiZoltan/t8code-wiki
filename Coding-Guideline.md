@@ -135,7 +135,7 @@ To allocate and free memory, we use the `T8_ALLOC*` and `T8_FREE` macros.
 All our code must be free of memory leaks. Check your code with `valgrind` and `valgrind --leak-check=full` for any memory leaks.
 
 
-### Naming guidelines
+### Naming conventions
 
 #### Prefix
 
@@ -219,4 +219,14 @@ We recommend to use assertions frequently.
 
 ### General rules
 
-* Output parameters in function declaration should come after input parameters.
+* Output parameters in function declarations should come after input parameters.
+
+* Use a new declaration line for each variable, even if they are of the same type:
+```
+int foo;
+int bar;
+```
+instead of
+```
+int foo, bar;
+```
