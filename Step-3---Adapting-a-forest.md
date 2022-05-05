@@ -95,8 +95,8 @@ Its parameters are
 | which_tree | Index of the current tree in `forest_from` |
 | lelement_id | Index of the current element in the elements of the current tree |
 | ts | The refinement scheme for this particular element shape |
-| is_family | 1, if the input element to the callback is the first element in a family. 0, if not.  |
-| num_elements | How many elements are currently considered (either 1 or a family) |
+| is_family | 1, if the input are several elements that form a family. 0, if not.  |
+| num_elements | How many elements are currently considered (If >1 the is_family must be true) |
 | elements | The elements that are currently considered for adaptation |
 
 To explain these a bit: A `forest` stores its elements in different arrays. One for each (process local) tree. Thus, in order to find an element we need the number of its tree and the index of it
