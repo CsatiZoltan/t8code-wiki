@@ -230,3 +230,12 @@ instead of
 ```
 int foo, bar;
 ```
+
+ * Avoid "magic numbers". If you use a number as input that has a proper meaning that is not immediately clear from the context, give this variable a name. Either by using a constant variable or a preprocessor macro.
+```
+for (iface = 0; iface < T8_DTRI_NUM_FACES; ++iface) ...
+```
+instead of
+```
+for (iface = 0; iface < 3; ++iface)
+```
