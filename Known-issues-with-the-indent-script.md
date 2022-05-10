@@ -53,6 +53,23 @@ foo()
 }
 ```
 
+#### t8_element_t and sc_array_t
+
+Even though we added `t8_element_t` and `sc_array_t` to the list of custom data types, functions returning a
+pointer to one of these sometimes get misindented.
+
+The indent script produces
+```
+t8_element_t       *
+t8_foo ();
+```
+
+instead of the correct
+```
+t8_element_t *
+t8_foo ();
+```
+
 #### pointers
 
 Pointers to unknown data types get an extra space that we do not want.
