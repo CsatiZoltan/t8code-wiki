@@ -127,7 +127,7 @@ We use C-Style multiple line comments throughout.
 /*Because this looks ugly.*/
 ```
 
-### Memory handling
+## Memory handling
 
 `t8code` implements its own memory handling routines.
 To allocate and free memory, we use the `T8_ALLOC*` and `T8_FREE` macros.
@@ -135,9 +135,9 @@ To allocate and free memory, we use the `T8_ALLOC*` and `T8_FREE` macros.
 All our code must be free of memory leaks. Check your code with `valgrind` and `valgrind --leak-check=full` for any memory leaks.
 
 
-### Naming conventions
+## Naming conventions
 
-#### Prefix
+### Prefix
 
 We use the prefix `t8` to indicate `t8code`'s namespace. Thus, every function, struct and class should have a `t8` prefix.
 
@@ -157,7 +157,7 @@ Functions that belong to a particular struct interface should all have the same 
 
 For example all functions in the forest API have `t8_forest` as a prefix.
 
-#### Naming scheme
+### Naming scheme
 
 We use the lowercase [snake_case](https://en.wikipedia.org/wiki/Snake_case) naming convention for functions, structs, classes and variable names:
 
@@ -171,7 +171,7 @@ For compiler macros, we use SCREAMING_SNAKE_CASE with all uppercase letters:
 T8_MACRO_NAME
 ```
 
-#### Loop variables
+### Loop variables
 
 As all variables loop variables should get an explanatory name.
 Especially integer type loop variables should start with a small `i`, `j`, or `k`.
@@ -180,7 +180,7 @@ Good examples: `iface_number, jelement`
 
 Bad example: `i`
 
-### Debugging mode
+## Debugging mode
 
 The debugging mode (configure option `--enable-debug`) can and should be used to perform runtime checks.
 
@@ -196,7 +196,7 @@ Debugging mode is not performance critical and you can use it for expensive chec
 
 Note, however, that these will not be executed in release mode (without `--enable-debug`), so it should only be used for code that is not required for the successful operation of t8code.
 
-### Assertions
+## Assertions
 
 You can use assertions via the macro `T8_ASSERT (expr)`. This macro is only active in debugging mode.
 If `expr` is true, nothing happens. If `expr` is false the code will abort and provide you with information where the abort occured.
@@ -217,7 +217,7 @@ This will catch a missusage of the function in debugging mode (but not in releas
 We recommend to use assertions frequently.
 
 
-### General rules
+## General rules
 
 * Output parameters in function declarations should come after input parameters.
 
