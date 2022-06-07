@@ -22,6 +22,8 @@
 
  >> [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)
 
+ >> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data)
+
  >> [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
 ### User guides
