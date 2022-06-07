@@ -12,4 +12,6 @@ Over the time we will add more tutorials here.
 
  - [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost) - Modifying the forest further by partitioning, balancing and computing ghost elements.
 
+ - [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data) - How to gather data of the local elements, exchange it and output it to a .vtu file.  
+
  - [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search) - A tutorial for the hierarchical search to identify elements matching a user defined criterion.
