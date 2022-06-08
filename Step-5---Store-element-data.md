@@ -21,8 +21,8 @@ t8_forest_commit (new_forest);
 The order in which the `t8_forest_set*` functions are called is not relevant. 
 
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_apbg_4ranks.png" height="300">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_apbg_level.png" height="300">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_apbg_4ranks.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_apbg_level.png" height="350">
 </p>
 
 Let execute the example with 4 MPI processes.
@@ -149,8 +149,8 @@ Finaly copy the elment's volumes from our data array to the output array and pas
 We desided to only set `write_treeid`, `write_mpirank`, `write_level` and `write_element_id` true as it would be in `t8_forest_write_vtk`. In this way, the only difference to `t8_forest_vtk_write_file` is the addition of the volume of the elements.
 
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume.png" height="300">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume_clip_threshold.png" height="300">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume.png" height="350">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume_clip_threshold.png" height="350">
 </p>
 
 In `Paraviev` we can now display the volumes of the elements and work with them.
