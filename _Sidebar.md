@@ -34,6 +34,8 @@
 
  > [Overview of the most used API functions](https://github.com/holke/t8code/wiki/The-most-important-API-functions)
 
+ > [Known issues](https://github.com/holke/t8code/wiki/Known-issues)
+
 ### Developer's Guide
 
  > [Coding Guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline)
