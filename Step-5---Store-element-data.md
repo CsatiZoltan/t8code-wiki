@@ -27,7 +27,7 @@ The order in which the `t8_forest_set*` functions are called is not relevant.
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_apbg_level.png" height="350">
 </p>
 
-Let execute the example with 4 MPI processes.
+Let us execute the example with 4 MPI processes.
 
 ```bash
 mpirun -np 4 ./t8_step5_element_data
