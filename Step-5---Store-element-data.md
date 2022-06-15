@@ -36,7 +36,7 @@ As expected, the resulting forest looks like the adapted forest from [step 4](ht
 
 ### Build data array and gather data for the local elements
 
-To build a data array, we first nead to allocate memory at run time. In t8code we usually use our own macro to to this. But of cours feel free to use `malloc`, `free` or any other allocator. The syntax of `T8ALLOC` is similar to `malloc`. It requires a datatype and size to allocate the necessary memory. In our case we want to store the level and volume of each element. To do so, we create a struct with level and volume inside.
+To build a data array, we first nead to allocate memory at run time, which should happen via `T8_ALLOC`. The syntax of `T8_ALLOC` is similar to `malloc`. It requires a datatype and size to allocate the necessary memory. In our case we want to store the level and volume of each element. To do so, we create a struct with level and volume inside.
 
 ```C++
 struct t8_step5_data_per_element
