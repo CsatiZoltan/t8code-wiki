@@ -1,6 +1,7 @@
 ## Step 5 - Store element data
 
-In this tutorial we will learn how to associate custom data with the elements of a forest.
+In this tutorial we will learn how to associate custom data with the elements of a forest and how to exchange data over the ghost elements of a parallel partition.
+
 In the last tutorials we learned how to create a forest and adapt it. In [step 4](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost) we also learned about algorithms for partitioning, balancing and creating a ghost layer. In this tutorial we will start by performing all these operations in one step. Then, when we have our forest, we will continue with how to build a data array and gather data for the local elements of our process. Further we exchange the data values of the ghost elements and output the volume data to our .vtu file.  
 
 ### Adapt, Partition, Balance, Ghost
