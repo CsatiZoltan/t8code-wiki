@@ -111,7 +111,7 @@ Therefore we need to allocate a new array to store the volumes on their own. Thi
 double *element_volumes = T8_ALLOC (double, num_local_elements);
 ```
 
-Despite writin user data, `t8_forest_vtk_write_file` also offers more control over which properties of the forest to write. 
+Despite writing user data, `t8_forest_vtk_write_file` also offers more control over which properties of the forest to write. 
 
 | Parameter | Description |
 |-|-|
@@ -155,4 +155,4 @@ We decided to only set `write_treeid`, `write_mpirank`, `write_level` and `write
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume_clip_threshold.png" height="350">
 </p>
 
-In `Paraviev` we can now display the volumes of the elements and work with them.
+In `Paraview` we can now display the volumes of the elements and work with them.
