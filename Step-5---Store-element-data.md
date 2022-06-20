@@ -148,7 +148,7 @@ strcpy (vtk_data.description, "Element volume");
 
 Finaly copy the elment's volumes from our data array to the output array and pass it to `t8_forest_write_vtk_ext`.
 
-We desided to only set `write_treeid`, `write_mpirank`, `write_level` and `write_element_id` true as it would be in `t8_forest_write_vtk`. In this way, the only difference to `t8_forest_vtk_write_file` is the addition of the volume of the elements.
+We decided to only set `write_treeid`, `write_mpirank`, `write_level` and `write_element_id` true as it would be in `t8_forest_write_vtk`. In this way, the only difference to `t8_forest_vtk_write_file` is the addition of the volume of the elements.
 
 <p align="center">
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step5_volume.png" height="350">
