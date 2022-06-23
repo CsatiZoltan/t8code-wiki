@@ -2,11 +2,11 @@
 
 In this tutorial we will learn how to associate custom data with the elements of a forest and how to exchange data over the ghost elements of a parallel partition.
 
-In the last tutorials we learned how to create a forest and adapt it. In [step 4](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost) we also learned about algorithms for partitioning, balancing and creating a ghost layer. In this tutorial we will start by performing all these operations in one step. Then, when we have our forest, we will continue with how to build a data array and gather data for the local elements of our process. Further we exchange the data values of the ghost elements and output the volume data to our .vtu file.  
+In the last tutorials we learned how to create a forest and adapt it. In [step 4](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost) we also learned about algorithms for partitioning, balancing and creating a ghost layer. In this tutorial we will start by performing all these operations in one step. Then, when we have our forest, we will continue with how to build a data array and gather data for the local elements of our process. Further we exchange the data values of the ghost elements and output the volume data to our `.vtu` file.  
 
 ### Adapt, Partition, Balance, Ghost
 
-As announced in step4, it is possible to mix the `t8_forest_set*` functions together as you wish (see `t8_forest.h`).
+As announced in [step4 - order of execution](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost#order-of-execution), it is possible to mix the `t8_forest_set*` functions together as you wish (see `t8_forest.h`).
 We can thus in one step adapt a forest, balance it, partition it and create a ghost layer with
 
 ```C++
@@ -36,7 +36,7 @@ As expected, the resulting forest looks like the adapted forest from [step 4](ht
 
 ### Build data array and gather data for the local elements
 
-To build a data array, we first nead to allocate memory at run time, which should happen via `T8_ALLOC`. The syntax of `T8_ALLOC` is similar to `malloc`. It requires a datatype and size to allocate the necessary memory. In our case we want to store the level and volume of each element. To do so, we create a struct with level and volume inside.
+To build a data array, we first nead to allocate memory at run time, which should happen via `T8_ALLOC`. The syntax of `T8_ALLOC` is similar to `malloc`. It requires a datatype and size to allocate the necessary memory. In our case we want to store the level and volume of each element. To do so, we create a struct with `level` and `volume` variables inside.
 
 ```C++
 struct t8_step5_data_per_element
@@ -55,8 +55,7 @@ num_ghost_elements = t8_forest_get_num_ghosts (forest);
 Having alle requirements set, we now can allocate the memory.
 
 ```C++
-element_data = T8_ALLOC (struct t8_step5_data_per_element, 
-                         num_local_elements + num_ghost_elements);
+element_data = T8_ALLOC (struct t8_step5_data_per_element, num_local_elements + num_ghost_elements);
 ```
 
 In the latter case you need to use `T8_FREE` in order to free the memory as you would do with `malloc`.
@@ -64,15 +63,15 @@ In the latter case you need to use `T8_FREE` in order to free the memory as you 
 Let us now fill the data with something. For this, we iterate through all trees and for each tree through all its elements, calling `t8_forest_get_element_in_tree` to get a pointer to the current element.
 Note, that this is the recommended and most performant way. An alternative is to iterate over the number of local elements and use `t8_forest_get_element`. However, this function needs to perform a binary search for the element and the tree it is in, while `t8_forest_get_element_in_tree` has a constant look up time. You should only use `t8_forest_get_element` if you do not know in which tree an element is.
 
-The reason for the iteration through the trees and then through its elements is, that each tree may have a different element class and therefore also a different way to interpret its elements. You used different element classes allrady in [step 1 - Creating a simple coarse mesh](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh#creating-a-simple-coarse-mesh). In `t8_eclass.h` you will find all possible element classes (i.e. triangle, tetrahedron, square, etc.). You also may remember seeing or even using the eclass_scheme in [step 3 - The adaptation callback](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest#the-adaptation-callback) before. The eclass_scheme was a parameter of the `t8_forest_adapt_t` callback function. In order to be able to handle elements of a tree, we need to get its eclass_scheme. 
-The eclass_scheme stores for each element shape, one member of type t8_eclass_scheme_c which provides the necessary functions for this element shape. We could for example use `t8_element_level` to compute the element's level.
+The reason for the iteration through the trees and then through its elements is, that each tree may have a different element class and therefore also a different way to interpret its elements. You used different element classes allrady in [step 1 - Creating a simple coarse mesh](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh#creating-a-simple-coarse-mesh). In `t8_eclass.h` you will find all possible element classes (i.e. triangle, tetrahedron, square, etc.). You also may remember seeing or even using the `eclass_scheme` in [step 3 - The adaptation callback](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest#the-adaptation-callback) before. The `eclass_scheme` was a parameter of the `t8_forest_adapt_t` callback function. In order to be able to handle elements of a tree, we need to get its `eclass_scheme`.
+The `eclass_scheme` stores for each element shape, one member of `type t8_eclass_scheme_c` which provides the necessary functions for this element shape. We could for example use `t8_element_level` to compute the element's level.
 Finally, we can now fill the first `num_local_elements` entries of our array.
 
 ### Exchange the data values of the ghost elements
 
 Until now, each process has computed the data entries for its local elements. In order to get the values for the ghost elements, we use `t8_forest_ghost_exchange_data`. Calling this function will fill all the ghost entries of our element data array with the value on the process that owns the corresponding element. This means that we don't have to iterate over all the elements again. t8code takes care of exchanging the data for us.
 
-However, we have to do a little preparatory work,  since `t8_forest_ghost_exchange_data` expects an sc_array. Therfor we wrap our data array to an sc_array.
+However, we have to do a little preparatory work,  since `t8_forest_ghost_exchange_data` expects an `sc_array`. Therfor we wrap our data array to an `sc_array`.
 
 ```C++
 sc_array_wrapper = sc_array_new_data (element_data, sizeof(struct t8_step5_data_per_element), num_local_elements + num_ghost_elements);
@@ -85,7 +84,7 @@ t8_forest_ghost_exchange_data (forest, sc_array_wrapper);
 ```
 Note that this function does not need an index. A request regarding the number of local elements on the respective process takes place in the background. Thus, all entries with an index greater than `num_local_elements` will be overwritten.
 
-Destroy the wrapper array by calling `sc_array_destroy`. This will not free the data memory since we used sc_array_new_data.
+Destroy the wrapper array by calling `sc_array_destroy`. This will not free the data memory since we used `sc_array_new_data`.
 
 ### Output the volume data to vtu
 
@@ -96,7 +95,7 @@ In the last steps we just called the following function
 ```C++
 t8_forest_write_vtk (forest, prefix);
 ```
-to write a `forest` as `vtu`. But to write also user defined data, we need a extended output function `t8_forest_vtk_write_file`.
+to write a forest as `vtu`. But to write also user defined data, we need a extended output function `t8_forest_vtk_write_file`.
 
 t8code supports writing element based data to `vtu` as long as its stored as `doubles`. Each of the data fields to write has to be provided in its own array of length `num_local_elements`. We support two types: 
 
