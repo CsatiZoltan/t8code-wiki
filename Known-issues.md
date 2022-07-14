@@ -6,7 +6,7 @@ On this page we collect known issues/bugs related to t8code
 
 When using `--enable-openmp` or `--enable-pthread` you may encounter linking problems with either library.
 
-This is a know bug. The appropriate compiler flags are only set to the CFLAGS variable, but not the CXXFLAGS variable.
+This is a known bug. The appropriate compiler flags are only set to the CFLAGS variable, but not the CXXFLAGS variable.
 
 Until this is fixed, the workaround is to set these variables manually:
 
