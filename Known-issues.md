@@ -14,6 +14,8 @@ Until this is fixed, the workaround is to set these variables manually:
 configure --enable-openmp CXXFLAGS="-fopenmp"
 ```
 
+See also: https://github.com/holke/t8code/issues/286
+
 ## Pure g++ installation not possible with gcc >=v8 
 
 Using `CC=g++` or `CC=mpicxx` or similar will not configure when the gcc Version is 8 or larger.
