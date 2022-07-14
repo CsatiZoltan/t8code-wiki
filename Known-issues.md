@@ -2,6 +2,18 @@
 
 On this page we collect known issues/bugs related to t8code
 
+## OpenMP and pthread require setting CXXFLAGS manually
+
+When using `--enable-openmp` or `--enable-pthread` you may encounter linking problems with either library.
+
+This is a know bug. The appropriate compiler flags are only set to the CFLAGS variable, but not the CXXFLAGS variable.
+
+Until this is fixed, the workaround is to set these variables manually:
+
+```
+configure --enable-openmp CXXFLAGS="-fopenmp"
+```
+
 ## Pure g++ installation not possible with gcc >=v8 
 
 Using `CC=g++` or `CC=mpicxx` or similar will not configure when the gcc Version is 8 or larger.
