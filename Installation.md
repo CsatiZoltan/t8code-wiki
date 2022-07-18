@@ -123,5 +123,5 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/t8code_install/lib
 ```bash
 -I$HOME/t8code_install/include
 -L$HOME/t8code_install/lib
--lt8code -lp4est -lsc -lm -lz
+-lt8 -lp4est -lsc -lm -lz
 ```
