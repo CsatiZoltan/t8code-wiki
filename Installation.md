@@ -10,9 +10,9 @@ t8code uses autotools and you will basically need
 
 ## Installation
 
-### Clone the repository
+### Clone the repository or download latest release
 
-To install t8code from github on a linux machine, first clone the repository, for example with
+To install t8code from github on a linux machine, first clone the repository or download the latest release, for example with
 
 ```bash
 git clone https://github.com/holke/t8code
