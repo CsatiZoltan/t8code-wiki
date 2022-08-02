@@ -92,6 +92,39 @@ If you really need to commit code that does not pass the indent test, using `IND
 
 ## Comments
 
+We use C-Style multiple line comments throughout.
+
+```C++
+/* Use this to comment a single line. */
+
+// Not this.
+
+/* Multiple line comments
+ * should start each line with a '*'
+ * And end with a new line.
+ */
+
+/* Each comment line should start and end with a space. */
+/*Because this looks ugly.*/
+```
+
+All comments should be written as complete sentences with appropriate
+English grammar, correct spelling and proper punctuation. Again,
+add margins (whitespaces) between the text and the comment markers.
+
+```C++
+/* This is a comment written as a complete sentence, ending with a dot
+ * and keeping proper margins (one whitespace) towards the '*' markers.
+ */
+```
+
+Of course, short statements, resp. remarks, are also ok.
+
+```C++
+/* Checking for xyz. */
+... some code ...
+```
+
 Every function should be well documented.
 This includes a description of what the function does
 and of its parameters.
@@ -111,21 +144,6 @@ int identity (int x)
 }
 ```
 
-We use C-Style multiple line comments throughout.
-
-```C++
-/* Use this to comment a single line */
-
-// Not this
-
-/* Multiple line comments
- * should start each line with a '*'
- * And end with a new line.
- */
-
-/* Each comment line should start and end with a space. */
-/*Because this looks ugly.*/
-```
 
 ## Memory handling
 
