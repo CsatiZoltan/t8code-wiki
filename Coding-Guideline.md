@@ -126,8 +126,7 @@ Of course, short statements, resp. remarks, are also ok.
 ```
 
 Every function should be well documented.
-This includes a description of what the function does
-and of its parameters.
+This includes a description of the function and of its parameters.
 
 We stick to the doxygen style, using `\param` followed by `[in]`, `[out]` or `[in,out]` 
 to describe function parameters and `\return` to describe the return value.
