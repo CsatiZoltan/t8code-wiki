@@ -53,7 +53,7 @@ To output a message on the root process in this Hello World example we use the f
 
 In short, logging functions of the form `t8_global_*` (`t8_global_essentialf`, `t8_global_errorf`, etc.) only print on the root process, while logging functions without the `global` print on each process with the MPI rank as part of the message (`t8_productionf`, `t8_essentialf`, `t8_errorf`, `t8_debugf`). For a description of all logging functions see `t8.h`.
 
-The logging level is set with `t8_init` (here it is `SC_LP_PRODUCTION`) and determines which of these get printed.
+The logging level is set with `t8_init` (in the example above it is `SC_LP_PRODUCTION`) and determines which of these get printed.
 The different logging levels are described in `sc.h` in detail. The most common are
 
 | Log level   | description |
