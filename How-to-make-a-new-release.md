@@ -3,9 +3,11 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Ensure that all required contributions have been added to main
 
-- [ ] Update the CITATION file
+- [ ] Update the the CITATION file
 
-- - [ ] Register a new DOI
+- - [ ] version number
+
+- - [ ] release date
 
 - [ ] Update the version number
 
@@ -17,4 +19,4 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Go to the main github page of the repo and click "create a new release"
 
-- [ ] ???
+- [ ] ??? (add new steps, for example homepage texts)
