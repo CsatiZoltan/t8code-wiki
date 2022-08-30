@@ -11,7 +11,9 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - - [ ] Edit major and minor version in the t8code version test files
 
-- - [ ] Make a new git tag vX.Y.Z
+- - [ ] Make a new git tag vX.Y.Z with `git tag -a `
+
+- - [ ] Push the git tag
 
 - [ ] Go to the main github page of the repo and click "create a new release"
 
