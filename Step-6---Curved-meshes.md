@@ -1,4 +1,4 @@
-## Step 5 - Curved meshes
+## Step 6 - Curved meshes
 
 `t8code` has the functionality to read in a mesh file along with the geometry file used to generate the mesh. With this parallel read in, we can generate curved adaptive meshes, as we call them. The curved adaptive meshes then are refined along the original geometry. This is shown in the following figure.
 
@@ -15,3 +15,5 @@ To use this feature, we have to fulfill some requirements:
 Generally, we can use every Software, which supports the `.brep` file format: [`FreeCAD`](https://www.freecadweb.org/), [`Gmsh`](https://gmsh.info), [`TiGL`](https://dlr-sc.github.io/tigl/) (all based on `OpenCASCADE`) to name a few. But we can also use `OpenCASCADE` itself.
 
 Note: _If you are using `Gmsh` for the generation of geometries, make sure to export the geometry into a `.brep` file and import it again before meshing. `Gmsh` has an internal geometry indexing system based on the order of geometry generation. In the resulting `.brep` file, the geometries have different indices than in `Gmsh` itself. This can result in different `.msh` files in which the mesh nodes are attributed to the wrong geometries. By reloading the `.brep` file into `Gmsh`, `Gmsh` adapts the indexing of the `.brep` file._
+
+Henceforth, we are going to generate a geometry and mesh with `Gmsh`. For this, we are going to use the proprietary `.geo` files, which allow scripting `Gmsh`.
