@@ -233,6 +233,39 @@ This will catch a missusage of the function in debugging mode (but not in releas
 
 We recommend to use assertions frequently.
 
+## Scope of variables
+
+The scope of variables should be as small as possible.
+
+Use
+```C++
+for (int level = 0; level < ...
+```
+instead of
+```C++
+int level;
+/* Some Code */
+for (level = 0; level < ...
+```
+
+## Constness and declaration of variable
+
+Follow the rule "if a variable can be const then it should be const". Also, declare variables at best when they are used.
+
+Use 
+```C++
+const t8_locidx_t num_elements = t8_forest_get_num_local_elements (forest);
+```
+
+```C++
+t8_locidx_t num_elements;
+/* Some Code */
+num_elements = t8_forest_get_num_local_elements (forest);
+```
+
+It is also better to use multiple (const) variables than to reuse the same variable for multiple purposes.
+
+Note, that this change is introduced quite recently to t8code and a lot of legacy code does not follow this convention yet.
 
 ## General rules
 
