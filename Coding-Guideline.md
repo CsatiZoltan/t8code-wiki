@@ -257,6 +257,8 @@ Use
 const t8_locidx_t num_elements = t8_forest_get_num_local_elements (forest);
 ```
 
+instead of
+
 ```C++
 t8_locidx_t num_elements;
 /* Some Code */
