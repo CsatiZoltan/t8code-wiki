@@ -23,9 +23,13 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Add the doxygen documentation to the homepage (This process should get automated in future)
 
-- - [ ] `make doxygen` and copy the resulted docs into the t8code website repository.
+- - [ ] `make doxygen`
 
-- - [ ] Add a new link on the Homepage to the new document
+- - [ ] Goto t8code-website repo and create the folder `content/doc/vX.Y.Z`
+
+- - [ ] Copy the content of the doxygen generate `html` folder to `content/doc/cX.Y.Z`
+
+- - [ ] Edit the website page `content/pages/4_Documentation.md`, such that the old version appears in the list and the new version is pointed to by the 'latest' entry
 
 - [ ] If desired, post an update article on the homepage (Definitely do this for major releases)
 
