@@ -6,6 +6,6 @@ A good starting point to learn about t8code are the [tutorials.](https://github.
 
 If you are a developer and want to contribute to t8code, please see the [Coding guidelines.](https://github.com/holke/t8code/wiki/Coding-Guideline)
 
-If you have any questions, please contact the developers.
+If you have any questions, please contact the developers. You will find additional information on the [t8code Website](https://dlr-amr.github.io/t8code/).
 
 
