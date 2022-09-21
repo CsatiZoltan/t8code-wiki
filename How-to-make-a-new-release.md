@@ -3,7 +3,7 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Ensure that all required contributions have been added to main
 
-- [ ] Update the the CITATION file
+- [ ] Update the CITATION file
 
 - - [ ] version number
 
@@ -20,5 +20,13 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 - [ ] Ensure that these changes are in the main branch
 
 - [ ] Go to the main github page of the repo and click "draft a new release"
+
+- [ ] Add the doxygen documentation to the homepage (This process should get automated in future)
+
+- - [ ] `make doxygen` and copy the resulted docs into the t8code website repository.
+
+- - [ ] Add a new link on the Homepage to the new document
+
+- [ ] If desired, post an update article on the homepage (Definitely do this for major releases)
 
 - [ ] ??? (add new steps, for example homepage texts)
