@@ -28,6 +28,8 @@
 
 ### User guides
 
+ > [Documentation](https://github.com/holke/t8code/wiki/documentation)
+
  > [Tree Indexing](https://github.com/holke/t8code/wiki/Tree-indexing)
 
  > [Running on JUWELS using Slurm](https://github.com/holke/t8code/wiki/Setting-up-t8code-on-JUWELS-(or-other-Slurm-based-systems))
