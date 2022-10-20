@@ -2,11 +2,9 @@
 
 ### Setup
 
- > [Installation Guide](https://github.com/holke/t8code/wiki/Installation)
-
- > [Configure Options](https://github.com/holke/t8code/wiki/Configure-Options)
-
- > [Setup t8code on JUWELS](https://github.com/holke/t8code/wiki/Setting-up-t8code-on-JUWELS)
+ > [Installation Guide](https://github.com/holke/t8code/wiki/Installation)  
+ > [Configure Options](https://github.com/holke/t8code/wiki/Configure-Options)  
+ > [Setup t8code on JUWELS](https://github.com/holke/t8code/wiki/Setting-up-t8code-on-JUWELS)  
 
 ### Tutorials
 
@@ -18,8 +16,10 @@
  >>> [Step 3   Adapting a forest](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest)  
  >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)  
  >>> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data)  
- > > Features  
+ 
+ >> Features  
  >>> [Feature   Curved meshes](https://github.com/DLR-AMR/t8code/wiki/Feature---Curved-meshes)  
+
  >> [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
 ### User guides
