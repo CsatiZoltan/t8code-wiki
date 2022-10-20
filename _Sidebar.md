@@ -14,21 +14,21 @@
 
  >> General
 
- >>> [Step 0   Hello World](https://github.com/holke/t8code/wiki/Step-0---Hello-World)
+ >> [Step 0   Hello World](https://github.com/holke/t8code/wiki/Step-0---Hello-World)
 
- >>> [Step 1   Creating a coarse mesh](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh)
+ >> [Step 1   Creating a coarse mesh](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh)
 
- >>> [Step 2   Creating a uniform forest](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest)
+ >> [Step 2   Creating a uniform forest](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest)
 
- >>> [Step 3   Adapting a forest](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest)
+ >> [Step 3   Adapting a forest](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest)
 
- >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)
+ >> [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)
 
- >>> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data)
+ >> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data)
 
  >> Features
 
- >>> [Feature   Curved meshes](https://github.com/DLR-AMR/t8code/wiki/Feature---Curved-meshes)
+ >> [Feature   Curved meshes](https://github.com/DLR-AMR/t8code/wiki/Feature---Curved-meshes)
  
  >> [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
