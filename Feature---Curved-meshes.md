@@ -16,4 +16,5 @@ Generally, we can use every Software, which supports the `.brep` file format: [`
   
 Note: _If you are using `Gmsh` for the generation of geometries, make sure to export the geometry into a `.brep` file and import it again before meshing. `Gmsh` has an internal geometry indexing system based on the order of geometry generation. In the resulting `.brep` file, the geometries have different indices than in `Gmsh` itself. This can result in different `.msh` files in which the mesh nodes are attributed to the wrong geometries. By reloading the `.brep` file into `Gmsh`, `Gmsh` adapts the indexing of the `.brep` file._  
 
-Henceforth, we are going to generate a geometry and mesh with `Gmsh`. For this, we are going to use the scripting language `.geo` from `Gmsh`. If we take 
+Henceforth, we are going to generate a geometry and mesh with `Gmsh`. For this, we use the scripting language `.geo` from `Gmsh`. If we take a look at the `t8_features_curved_meshes_generate_cmesh.geo` file in the tutorials directory, we can see how the geometry and mesh are created.  
+After the two-dimensional definition of the NACA geometry, it is extruded and meshed hex-only. Note, that the `.brep` file is reloaded before the meshing, as discussed before.
