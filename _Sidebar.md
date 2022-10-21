@@ -16,12 +16,11 @@
  >>> [Step 2   Creating a uniform forest](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest)  
  >>> [Step 3   Adapting a forest](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest)  
  >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/holke/t8code/wiki/Step-4---Partition,-Balance,-Ghost)  
- >>> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data)  
+ >>> [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data) 
+ >>>  [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search) 
  >>
  >> Features  
  >>> [Feature   Curved meshes](https://github.com/DLR-AMR/t8code/wiki/Feature---Curved-meshes)  
- >>
- >> [Search tutorial](https://github.com/holke/t8code/wiki/Tutorial:-Search)
 
 ### User guides
 
