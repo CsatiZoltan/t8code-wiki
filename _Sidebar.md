@@ -33,4 +33,4 @@
 ### Developer's Guide
 
  > [Coding Guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline)  
- > > [Known Issues with indent](https://github.com/holke/t8code/wiki/Known-issues-with-the-indent-script)
+ >> [Known Issues with indent](https://github.com/holke/t8code/wiki/Known-issues-with-the-indent-script)
