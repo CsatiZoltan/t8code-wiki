@@ -18,3 +18,9 @@ Note: _If you are using `Gmsh` for the generation of geometries, make sure to ex
 
 Henceforth, we are going to generate a geometry and mesh with `Gmsh`. For this, we use the scripting language `.geo` from `Gmsh`. If we take a look at the `t8_features_curved_meshes_generate_cmesh.geo` file in the tutorials directory, we can see how the geometry and mesh are created.  
 After the two-dimensional definition of the NACA geometry, it is extruded and meshed hex-only. Note, that the `.brep` file is reloaded before the meshing, as discussed before.
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_brep.png" height="300" hspace=100>
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_mesh.png" height="300">
+</p>
+
+
