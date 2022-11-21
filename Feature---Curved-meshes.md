@@ -7,8 +7,9 @@
 To use this feature, we have to fulfill some requirements:  
 1. `t8code` has to be linked to [`OpenCASCADE`](https://dev.opencascade.org/doc/overview/html/index.html). This is done via the configure option `--with-occ`.  
 2. The used mesh has to be written in the [`Gmsh`'s `.msh` 4.X format](https://gmsh.info/doc/texinfo/gmsh.html#MSH-file-format). Moreover, the parametric export option from `Gmsh` has to be enabled.  
-3. The CAD file has to be written in [`OpenCASCADE`'s `.brep` format](https://dev.opencascade.org/doc/overview/html/specification__brep_format.html).  
-4. The mesh has to be hex-only.  
+3. The CAD file has to be written in [`OpenCASCADE`'s `.brep` format](https://dev.opencascade.org/doc/overview/html/specification__brep_format.html).
+4. The `OpenCASCADE` version of `Gmsh` (Help button in the `Gmsh` GUI) must not be higher than the `OpenCASCADE` version `t8code` is linked to.
+5. The mesh has to be hex-only.  
 
 ### Generating a CAD geometry and mesh
 
