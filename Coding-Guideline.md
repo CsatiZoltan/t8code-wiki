@@ -301,7 +301,7 @@ rules apply for both kinds of API.
 Every API design MUST aim for a minimal API surface without sacrificing on product requirements. API design SHOULD NOT include unnecessary resources, relations, actions or data. API design SHOULD NOT add functionality until deemed necessary ([YAGNI principle](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it)).
 
 Or in other words, add as few routines as possible in the header files and declare helper routines as `static`.
-If in the future, a helper routine is needed elsewhere, either duplicate the code or move the declaration
+If in the future, a helper routine is needed elsewhere, move the declaration
 into a header file.
 
 ### Robustness
