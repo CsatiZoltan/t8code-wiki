@@ -16,7 +16,7 @@ mpirun -n NUM_PROCS xterm -hold -e "gdb -x FILE my_t8code_application"
 ```
 This opens `NUM_PROCS` `xterm` windows with a `gdb` instance each attached to a MPI sub-process.
 If there is no X11 session available (headless mode, i.e. no GUI), for example when working on a cluster
-over ssh, then alternatively, one could use `tmux`. There is a tool https://github.com/wrs20/tmux-mpi
+over ssh, then alternatively, one could use `tmux`. There is a tool https://github.com/Azrael3000/tmpi
 which even multiplexes the keyboard input to all `gdb` sessions at once.
 
 The `FILE` might look like
