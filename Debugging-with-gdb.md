@@ -1,7 +1,6 @@
 Debugging parallel programs can be a challenge and powerfull debuggers for MPI-parallelized codes are usually very expensive and
-have a steep learning curve.
-For rather managable debugging sessions on workstations comprising of just a handful of parallel processes the venerable
-open source debugger `gdb` can be used.
+have a steep learning curve. For rather managable debugging sessions on workstations comprising of just a handful of parallel processes the venerable open source debugger `gdb` can be used.
+
 To find an introduction on how to use `gdb` visit http://www.gdbtutorial.com/. A comprehensive documentation
 is available at https://sourceware.org/gdb/onlinedocs/gdb/.
 
