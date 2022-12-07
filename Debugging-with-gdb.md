@@ -4,7 +4,7 @@ have a steep learning curve. For rather managable debugging sessions on workstat
 To find an introduction on how to use `gdb` visit http://www.gdbtutorial.com/. A comprehensive documentation
 is available at https://sourceware.org/gdb/onlinedocs/gdb/.
 
-First, compile `t8code` in debugging mode.
+First, compile `t8code` in debugging mode:
 ```
 configure --enable-mpi --enable-debug --enable-static --disable-shared CFLAGS='-Wall -O0 -g' CXXFLAGS='-Wall -O0 -g'
 ```
