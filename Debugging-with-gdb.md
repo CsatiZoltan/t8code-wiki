@@ -17,7 +17,7 @@ mpirun -n NUM_PROCS xterm -hold -e "gdb -x FILE my_t8code_application"
 ```
 This opens `NUM_PROCS` `xterm` windows with a `gdb` instance each attached to a MPI sub-process.
 
-The command `FILE` might look contain
+The command `FILE` might contain
 ```
 b t8_some_file.c:some_function
 b MPI_Abort
