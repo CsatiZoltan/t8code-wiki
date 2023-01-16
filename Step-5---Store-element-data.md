@@ -52,7 +52,7 @@ num_local_elements = t8_forest_get_local_num_elements (forest);
 num_ghost_elements = t8_forest_get_num_ghosts (forest);
 ```
 
-Having alle requirements set, we now can allocate the memory.
+Having all requirements set, we can now allocate the memory.
 
 ```C++
 element_data = T8_ALLOC (struct t8_step5_data_per_element, num_local_elements + num_ghost_elements);
