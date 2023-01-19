@@ -2,7 +2,7 @@
 
 In this first tutorial we write the Hello World equivalent of `t8code`.
 We will initalize `t8code` and use it to print a short message on the root process.
-You will find the code in `example/tutorials/t8_step0_helloworld.c` and it creates the executable `example/tutorials/t8_step0_helloworld`.
+You will find the code in `tutorials/general/t8_step0_helloworld.c` and it creates the executable `tutorials/general/t8_step0_helloworld`.
 
 To initalize `t8code` we need to initialize (in this order) `MPI`, `libsc` and `t8code`.
 
