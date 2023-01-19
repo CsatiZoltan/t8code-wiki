@@ -5,6 +5,8 @@ Additionally we learn more about the forest creation process and how we can perf
 
 We will start with the adapted forest from step 3.
 
+You will find the code to this example in the `tutorials/general/step4*` files and it creates the executable `tutorials/general/t8_step4_partition_balance_ghost`.
+
 ### Partition
 
 Each forest is distributed among the MPI processes. Partitioning a forest means
