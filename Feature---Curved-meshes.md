@@ -2,6 +2,8 @@
 
 `t8code` has the functionality to read in a mesh file along with the CAD file used to generate the mesh. With this parallel read-in, we can generate curved adaptive meshes, as we call them. The curved adaptive meshes then are refined along the original CAD geometry. This is shown in the following figure.
 
+You will find the code to this example in the `tutorials/feature/t8_features_curved_meshes.cxx` file and it creates the executable `tutorials/feature/t8_features_curved_meshes`.
+
 ### Requirements
 
 To use this feature, we have to fulfill some requirements:  
