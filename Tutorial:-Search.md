@@ -1,7 +1,7 @@
 ## Search
 
 In this tutorial we discuss t8code's search algorithm.
-You will find the code to this example in `example/tutorials/t8_tutorial_search.cxx` and it creates the executable `example/tutorials/t8_tutorial_search` (Currently, not on the main, but on the develop branch).
+You will find the code to this example in `tutorials/general/t8_tutorial_search.cxx` and it creates the executable `tutorials/general/t8_tutorial_search` (Currently, not on the main, but on the develop branch).
 
 We assume that you know how to generate a coarse mesh and an adapted forest on it.
 If not, please read [Step 1](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh), [Step 2](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest) and [Step 3](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest/_edit).
