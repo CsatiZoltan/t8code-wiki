@@ -2,7 +2,7 @@
 
 In this example we will build our first coarse mesh and write it to `.vtu` files in order to visualize it with `Paraview`.
 
-You will find the code to this example in `example/tutorials/step1_coarsemesh.c` and it creates the executable `example/tutorials/step1_coarsemesh`.
+You will find the code to this example in `tutorials/general/step1_coarsemesh.c` and it creates the executable `tutorials/general/step1_coarsemesh`.
 
 ### What is a coarse mesh?
 
