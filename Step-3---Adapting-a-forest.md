@@ -6,7 +6,7 @@ mesh handling algorithm that we discuss.
 
 In this example we describe how to define an adaptation criterion and how to adapt an existing forest.
 
-You will find the code to this example in `tutorials/general/t8_step3_adapt_forest.cxx` and it creates the executable `tutorials/general/t8_step3_adapt_forest`.
+You will find the code to this example in the `tutorials/general/t8_step3*` files and it creates the executable `tutorials/general/t8_step3_adapt_forest`.
 
 As in the previous examples ([Step 1](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh) and [Step 2](https://github.com/holke/t8code/wiki/Step-2---Creating-a-uniform-forest)) we will use a cube geometry for our coarse mesh, but this time modelled as a hybrid
 mesh with different element types (tet, prism and hex).
