@@ -1,7 +1,8 @@
 # Tutorial overview
 
 There are two kinds of tutorials for `t8code`: The general tutorials, which lead you step by step and show the basic usage of `t8code`.  
-Furthermore, there are feature tutorials, which detail on more advanced or additional features of `t8code`. 
+Furthermore, there are feature tutorials, which detail on more advanced or additional features of `t8code`.
+You will find the code for these tutorials in the `tutorials/` folder of `t8code`.
 
 ## General
 
