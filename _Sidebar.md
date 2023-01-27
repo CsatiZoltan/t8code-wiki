@@ -17,6 +17,7 @@
  >>> [Step 3   Adapting a forest](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)  
  >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)  
  >>> [Step 5   Store element data](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data)  
+ >>> [Step 6   Computing stencils](https://github.com/DLR-AMR/t8code/wiki/Step-6-Computing-stencils)  
  >>> [Search algorithm](https://github.com/DLR-AMR/t8code/wiki/Tutorial:-Search)  
  >>
  >> Features  
