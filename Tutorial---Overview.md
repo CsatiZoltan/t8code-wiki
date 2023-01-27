@@ -23,6 +23,9 @@ Modifying the forest further by partitioning, balancing and computing ghost elem
  - [Step 5   Store element data](https://github.com/holke/t8code/wiki/Step-5---Store-element-data) - 
 How to gather data of the local elements, exchange it and output it to a `.vtu` file.  
 
+ - [Step 5   Computing stencils](https://github.com/DLR-AMR/t8code/wiki/Step-6-Computing-stencils) - 
+How to gather data from element's face neighbors and collect stencils in, e.g., finite difference computations. 
+
  - [Search algorithm](https://github.com/holke/t8code/wiki/Tutorial:-Search) - 
 A tutorial for the hierarchical search to identify elements matching a user defined criterion.
 
