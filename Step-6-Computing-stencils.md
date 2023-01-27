@@ -71,7 +71,7 @@ $ ls
 t8_step6_stencil.pvtu  t8_step6_stencil_0000.vtu  t8_step6_stencil_0001.vtu  t8_step6_stencil_0002.vtu
 ```
 Open `t8_step6_stencil.pvtu` in Paraview and visualize the `height` (left figure) and `schlieren` (right figure) data fields. 
-[Schlieren](https://en.wikipedia.org/wiki/Schlieren_photography) plots are the norm of the gradient of a data field (in our case the `height`). For smoother pictures the inclined reader is encouraged to increase the initial refinenemnt level, recompile and rerun the demo.
+[Schlieren](https://en.wikipedia.org/wiki/Schlieren_photography) plots are the norm of the gradient of a data field (in our case the `height`). For smoother pictures the inclined reader is encouraged to increase the initial refinement level, recompile and rerun the demo.
 
 ![grafik](https://user-images.githubusercontent.com/10619309/215139981-f636c5a9-8d2b-414e-9a93-39011367a760.png)
 ![grafik](https://user-images.githubusercontent.com/10619309/215141420-d89d3b53-3ff0-41a1-8256-a8b08f92e5bf.png)
