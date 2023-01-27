@@ -61,7 +61,7 @@ A common usage pattern of above routine can be found in the function body of
 `t8_step6_compute_stencil` in the demo source file `tutorials/general/t8_step6_stencil.cxx`.
 
 ### Running the Demo
-If t8code was compiled with MPI support the demo can be exectuted with for example three process.
+If t8code was compiled with MPI support the demo can be exectuted with for example three processes.
 ```shell
 $ mpirun -n 3 ${INSTALL_DIR_OF_T8CODE}/bin/t8_step6_stencil
 ```
