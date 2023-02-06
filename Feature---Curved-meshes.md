@@ -32,7 +32,7 @@ After the two-dimensional definition of the NACA CAD geometry, it is extruded an
 Now we can generate our curved, adaptive mesh. For this, we build our `cmesh` from the `.msh` and `.brep` files.
 ```C++
 /* Read in the naca mesh from the msh file and the naca geometry from the brep file */
-cmesh = t8_cmesh_from_msh_file (fileprefix, 0, sc_MPI_COMM_WORLD, 3, 0, occ);
+cmesh = t8_cmesh_from_msh_file (fileprefix, 0, sc_MPI_COMM_WORLD, 3, 0, occ || surface);
 /* Construct a forest from the cmesh */
 forest = t8_forest_new_uniform (cmesh,
                                 t8_scheme_new_default_cxx (),
@@ -42,6 +42,8 @@ Note, that we use the same `msh` file reader as usual. Hence, we only have to pr
 After the import, we can handle the `cmesh` like normal, just the partitioning of the curved `cmesh` is not yet implemented. In this case, we create a new uniform forest and refine it according to two different criteria: We refine the elements based on their proximity to selected geometrical surfaces, and we let a plane move through the mesh and refine every element in a certain proximity.
 
 #### Surface-based refinement
+
+Usage: _To execute this refinement scheme in the tutorial, the `-s` option and the path to the files (`-f`) must be provided. Additionally, a uniform refinement level can be defined with `-r` and the levels of the ventral and dorsal surfaces can be set with `-d` and `-d` argument. This refinement scheme only works with curved meshes, since the information the refinement is based on, is not available in a linear mesh._
 
 We can also use the CAD information of the `cmesh` for other purposes than curving the mesh. In the `t8_naca_surface_adapt_callback` we use this information to identify elements touching the boundary layer of the NACA profile. For this, we define the surfaces, which should get refined, and we set a refinement level for them.
 ```C++
@@ -73,6 +75,8 @@ for (int iface = 0; iface < num_faces; ++iface) {
 In each adapt callback, we then iterate over each face of the current element and check if it lies on the boundary of its corresponding tree. If true, we can retrieve the CAD data of the tree's face and check if a specific CAD surface is linked to it. This information we then use to decide, if the face gets refined or not.
 
 #### Moving plane refinement
+
+Usage: _To execute this refinement scheme in the tutorial, the `-p` option and the path to the files (`-f`) must be provided. Additionally, a uniform refinement level can be defined with `-r` and the starting and end point of the plane, as well as the number of time steps can be altered with the `-x`, `-X` and `-t` arguments. This refinement scheme works with the linear and curved geometry. By default, the linear geometry is used, but the curved one can be activated with `-o`._
 
 In the other adapt callback (`t8_naca_plane_adapt_callback`), we move a plane through the mesh and refine all elements, whose centroids are in a certain proximity. We do this by looking at the x-coordinate of each centroid and by calculating its distance to the plane's x-coordinate. If the distance is under the user-defined threshold and the element's level is below the maximum refinement level, it gets refined. Otherwise, if the element's centroid is too far away and the level is above the minimum refinement level, the element gets coarsened.
 
