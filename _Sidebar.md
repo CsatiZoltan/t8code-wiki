@@ -5,6 +5,8 @@
  > [Installation Guide](https://github.com/DLR-AMR/t8code/wiki/Installation)  
  > [Configure Options](https://github.com/DLR-AMR/t8code/wiki/Configure-Options)  
  > [Setup t8code on JUWELS](https://github.com/DLR-AMR/t8code/wiki/Setting-up-t8code-on-JUWELS)  
+ > [Setup t8code for VTK](https://github.com/DLR-AMR/t8code/wiki/Installation-of-VTK)  
+
 
 ### Tutorials
 
