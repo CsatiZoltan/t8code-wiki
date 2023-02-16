@@ -4,7 +4,10 @@ In this tutorial we will learn how to gather a stencil consisting of data from t
 
 You will find the code to this example in the `tutorials/general/step6*` files and it creates the executables `tutorials/general/t8_step6_stencil`. 
 
-In the last tutorials we learned how to create a forest, adapt it, pre-allocate element data arrays and store custom data fields in VTU files. In this tutorial we will start by performing all these operations in one step as shown in [step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data). Then, when we have our forest and built a data array, we gather data for the local elements of our process. Next, we exchange the data values of the ghost elements and compute a stencil from face neighbors in each element. Finally, the output of several custom data fields is written to `.vtu` files.
+In the last tutorials we learned how to create a forest, adapt it, pre-allocate element data arrays and store custom data fields in VTU files. In this tutorial we will start by performing all these operations in one go as shown in [step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data). Then, when we have our forest and built a data array, we gather data for the local elements of our process. Next, we exchange the data values of the ghost elements and compute a stencil from face neighbors in each element. Finally, the output of several custom data fields is written to `.vtu` files.
+
+In terms of interacting with t8code, this step mainly builds on the functionality already detailed in the steps 3 to 5. Thus, we focus on the
+new concept of accessing neighboring element data and doing computations with it by reference of a small finite difference computation.
 
 ### Computing Finite Differences from Face Neighbor Stencils
 
@@ -13,10 +16,29 @@ for convenient and performant finite difference computations yielding numerical 
 
 ![grafik](https://user-images.githubusercontent.com/10619309/215130819-29c92c61-9489-4ce3-b6bf-364a8467d3e8.png)
 
-The data field in our specific case is the physical quantitiy "height" pinned at the midpoint of each mesh element. The actual demo program
-to this tutorial also supports adapted meshes with neighboring elements at different refinement levels.
+The data field in our specific case is the physical quantitiy "height" pinned at the midpoint of each mesh element. As an example,
+we compute the schlieren and a rough messure for the curvature which are the defined as the norms of the central difference formulas shown in the
+figure above. The actual implementation in the demo is as follows:
+```C++
+const double xslope_m = 0.5/(dx[0] + dx[1])*(stencil[1][1] - stencil[0][1]);
+const double xslope_p = 0.5/(dx[1] + dx[2])*(stencil[2][1] - stencil[1][1]);
 
-### Accessing Element Face Neighbors in t8code
+const double yslope_m = 0.5/(dy[0] + dy[1])*(stencil[1][1] - stencil[1][0]);
+const double yslope_p = 0.5/(dy[1] + dy[2])*(stencil[1][2] - stencil[1][1]);
+
+const double xslope = 0.5*(xslope_m + xslope_p);
+const double yslope = 0.5*(yslope_m + yslope_p);
+
+const double xcurve = (xslope_p - xslope_m)/0.25/(dx[0] + 2.0*dx[1] + dx[2]);
+const double ycurve = (yslope_p - yslope_m)/0.25/(dy[0] + 2.0*dy[1] + dy[2]);
+
+element_data[current_index].schlieren = sqrt(xslope*xslope + yslope*yslope);
+element_data[current_index].curvature = sqrt(xcurve*xcurve + ycurve*ycurve);
+```
+The above code also accounts for adapted meshes with stencil computations crossing different refinement levels.
+The gathering of the stencil data is described in the next section.
+
+### Accessing Element Face Neighbors in t8code & Gathering the data into a Stencil
 
 t8code provides an API function to access neighboring elements at a given face.
 The excerpt from `t8_forest.h` reads:
@@ -59,6 +81,29 @@ void                t8_forest_leaf_face_neighbors (t8_forest_t forest,
 ```
 A common usage pattern of above routine can be found in the function body of
 `t8_step6_compute_stencil` in the demo source file `tutorials/general/t8_step6_stencil.cxx`.
+There at each element face, which is given by `face` argument above, we can decide where to
+put the data in the stencil. This is done via a switch case construct:
+```C++
+/* `neighids` is a return argument from above `t8_forest_leaf_face_neighbors` call. */
+double height = element_data[neighids[0]].height;
+switch (iface) {
+  case 0: // NORTH
+    stencil[0][1] = height;
+    break;
+  case 1: // SOUT
+    stencil[2][1] = height;
+    break
+ case 2: // WEST
+    stencil[1][0] = height;
+    break;
+ case 3: // EAST
+    stencil[1][2] = height;
+    break;
+}
+```
+Once the stencil is filled the finite difference computation from the previous
+section can be applied. Above code is just an excerpt with details left out. Please
+refer to the demo code in order to get the full picture.
 
 ### Running the Demo
 If t8code was compiled with MPI support the demo can be exectuted with for example three processes.
