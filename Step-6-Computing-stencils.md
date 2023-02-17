@@ -2,7 +2,7 @@
 
 In this tutorial we will learn how to gather a stencil consisting of data from the current element and its face neighbors.
 
-You will find the code to this example in the `tutorials/general/step6*` files. The executable is named `tutorials/general/t8_step6_stencil`. 
+You will find the code to this example in the `tutorials/general/step6*` files. The executable is named `t8_step6_stencil`. 
 
 In the last tutorials we learned how to create a forest, adapt it, pre-allocate element data arrays, activate the ghost layer and store custom data fields in VTU files. In this tutorial we will start by performing all these operations in one go as shown in [step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data). Then, when we have our forest and built a data array, we gather data for the local elements of our process. Next, we exchange the data values of the ghost elements and compute a stencil from face neighbors in each element. Finally, the output of several custom data fields is written to `.vtu` files.
 
