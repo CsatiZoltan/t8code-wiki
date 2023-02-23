@@ -23,8 +23,8 @@ Henceforth, we are going to generate a CAD geometry and mesh with `Gmsh`. For th
 You can execute this script with `gmsh t8_features_curved_meshes_generate_cmesh.geo` which will generate the files `naca6412.brep` and `naca6412.msh`.
 After the two-dimensional definition of the NACA CAD geometry, it is extruded and meshed hex-only. Note, that the `.brep` file is reloaded before the meshing, as discussed before.
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_brep.png" height="250" hspace=100>
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_mesh.png" height="250">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_brep.png" width="46%">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_mesh.png" width="46%">
 </p>
 
 ### Generating a curved mesh
@@ -101,6 +101,6 @@ After loading the mesh into `ParaView`, we can set the `Nonlinear Subdivision Le
 The same tutorial can also be used with 2D meshes. To do this, simply use the provided `t8_features_curved_meshes_generate_cmesh_2d.geo` script, to generate the 2D `brep` and `msh` file and use the CLI option `-d2`. Here, every routine works in the 2D dimension, but also a limitation becomes observable:  
 In the geometry refinement mode, the dorsal and ventral side of the NACA profile are not refined correctly.
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_surface_refinement.png" height="300">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_surface_refinement.png" width="60%">
 </p>
-This happens, because some elements touch the naca profile only with their vertices and not with a whole edge. We plan, to overcome this limitaion in the future.
+This happens, because some elements touch the NACA profile only with their vertices and not with a whole edge. We plan, to overcome this limitation in the future.
