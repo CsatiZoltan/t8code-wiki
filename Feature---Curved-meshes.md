@@ -23,8 +23,8 @@ Henceforth, we are going to generate a CAD geometry and mesh with `Gmsh`. For th
 You can execute this script with `gmsh t8_features_curved_meshes_generate_cmesh.geo` which will generate the files `naca6412.brep` and `naca6412.msh`.
 After the two-dimensional definition of the NACA CAD geometry, it is extruded and meshed hex-only. Note, that the `.brep` file is reloaded before the meshing, as discussed before.
 <p align="center">
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_brep.png" height="300" hspace=100>
-<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_mesh.png" height="300">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_brep.png" height="250" hspace=100>
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_naca6412_mesh.png" height="250">
 </p>
 
 ### Generating a curved mesh
