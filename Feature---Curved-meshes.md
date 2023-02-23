@@ -100,3 +100,7 @@ After loading the mesh into `ParaView`, we can set the `Nonlinear Subdivision Le
 
 The same tutorial can also be used with 2D meshes. To do this, simply use the provided `t8_features_curved_meshes_generate_cmesh_2d.geo` script, to generate the 2D `brep` and `msh` file and use the CLI option `-d2`. Here, every routine works in the 2D dimension, but also a limitation becomes observable:  
 In the geometry refinement mode, the dorsal and ventral side of the NACA profile are not refined correctly.
+<p align="center">
+<img src="https://github.com/holke/t8code/wiki/pictures/tutorials/feature_curved_meshes_surface_refinement.png" height="300">
+</p>
+This happens, because some elements touch the naca profile only with their vertices and not with a whole edge. We plan, to overcome this limitaion in the future.
