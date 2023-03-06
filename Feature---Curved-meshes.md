@@ -41,9 +41,9 @@ forest = t8_forest_new_uniform (cmesh,
 Note, that we use the same `msh` file reader as usual. Hence, we only have to provide one file prefix and therefore the mesh and CAD files have to have the same file prefix.  
 After the import, we can handle the `cmesh` like normal, just the partitioning of the curved `cmesh` is not yet implemented. In this case, we create a new uniform forest and refine it according to two different criteria: We refine the elements based on their proximity to selected geometrical surfaces, and we let a plane move through the mesh and refine every element in a certain proximity.
 
-#### Surface-based refinement
+#### Geometry-based refinement
 
-Usage: _To execute this refinement scheme in the tutorial, the `-s` option and the path to the files (`-f`) must be provided. Additionally, a uniform refinement level can be defined with `-r` and the levels of the ventral and dorsal surfaces can be set with `-d` and `-d` argument. This refinement scheme only works with curved meshes, since the information the refinement is based on, is not available in a linear mesh._
+Usage: _To execute this refinement scheme in the tutorial, the `-g` option and the path to the files (`-f`) must be provided. Additionally, a uniform refinement level can be defined with `-r` and the levels of the ventral and dorsal surfaces can be set with `-d` and `-d` argument. This refinement scheme only works with curved meshes, since the information the refinement is based on, is not available in a linear mesh._
 
 We can also use the CAD information of the `cmesh` for other purposes than curving the mesh. In the `t8_naca_geometry_adapt_callback` we use this information to identify elements touching the boundary layer of the NACA profile. For this, we define the geometries (in the 3D case surfaces), which should get refined, and we set a refinement level for them.
 ```C++
