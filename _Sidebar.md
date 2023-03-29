@@ -39,4 +39,5 @@
  >> [Known Issues with indent](https://github.com/DLR-AMR/t8code/wiki/Known-issues-with-the-indent-script)
  >>
  > [Debugging with gdb](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-gdb)
+ >
  > [Testing with GoogleTest](https://github.com/DLR-AMR/t8code/wiki/Testing-with-GoogleTest)
