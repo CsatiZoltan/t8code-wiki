@@ -30,7 +30,7 @@ Choose the most fitting check for your test. Use `ASSERT_TRUE`, `ASSERT_FALSE`, 
 ## Failure message
 If a test fails we would like to know more about the reason for aborting. A failure message, which is connected with an assertion (or expectation) by using `<< “my_string”` throws an information message if the test fails at this point. 
 ```bash
-ASSERT_TRUE(t8_cmesh_is_commited(cmesh)) << “Cmesh commit failed.”;
+ASSERT_TRUE(t8_cmesh_is_commited(cmesh)) <<"Cmesh commit failed.”;
 ASSERT_EQ(dual_face, checkface) << “Wrong dual face. Expected “ << checkface << “ got ” << dual_face;
 ```
 
