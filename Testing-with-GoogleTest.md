@@ -1,5 +1,3 @@
-# Testing with GoogleTest
-
 ## Introduction
 For testing the correctness of our functions in t8code, we use the GoogleTest framework. This framework allows us to test code sections independently for several parameters and properties of t8code. The task is finding code errors in the early development of new t8code sections. You get more information and guidelines about the implementation of GoogleTests at [GoogleTest User’s Guide](https://google.github.io/googletest/).
 
