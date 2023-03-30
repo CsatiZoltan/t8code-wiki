@@ -12,6 +12,9 @@ The test should not print an output apart from error-messages of failing tests. 
 ## Assertions and expectations 
 Various checks can be applied to the code. There are assertions and expectations. The expectations are called by `EXPECT_*`. If an expectation will fail, the current test (or function) will not be aborted. 
 By using an assertion, which is called by `ASSERT_*`, a test (or a function) will abort directly. Note that if a function will be aborted, that the test will not be aborted. It is not possible to use assertions in functions, that have a return value. 
+
+The rule of thumb should be: Use `EXPECT_*` whenever possible. Use `ASSERT_*` only if the test cannot continue if the asserted part fails.
+
 The most common assertions and expectations are:
 * EXPECT/ ASSERT_TRUE
 * EXPECT/ ASSERT_FALSE
