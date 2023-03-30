@@ -1,5 +1,5 @@
 ## Introduction
-For testing the correctness of our functions in t8code, we use the GoogleTest framework. This framework allows us to test code sections independently for several parameters and properties of t8code. The task is finding code errors in the early development of new t8code sections. You get more information and guidelines about the implementation of GoogleTests at [GoogleTest User’s Guide](https://google.github.io/googletest/).
+For testing the correctness of our functions in t8code, we use [MPI extensions of the GoogleTest framework](https://github.com/DLR-SC/googletest_mpi/tree/main_mpi). This framework allows us to test code sections independently for several parameters and properties of t8code. The task is finding code errors in the early development of new t8code sections. You get more information and guidelines about the implementation of GoogleTests at [GoogleTest User’s Guide](https://google.github.io/googletest/).
 
 ## Guidelines
 A test should only check one property of the code. A common test is the [Parameterized Test](https://google.github.io/googletest/advanced.html#value-parameterized-tests). These tests allow you to test code sections over a range of variables. In our case, this is the go-to when testing element-functions for all available elements in a scheme. 
