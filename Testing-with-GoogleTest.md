@@ -36,5 +36,18 @@ ASSERT_TRUE(t8_cmesh_is_commited(cmesh)) << "Cmesh commit failed.";
 ASSERT_EQ(dual_face, checkface) << “Wrong dual face. Expected “ << checkface << “ got ” << dual_face;
 ```
 
+## MPI extensions of Google Test
 
+Since t8code is designed as an MPI parallel library, the tests are executed in parallel as well.
 
+However, the original GoogleTest is not designed for MPI parallel use. Hence, we use the [MPI extension](https://github.com/DLR-SC/googletest_mpi/tree/feature/mpi_nonblocking_expect-1.10.0/).
+
+This extension communicates the test result automatically among all processes in `MPI_COMM_WORLD`.
+Hence, if the test fails on one process it fails on all processes. This ensures that the failure is definitely reported.
+
+Additionally, the extension introduces the new `EXPECT_*_MPI` and `ASSERT_*_MPI` macros. These are MPI collective variants of `EXPECT_*` and `ASSERT_*. Thus, if the specific check fails on one process, then it fails on all processes.
+
+**Whenever you need to ASSERT something and carry out parallel communication afterwards, you must use one of the ASSERT_*_MPI macros.**
+**Otherwise, the test could run in a deadlock.**
+
+For more information, see https://github.com/DLR-SC/googletest_mpi/blob/feature/mpi_nonblocking_expect-1.10.0/googletest/docs/MPIGuide.md
