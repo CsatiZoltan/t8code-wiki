@@ -51,11 +51,11 @@ NPROCS=$((NODES*PPN))
 
 # The executable to run.
 # Edit this path to match your installation.
-EXEC=/path/to/your/t8code/example/basic/t8_basic
+EXEC=/path/to/your/t8code/tutorials/general/t8_step0_helloworld
 
 # Arguments to pass to the program.
-# In this case we want to build a 3 dimensional forest.
-ARGS="-d3"
+# In this case, no arguments are passed.
+ARGS=""
 
 # Logging
 echo -------------------
