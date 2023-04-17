@@ -5,17 +5,17 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Update the CITATION file
 
-- - [ ] version number
+  - [ ] version number
 
-- - [ ] release date
+  - [ ] release date
 
 - [ ] Update the version number
 
-- - [ ] Edit major and minor version in the t8code version test files
+  - [ ] Edit major and minor version in the t8code version test files
 
-- - [ ] Make a new git tag vX.Y.Z with `git tag -a `
+  - [ ] Make a new git tag vX.Y.Z with `git tag -a `
 
-- - [ ] Push the git tag
+  - [ ] Push the git tag
 
 - [ ] Ensure that these changes are in the main branch
 
