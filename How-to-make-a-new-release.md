@@ -21,6 +21,20 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Go to the main github page of the repo and click "draft a new release"
 
+- [ ] Write a short release note of all the (important) changes.
+
+- [ ] Add the github generated release notes afterwards.
+
+- [ ] Update the tarball
+
+  - [ ] Checkout the new release in your local repository
+
+  - [ ] Build it with `make dist`
+
+  - [ ] Check that the tarball was build correctly
+
+  - [ ] Upload the tarball to the github release
+
 - [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
 
 - [ ] If desired, post an update article on the homepage (Definitely do this for major releases)
