@@ -26,4 +26,4 @@ See the discussion in a closed PR https://github.com/holke/t8code/pull/257 and t
 
 ## Compiling with OpenMPI
 
-In some cases, t8code will not compile with OpenMPI and will throw linker errors regarding MPI functionality. If that happens try using `mpiCC` or `mpic++` instead of `mpicc` and `mpicxx`.
+In some cases, t8code will not compile with OpenMPI and will throw linker errors regarding MPI functionality. If that happens, try using `mpiCC` or `mpic++` instead of `mpicc` and `mpicxx`.
