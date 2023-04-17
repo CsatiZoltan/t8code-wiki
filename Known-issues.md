@@ -23,3 +23,7 @@ This particularly concerns Ubuntu 22.04 and beyond.
 
 The behavior is caused by a bug in autotools regarding the AC_CHECK_LIBRARY macro that causes an error message in the C++ compiler (which previously was only a warning).
 See the discussion in a closed PR https://github.com/holke/t8code/pull/257 and the autotools discussion https://www.mail-archive.com/bug-autoconf@gnu.org/msg04294.html
+
+## Compiling with OpenMPI
+
+In some cases, t8code will not compile with OpenMPI and will throw linker errors regarding MPI functionality. If that happens try using `mpiCC` or `mpic++` instead of `mpicc` and `mpicpp`.
