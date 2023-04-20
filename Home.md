@@ -2,7 +2,7 @@ Welcome to the t8code wiki! Here you will find additional information about t8co
 
 If this is your first time using t8code, please see the [Installation instructions](https://github.com/holke/t8code/wiki/Installation).
 
-A good starting point to learn about t8code are the [tutorials.](https://github.com/holke/t8code/wiki/Tutorial---Overview)
+A good starting point to learn about t8code are the [tutorials](https://github.com/holke/t8code/wiki/Tutorial---Overview) and [the version 1.0 overview paper](https://elib.dlr.de/194377/1/t8code_overview_IMR2023.pdf).
 
 See [this overview](https://github.com/DLR-AMR/t8code/wiki/The-most-important-API-functions) for a list of the most important API functions.
 
