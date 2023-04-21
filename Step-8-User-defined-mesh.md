@@ -145,7 +145,7 @@ The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad i
               t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
 
 Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
-| ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
+| ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
 |---------------| ----------- |---------------| ----------- |
 | 0 | 1 | 2 | 1 |
 | 0 | 2 | 0 | 0 |
