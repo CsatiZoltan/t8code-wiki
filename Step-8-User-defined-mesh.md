@@ -127,6 +127,22 @@ In this step all connections (face neighboors) between the different trees are s
 The last step of creating a user defined mesh is commiting the mesh using `t8_cmesh_commit`.
 
 ## 2D Example
+In this two dimensional example four triangles and two quads are used. The vertices of the triangles have the following coordinate:
+
+| tree | vertices |
+|---------------| ----------- |
+| triangle 1 | {(0, 0, 0), (0.5, 0, 0), (0.5, 0.5, 0)} |
+| triangle 2 | {(0, 0, 0), (0.5, 0.5, 0), (0, 0.5, 0)} |
+| triangle 3 | {(0.5, 0.5, 0), (1, 0.5, 0), (1, 1, 0)} |
+| triangle 4 | {(0.5, 0.5, 0), (1, 1, 0), (0.5, 1, 0)} |
+| quad 1 | {(0.5, 0, 0), (1, 0, 0), (0.5, 0.5, 0), (1, 0.5, 0)} |
+| quad 2 | {(0, 0.5, 0), (0.5, 0.5, 0), (0, 1, 0), (0.5, 1, 0)} |
+
+The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad is `T8_ECLASS_QUAD`:
+
+              // definition of the tree classes
+              t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_TRIANGLE);
+              t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
 
 Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
 | ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
@@ -154,6 +170,7 @@ As this cmesh has periodic boundaries, there are also the connections
 | 2 | 5 | 2 | 0 |
 | 3 | 4 | 0 | 0 |
 
+              // definition of the face neighboors for the periodic boundaries
               t8_cmesh_set_join (cmesh, 0, 3, 2, 3, 0); 
               t8_cmesh_set_join (cmesh, 1, 2, 1, 1, 0);
               t8_cmesh_set_join (cmesh, 2, 5, 2, 0, 1);
