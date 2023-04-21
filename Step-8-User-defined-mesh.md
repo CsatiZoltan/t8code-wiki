@@ -6,10 +6,8 @@ You will find the code to this example in the `tutorials/general/step8*` files a
 
 In the last tutorials we learned how to create a forest, adapt it, and how to store data. We also learned about algorithms for partitioning, balancing and creating a ghost layer. In all these previous tutorials predefined meshes were used. In this tutorial we learn how to define a user defined mesh in two- and three dimensions. In both examples we define and use different tree classes and join the different trees to create the domain. In order to be able to reflect the results, the meshes are stored in `.vtu` files.
 
-## Different tree classes
-
 ## Steps of how to define a mesh
-### 1. Defining an array with all vertices
+### 1. Definition of all vertices
 In a first step an array with all is defined. Independent of the fact if a mesh is defined two- or three dimensional, each point is defined by three coordinates. The vertices are ordered in a listing of points for each cell. Thus, there can be duplicates in the list.
 
              double vertices[numberOfValues] = {
@@ -44,16 +42,89 @@ In a first step an array with all is defined. Independent of the fact if a mesh 
               };
    
 ### 2. Initialization of the mesh
+Before creating a mesh, it has, of course, to be initialized using `t8_cmesh_init`.
    
 ### 3. Definition of the geometry
+A cmesh can have different types of geometry which are set using the function `t8_cmesh_register_geometry`. The use of curved meshes is described in the tutorial [Feature   Curved meshes](https://github.com/DLR-AMR/t8code/wiki/Feature---Curved-meshes). In this tutorial we will use meshes with a linear geometry.
   
 ### 4. Definition of the classes of the different trees
+
+`t8code` supports eight different basic tree shapes for the `cmesh`, see also `t8_eclass.h`:
+
+| element shape | description | Number of vertices |
+|---------------| ----------- | ---------------------------|
+| T8_ECLASS_VERTEX | 0D points | 1 |
+| T8_ECLASS_LINE | 1D lines | 2 |
+| T8_ECLASS_TRIANGLE | 2D triangles | 3 |
+| T8_ECLASS_QUAD | 2D quadrilaterals | 4 |
+| T8_ECLASS_TET | 3D tetrahedra | 4 |
+| T8_ECLASS_PYRAMID | 3D pyramids | 5 |
+| T8_ECLASS_PRISM | 3D prisms | 6 |
+| T8_ECLASS_HEX | 3D hexahedra | 8 |
+
+Using the function `t8_cmesh_set_tree_class` the tree class of each tree is set.
+
+| Parameter | Description |
+|---------------| ----------- |
+| cmesh | The cmesh to be updated. |
+| tree_id | The global number of the tree. |
+| tree_class | The element class of this tree. |
+
+Definition of the classes of the different trees - each tree is defined by one cell
+
+              //Class of the first tree
+              t8_cmesh_set_tree_class (cmesh, 0, T8_ECLASS_[TYPE]);
+              //Class of the second tree
+              t8_cmesh_set_tree_class (cmesh, 1, T8_ECLASS_[TYPE]);
+                    .
+                    .
+                    .
+              //Class of the last tree
+              t8_cmesh_set_tree_class (cmesh, x, T8_ECLASS_[TYPE]);
   
 ### 5. Classification of the vertices for each tree
+Each tree must be assigned its vertices. This is done using `t8_cmesh_set_tree_vertices`.
+It is not allowed to call this function after `t8_cmesh_commit`. The eclass of the tree has to be set before calling this function.
+
+| Parameter | Description |
+|---------------| ----------- |
+| cmesh | The cmesh to be updated. |
+| tree_id | The global number of the tree. |
+| *vertices | Information of all vertices of the tree |
+| num_vertices | Number of the vertices (related to the tree_class) |
+
+              // Vertices of the first tree
+              t8_cmesh_set_tree_vertices (cmesh, 0, [pointerToVerticesOfTreeOne], [numberOfVerticesTreeOne]);
+              // Vertices of the second tree
+              t8_cmesh_set_tree_vertices (cmesh, 1, [pointerToVerticesOfTreeTwo] , [numberOfVerticesTreeTwo]);
+                    .
+                    .
+                    .
+              // Vertices of the last tree
+              t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
   
 ### 6. Definition of the face neighboors between the different trees
+In this step all connections (face neighboors) between the different trees are set using `t8_cmesh_set_join`.
+
+| Parameter | Description |
+|---------------| ----------- |
+| cmesh | The cmesh to be updated. |
+| tree1 | The tree id of the first of the two trees. |
+| tree2 | The tree id of the second of the two trees. |
+| face1 | The face number of the first tree. |
+| face2 | The face number of the second tree. |
+| orientation | Specify how face1 and face2 are oriented to each other |
+
+              // List of all face neighboor connections
+              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+                    .
+                    .
+                    .
+              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
    
 ### 7. Commit the mesh
+The last step of creating a user defined mesh is commiting the mesh using `t8_cmesh_commit`.
 
 ## 2D Example
 
