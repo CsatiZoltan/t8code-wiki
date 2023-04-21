@@ -128,5 +128,36 @@ The last step of creating a user defined mesh is commiting the mesh using `t8_cm
 
 ## 2D Example
 
+Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
+| ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
+|---------------| ----------- |---------------| ----------- |
+| 0 | 1 | 2 | 1 |
+| 0 | 2 | 0 | 0 |
+| 1 | 3 | 0 | 2 |
+| 2 | 4 | 3 | 2 |
+| 3 | 5 | 1 | 1 |
+| 4 | 5 | 1 | 2 |
+
+              // definition of the face neighboors
+              t8_cmesh_set_join (cmesh, 0, 1, 1, 2, 0);
+              t8_cmesh_set_join (cmesh, 0, 2, 0, 0, 0);
+              t8_cmesh_set_join (cmesh, 1, 3, 0, 2, 1); 
+              t8_cmesh_set_join (cmesh, 2, 4, 3, 2, 0);
+              t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
+              t8_cmesh_set_join (cmesh, 4, 5, 1, 2, 0);
+
+As this cmesh has periodic boundaries, there are also the connections
+| ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
+|---------------| ----------- |---------------| ----------- |
+| 0 | 3 | 2 | 3 |
+| 1 | 2 | 1 | 1 |
+| 2 | 5 | 2 | 0 |
+| 3 | 4 | 0 | 0 |
+
+              t8_cmesh_set_join (cmesh, 0, 3, 2, 3, 0); 
+              t8_cmesh_set_join (cmesh, 1, 2, 1, 1, 0);
+              t8_cmesh_set_join (cmesh, 2, 5, 2, 0, 1);
+              t8_cmesh_set_join (cmesh, 3, 4, 0, 0, 0);
+
 ## 3D Example
   
