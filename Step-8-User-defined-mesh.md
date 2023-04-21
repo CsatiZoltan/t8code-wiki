@@ -10,6 +10,38 @@ In the last tutorials we learned how to create a forest, adapt it, and how to st
 
 ## Steps of how to define a mesh
 ### 1. Defining an array with all vertices
+In a first step an array with all is defined. Independent of the fact if a mesh is defined two- or three dimensional, each point is defined by three coordinates. The vertices are ordered in a listing of points for each cell. Thus, there can be duplicates in the list.
+
+             double vertices[numberOfValues] = {
+
+                //point values for tree 1
+                x_1,y_1,z_1         //(x,y,z) of first point of tree 1
+                x_2,y_2,z_2         //(x,y,z) of second point of tree 1
+                    .
+                    .
+                    .
+                x_n,y_n,z_n         //(x,y,z) of nth point (last point) of tree 1
+
+                //point values for tree 2
+                x_1,y_1,z_1         //(x,y,z) of first point of tree 2
+                x_2,y_2,z_2         //(x,y,z) of second point of tree 2
+                    .
+                    .
+                    .
+                x_m,y_m,z_m         //(x,y,z) of nth point (last point) of tree 2
+
+                    .
+                    .
+                    .
+
+                //point values for the last tree
+                x_1,y_1,z_1         //(x,y,z) of first point of the last tree
+                x_2,y_2,z_2         //(x,y,z) of second point of the last tree
+                    .
+                    .
+                    .
+                x_o,y_o,z_o         //(x,y,z) of nth point (last point) of the last tree
+              };
    
 ### 2. Initialization of the mesh
    
