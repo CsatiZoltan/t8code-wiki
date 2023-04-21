@@ -83,6 +83,10 @@ Definition of the classes of the different trees - each tree is defined by one c
               t8_cmesh_set_tree_class (cmesh, x, T8_ECLASS_[TYPE]);
   
 ### 5. Classification of the vertices for each tree
+Vertex IDs for the two two-dimensional trees:
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_Vertex_Id.png" height="400">
+</p>
 Each tree must be assigned its vertices. This is done using `t8_cmesh_set_tree_vertices`.
 It is not allowed to call this function after `t8_cmesh_commit`. The eclass of the tree has to be set before calling this function.
 
@@ -104,6 +108,10 @@ It is not allowed to call this function after `t8_cmesh_commit`. The eclass of t
               t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
   
 ### 6. Definition of the face neighboors between the different trees
+Edge IDs for the two two-dimensional trees corresponding of the above vertex IDs:
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_Edge_Id.png" height="400">
+</p>
 In this step all connections (face neighboors) between the different trees are set using `t8_cmesh_set_join`.
 
 | Parameter | Description |
@@ -127,7 +135,11 @@ In this step all connections (face neighboors) between the different trees are s
 The last step of creating a user defined mesh is commiting the mesh using `t8_cmesh_commit`.
 
 ## 2D Example
-In this two dimensional example four triangles and two quads are used. The vertices of the triangles have the following coordinate:
+In this two dimensional example four triangles and two quads are used. We will look at the following example. In the left you can see the vertex IDs and in the right the edge IDs of this two-dimensional example.
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_2D_Vertex_Edge_Id.PNG" height="400">
+</p> 
+The vertices of the triangles have the following coordinate:
 
 | tree | vertices |
 |---------------| ----------- |
@@ -177,4 +189,7 @@ As this cmesh has periodic boundaries, there are also the connections
               t8_cmesh_set_join (cmesh, 3, 4, 0, 0, 0);
 
 ## 3D Example
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3DMesh.PNG" height="400">
+</p>
   
