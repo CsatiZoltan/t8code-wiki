@@ -108,7 +108,7 @@ It is not allowed to call this function after `t8_cmesh_commit`. The eclass of t
               t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
   
 ### 6. Definition of the face neighboors between the different trees
-Edge IDs for the two two-dimensional trees corresponding of the above vertex IDs:
+Edge IDs for the two two-dimensional trees corresponding to the previous vertex IDs:
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_Edge_Id.png" height="400">
 </p>
