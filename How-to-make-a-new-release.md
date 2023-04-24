@@ -11,11 +11,15 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Update the version number
 
+  - [ ] Create a new branch `new_version_XYZ`
+
   - [ ] Edit major and minor version in the t8code version test files
 
-  - [ ] Make a new git tag vX.Y.Z with `git tag -a `
+  - [ ] Make a new git tag vX.Y.Z with `git tag -a vX.Y.Z` and add `This is version X.Y.Z of t8code` as description. 
 
   - [ ] Push the git tag
+
+  - [ ] Create a pull request for this branch and merge it into main.
 
 - [ ] Ensure that these changes are in the main branch and the tests pass.
 
