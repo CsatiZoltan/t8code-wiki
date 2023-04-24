@@ -122,6 +122,7 @@ In this step all connections (face neighboors) between the different trees are s
 | face1 | The face number of the first tree. |
 | face2 | The face number of the second tree. |
 | orientation | Specify how face1 and face2 are oriented to each other |
+
 Each face is either 0 or 1 oriented, depending on the order of its vertices. We say a face is 0 oriented, if its normal vector points inwards, 1 oriented otherwise.
 
               // List of all face neighboor connections
