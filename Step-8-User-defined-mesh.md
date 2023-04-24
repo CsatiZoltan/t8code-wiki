@@ -140,7 +140,7 @@ In this two dimensional example four triangles and two quads are used. We will l
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_2D_Vertex_Edge_Id.PNG" height="400">
 </p> 
-The vertices of the triangles have the following coordinate:
+The vertices of the trees have the following coordinate:
 
 | tree | vertices |
 |---------------| ----------- |
@@ -153,7 +153,7 @@ The vertices of the triangles have the following coordinate:
 
 The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad is `T8_ECLASS_QUAD`:
 
-              // definition of the tree classes
+              // definition of the tree classes (you need one classification for each tree)
               t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_TRIANGLE);
               t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
 
@@ -192,5 +192,40 @@ As this cmesh has periodic boundaries, there are also the connections
 ## 3D Example
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3DMesh.PNG" height="400">
-</p>
+</p>/
+
+In this three dimensional example one quad, . We will look at the following example. In the left you can see the vertex IDs and in the right the edge IDs of this two-dimensional example.
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Vertex_Edge_Id.PNG" height="400">
+</p> 
+The vertices of the trees have the following coordinate:
+
+| tree | vertices |
+|---------------| ----------- |
+| tetrahedron 1 | {(0.43, 0, 2), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)} |
+| tetrahedron 2 | {(2.29, 0, 2), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
+| prism 1 | {(0, 0, 0), (0.86, -0.5, 0), (0.86, 0.5, 0), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)} |
+| prism 2 | {(1.86, -0.5, 0), (2.72, 0, 0), (1.86, 0.5, 0), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
+| hexahedron | {(0.86, -0.5, 0), (1.86, -0.5, 0), (0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 1), (1.86, -0.5, 1),(0.86, 0.5, 1), (1.86, 0.5, 1)} |
+
+The tree class for the tetrahedra is `T8_ECLASS_TET`, this for the prisms is `T8_ECLASS_PRISM`, and this for the hexahedron is `T8_ECLASS_HEX`:
+
+              // definition of the tree classes (you need one classification for each tree)
+                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_TET);
+                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_PRISM);
+                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_HEX);
+
+As the mesh has no periodic boundaries, there are only direct neighbors. These are encoded by the face connections between the trees:
+| ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
+|---------------| ----------- |---------------| ----------- |
+| 0 | 2 | 0 | 4 |
+| 1 | 3 | 4 | 4 |
+| 2 | 4 | 0 | 0 |
+| 3 | 4 | 1 | 1 |
+
+              // definition of the face neighboors
+                t8_cmesh_set_join (cmesh, 0, 2, 0, 4, 0);
+                t8_cmesh_set_join (cmesh, 1, 3, 0, 4, 0);
+                t8_cmesh_set_join (cmesh, 2, 4, 0, 0, 0);
+                t8_cmesh_set_join (cmesh, 3, 4, 1, 1, 0);
   
