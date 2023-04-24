@@ -1,4 +1,4 @@
-# Step 8 - User defined mesh
+# User defined mesh
 
 In this tutorial we will learn how to create a user defined mesh.
 
