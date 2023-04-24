@@ -195,7 +195,7 @@ As this cmesh has periodic boundaries, there are also the connections
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3DMesh.PNG" height="400">
 </p>
 
-In this three dimensional example one quad, . We will look at the following example. In the left you can see the vertex IDs and in the right the edge IDs of this two-dimensional example.
+In this three dimensional example one quad, . We will look at the following example. In the left you can see the vertex IDs and in the right the edge IDs of this three-dimensional example.
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Vertex_Edge_Id.PNG" height="400">
 </p> 
