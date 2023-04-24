@@ -195,7 +195,7 @@ As this cmesh has periodic boundaries, there are also the connections
 In this three dimensional example two tetrahedra, two prisms, one pyramid, and one hexahedron is used. We will look at the following example. In the left you can see the order of the vertices and in the right the edge IDs.
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Mesh_Vertex_Id.PNG" height="400">
-<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Mesh_Face_Id.PNG" height="400">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Mesh_Face_Id.png" height="400">
 </p> 
 The vertices of the trees have the following coordinate:
 
