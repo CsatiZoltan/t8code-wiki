@@ -17,7 +17,7 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
   - [ ] Push the git tag
 
-- [ ] Ensure that these changes are in the main branch
+- [ ] Ensure that these changes are in the main branch and the tests pass.
 
 - [ ] Go to the main github page of the repo and click "draft a new release"
 
