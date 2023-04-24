@@ -143,7 +143,7 @@ In this two dimensional example four triangles and two quads are used. We will l
 The vertices of the trees have the following coordinate:
 
 | tree | vertices |
-|---------------| ----------- |
+|-------------------| ----------- |
 | triangle 1 | {(0, 0, 0), (0.5, 0, 0), (0.5, 0.5, 0)} |
 | triangle 2 | {(0, 0, 0), (0.5, 0.5, 0), (0, 0.5, 0)} |
 | triangle 3 | {(0.5, 0.5, 0), (1, 0.5, 0), (1, 1, 0)} |
@@ -192,7 +192,7 @@ As this cmesh has periodic boundaries, there are also the connections
 ## 3D Example
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3DMesh.PNG" height="400">
-</p>/
+</p>
 
 In this three dimensional example one quad, . We will look at the following example. In the left you can see the vertex IDs and in the right the edge IDs of this two-dimensional example.
 <p align="center">
