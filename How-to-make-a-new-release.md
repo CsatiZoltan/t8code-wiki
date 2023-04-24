@@ -41,6 +41,6 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
 
-- [ ] If desired, post an update article on the homepage (Definitely do this for major releases)
+- [ ] Post an update article on the homepage
 
 - [ ] ??? (add new steps, for example homepage texts)
