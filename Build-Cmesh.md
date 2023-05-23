@@ -2,7 +2,7 @@
 
 In this tutorial we will learn how to create a user defined mesh.
 
-You will find the code to this example in the `tutorials/general/step8*` files and it creates the executables `tutorials/general/t8_step8_user_defined_mesh`.
+You will find the code to this example in the `tutorials/general/t8_tutorial_build_cmesh*` files and it creates the executables `tutorials/general/t8_tutorial_build_cmesh`.
 
 In the last tutorials we learned how to create a forest, adapt it, and how to store data. We also learned about algorithms for partitioning, balancing and creating a ghost layer. In all these previous tutorials predefined meshes were used. In this tutorial we learn how to define a user defined mesh in two- and three dimensions. In both examples we define and use different tree classes and join the different trees to create the domain. In order to be able to reflect the results, the meshes are stored in `.vtu` files.
 
