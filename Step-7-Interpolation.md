@@ -29,10 +29,10 @@ The data elements are stored in a sc_array. The data array is independent of the
          }
        }
 
-now actual adaption and interpolation
+## Interpolation
+Now we can start to adapt the forest with corresponding cell data elements. Therefore, we have to execute two steps. In a first step build a second forest to store the adapted forest `adapt_forest` and keep the old forest `forest`. 
 
-
-As in ([Step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data)) the refinement criterion will be a geometrical one. We will refine elements if they are within a radius of 0.2 of the point (0.5, 0.5, 1) and we will coarsen elements if they are outside a radius of 0.4.
+As in ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) the refinement criterion will be a geometrical one. We will refine elements if they are within a radius of 0.2 of the point (0.5, 0.5, 1) and we will coarsen elements if they are outside a radius of 0.4.
 
     interpolation - forest_replace 
                     alter forest, neuer forest - -1,1,0
