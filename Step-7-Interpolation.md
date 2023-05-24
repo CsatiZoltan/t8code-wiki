@@ -34,8 +34,25 @@ Now we can start to adapt the forest with corresponding cell data elements. Ther
 
 As in ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) the refinement criterion will be a geometrical one. We will refine elements if they are within a radius of 0.2 of the point (0.5, 0.5, 1) and we will coarsen elements if they are outside a radius of 0.4.
 
-    interpolation - forest_replace 
-                    alter forest, neuer forest - -1,1,0
-                    Verfeinern - Daten aus grobem Gitter aufs feine Gitter
-                    Vergröbern - Mittelwert der Einzelnen Zellwerte
-                    0 - Wert übernehmen
+Now the actual interpolation can start. Therefore, for each cell of the old forest it is 
+Therefore two forest are given. In one forest are the elements are either direct children or parents of the elements in the other forest. These two forests are compared for each refined element or coarsened family in the old forest, call a callback function providing the local indices of the old and new elements.
+This is done using `t8_forest_iterate_replace`:
+
+ * \param [in]  forest_new  A forest, each element is a parent or child of an element in \a forest_old.
+ * \param [in]  forest_old  The initial forest.
+ * \param [in]  replace_fn  A replace callback function.
+ * \note To pass a user pointer to \a replace_fn use \ref t8_forest_set_user_data
+ * and \ref t8_forest_get_user_data.
+ */
+     void                t8_forest_iterate_replace (t8_forest_t forest_new,
+                                                    t8_forest_t forest_old,
+                                                    t8_forest_replace_t
+                                                    replace_fn);
+
+| Parameter | Description |
+|-|-|
+| forest_new | The new (adapted) forest  |
+| forest_old | The old (not adapted) forest |
+| replace_fn | function to define how to replace the cell elements |
+
+To call this function it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the function `t8_forest_replace` is defined.
