@@ -4,6 +4,7 @@ In this example we describe how to interpolate the data on a forest.
 
 You will find the code to this example in the tutorials/general/t8_step7* files and it creates the executable tutorials/general/t8_step7_interpolation.
 
+## Create a forest with corresponding cell data
 As in the previous examples ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) we will use a cube geometry for our coarse mesh. In this example we use a forest consisting of one tree.
 The forest is adapted uniformly in a first step.
 
