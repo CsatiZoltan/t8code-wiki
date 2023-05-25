@@ -50,4 +50,52 @@ This is done using `t8_forest_iterate_replace`:
 | forest_old | The old (not adapted) forest |
 | replace_fn | function to define how to replace the cell elements |
 
-To call this function, it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the function `t8_forest_replace` is defined.
+To call this function, it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the function `t8_forest_replace` is defined. Outgoing are the old elements and incoming the new ones.
+
+     void
+     t8_forest_replace (t8_forest_t forest_old,
+                        t8_forest_t forest_new,
+                        t8_locidx_t which_tree,
+                        t8_eclass_scheme_c *ts,
+                        int refine,
+                        int num_outgoing,
+                        t8_locidx_t first_outgoing,
+                        int num_incoming, t8_locidx_t first_incoming)
+
+| Parameter | Description |
+|-|-|
+| forest_old | The old (not adapted) forest |
+| forest_new | The new (adapted) forest  |
+| which_tree | tree_id of the analyzed element |
+| ts | eclass sheme  |
+| refine | ==0 - do nothing, == -1 - coarsen, == 1 - refine |
+| num_outgoing | number of the elements not refined forest |
+| first_outgoing | eclass sheme  |
+| num_ingoing | number of the elements corresponding to the element of the not refined forest |
+| first_incoming | index of the new element |
+
+In this example we use the following criteria:
+If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children.
+
+     /* Do not adapt or coarsen */
+       if (refine == 0) {
+         adapt_data_new->element_data[first_incoming] =
+           adapt_data_old->element_data[first_outgoing];
+       }
+       /* The old element is refined, we copy the element values */
+       else if (refine == 1) {
+         for (int i = 0; i < num_incoming; i++) {
+           adapt_data_new->element_data[first_incoming + i] =
+             adapt_data_old->element_data[first_outgoing];
+         }
+       }
+       /* Old element is coarsened */
+       else if (refine == -1) {
+         adapt_data_new->element_data[first_incoming].values = 0;
+         for (t8_locidx_t i = 0; i < num_outgoing; i++) {
+           adapt_data_old->element_data[first_outgoing + i].values;
+           adapt_data_new->element_data[first_incoming].values +=
+             adapt_data_old->element_data[first_outgoing + i].values;
+         }
+         adapt_data_new->element_data[first_incoming].values /= num_outgoing;
+       }
