@@ -30,6 +30,10 @@ The data elements are stored in a sc_array. The data array is independent of the
          }
        }
 
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_uniform.PNG" height="400">
+</p>
+
 ## Interpolation
 Now we can start to adapt the forest with corresponding cell data elements. Therefore, we have to execute two steps. In a first step build a second forest to store the adapted forest `adapt_forest` and keep the old forest `forest`. 
 
@@ -99,3 +103,7 @@ If an element is refined, each child gets the value of its parent. If elements a
          }
          adapt_data_new->element_data[first_incoming].values /= num_outgoing;
        }
+
+<p align="center">
+<img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_adapted.PNG" height="400">
+</p>
