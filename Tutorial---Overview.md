@@ -26,6 +26,9 @@ How to gather data of the local elements, exchange it and output it to a `.vtu` 
  - [Step 6   Computing stencils](https://github.com/DLR-AMR/t8code/wiki/Step-6-Computing-stencils) - 
 How to gather data from element's face neighbors and collect stencils in, e.g., finite difference computations. 
 
+ - [Build cmesh](https://github.com/DLR-AMR/t8code/wiki/Build-Cmesh) - 
+A tutorial of how to create a cmesh in 2D and in 3D.
+
  - [Search algorithm](https://github.com/holke/t8code/wiki/Tutorial:-Search) - 
 A tutorial for the hierarchical search to identify elements matching a user defined criterion.
 
