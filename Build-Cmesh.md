@@ -1,4 +1,4 @@
-# Build Cmesh
+1. # Build Cmesh
 
 In this tutorial we will learn how to create a user defined mesh.
 
@@ -205,7 +205,7 @@ The vertices of the trees have the following coordinate:
 | tetrahedron 2 | {(2.29, 0, 2), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
 | prism 1 | {(0, 0, 0), (0.86, -0.5, 0), (0.86, 0.5, 0), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)} |
 | prism 2 | {(1.86, -0.5, 0), (2.72, 0, 0), (1.86, 0.5, 0), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
-| pyramid | {(0.86, -0.5, 0), (1.86, -0.5, 0), (0.86, 0.5, 0), (1.86, 0.5, 0), (1.29, 0, 0)} |
+| pyramid | {(0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 0), (1.86, -0.5, 0), (1.36, 0, -0.5)} |
 | hexahedron | {(0.86, -0.5, 0), (1.86, -0.5, 0), (0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 1), (1.86, -0.5, 1),(0.86, 0.5, 1), (1.86, 0.5, 1)} |
 
 The tree class for the tetrahedra is `T8_ECLASS_TET`, this for the prisms is `T8_ECLASS_PRISM`, and this for the hexahedron is `T8_ECLASS_HEX`:
