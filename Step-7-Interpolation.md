@@ -4,6 +4,8 @@ In this example we describe how to interpolate the data on a forest.
 
 You will find the code to this example in the tutorials/general/t8_step7* files and it creates the executable tutorials/general/t8_step7_interpolation.
 
+In this example we create a forest with one forest. If you create a forest with more than one tree you may have to create ghost data for the communication. How to do this is described in ([Step 4](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)).
+
 ## Create a forest with corresponding cell data
 As in the previous examples ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) we will use a cube geometry for our coarse mesh. In this example we use a forest consisting of one tree.
 The forest is adapted uniformly in a first step.
@@ -12,21 +14,23 @@ We store the distance of each cell to the point (0.5, 0.5, 1) on the forest. In 
 It is important to mention again, that an array is created analogue to the forest elements sorted by the space filling curve. To store the distance we iterate over all trees in the forest and then over all elements of the local forest. 
 The data elements are stored in a sc_array. The data array is independent of the trees. Thus, the index has to be incremented for each element independent of the tree.
 
-       const t8_locidx_t numTrees = t8_forest_get_num_local_trees (forest);
-
-       for (int itree = 0, int ielem = 0; itree < numTrees; itree++) {
-         const t8_locidx_t numElem = t8_forest_get_tree_num_elements (forest, itree);
-
+       for (itree = 0, ielem = 0; itree < numTrees; itree++) {
+         const t8_locidx_t   numElem =
+           t8_forest_get_tree_num_elements (forest, itree);
          /* Inner loop: Iteration over the elements of the local tree */
+
          for (t8_locidx_t ielemTree = 0; ielemTree < numElem; ielemTree++, ielem++) {
            /* To calculate the distance to the centroid of an element the element is saved */
-           const t8_element_t *element = t8_forest_get_element_in_tree (forest, itree, ielemTree);
+           const t8_element_t *element =
+             t8_forest_get_element_in_tree (forest, itree, ielemTree);
 
            /* Get the centroid of the local element. */
            t8_forest_element_centroid (forest, 0, element, centroid);
 
            /* Calculation of the distance to the centroid for the referenced element */
-           data[ielem].values = t8_vec_dist (centroid, midpoint);
+           elem_data->values = t8_vec_dist (centroid, midpoint);
+
+           t8_element_set_element (data, ielem, *elem_data);
          }
        }
 
@@ -82,28 +86,33 @@ In this example we use the following criteria:
 If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children.
 
      /* Do not adapt or coarsen */
-       if (refine == 0) {
-         adapt_data_new->element_data[first_incoming] =
-           adapt_data_old->element_data[first_outgoing];
-       }
-       /* The old element is refined, we copy the element values */
-       else if (refine == 1) {
+     if (refine == 0) {
+         t8_element_set_element (adapt_data_new, first_incoming,
+                                 t8_element_get_value (adapt_data_old,
+                                                       first_outgoing));
+     }
+     /* The old element is refined, we copy the element values */
+     else if (refine == 1) {
          for (int i = 0; i < num_incoming; i++) {
-           adapt_data_new->element_data[first_incoming + i] =
-             adapt_data_old->element_data[first_outgoing];
+           t8_element_set_element (adapt_data_new, first_incoming + i,
+                                   t8_element_get_value (adapt_data_old,
+                                                         first_outgoing));
          }
-       }
-       /* Old element is coarsened */
-       else if (refine == -1) {
-         adapt_data_new->element_data[first_incoming].values = 0;
+     }
+     /* Old element is coarsened */
+     else if (refine == -1) {
+         double              tmpValue = 0;
          for (t8_locidx_t i = 0; i < num_outgoing; i++) {
-           adapt_data_old->element_data[first_outgoing + i].values;
-           adapt_data_new->element_data[first_incoming].values +=
-             adapt_data_old->element_data[first_outgoing + i].values;
+           tmpValue +=
+             t8_element_get_value (adapt_data_old, first_outgoing + i).values;
          }
-         adapt_data_new->element_data[first_incoming].values /= num_outgoing;
-       }
+         t8_element_set_value (adapt_data_new, first_incoming,
+                               tmpValue / num_outgoing);
+     }
+     t8_forest_set_user_data (forest_new, adapt_data_new);
 
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_adapted.PNG" height="400">
 </p>
+
+After this interpolation step, we can set the adapted forest as forest and keep on working with this forest (for example by calculating a next time step).
