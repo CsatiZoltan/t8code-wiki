@@ -20,6 +20,9 @@
  >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)  
  >>> [Step 5   Store element data](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data)  
  >>> [Step 6   Computing stencils](https://github.com/DLR-AMR/t8code/wiki/Step-6-Computing-stencils)  
+ >>> [Step 7   Interpolation](https://github.com/DLR-AMR/t8code/wiki/Step-7-Interpolation)  
+
+ >>> [Build cmesh](https://github.com/DLR-AMR/t8code/wiki/Build-Cmesh)  
  >>> [Search algorithm](https://github.com/DLR-AMR/t8code/wiki/Tutorial:-Search)  
  >>
  >> Features  
