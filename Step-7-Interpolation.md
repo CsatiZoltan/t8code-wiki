@@ -39,13 +39,13 @@ The data elements are stored in a `sc_array`. The data array is independent of t
 </p>
 
 ## Interpolation
-Now we can start to adapt the forest with corresponding cell data elements. Therefore, we have to execute two steps. In a first step build a second forest to store the adapted forest `adapt_forest` and keep the old forest `forest`. 
+Now we can start to adapt the forest with corresponding cell data elements. Therefore, we have to execute two steps. In a first step build a second forest to store the adapted forest `forest_new` and keep the old forest `forest_old`. 
 
 As in ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) the refinement criterion will be a geometrical one. We will refine elements if they are within a radius of 0.2 of the point (0.5, 0.5, 1) and we will coarsen elements if they are outside a radius of 0.4.
 
-Note, that if we want to interpolate the data, a non-recursive adaptation of the forest is restricted. Hence, all elements in the new forest `adapt_forest` result from an element in `forest` by either refining once, coarsening once, or keeping the element as it is. Thus, the difference in level is at most 1.
+Note, that if we want to interpolate the data, a non-recursive adaptation of the forest is restricted. Hence, all elements in the new forest `forest_new` result from an element in `forest_old` by either refining once, coarsening once, or keeping the element as it is. Thus, the difference in level is at most 1.
 
-With the two forests given, the interpolation of the data actual interpolation can start. These two forests are compared element wise and in each comparison a callback function is called. This callback function providing the local indices of the old and new elements as well as the refinement (if the new element is the child, parent or the the same).
+With the two forests given, the interpolation of the data can start. These two forests are compared element wise and in each comparison a callback function is called. This callback function providing the local indices of the old and new elements as well as the refinement (if the new element is the child, parent or the the same).
 This is done using `t8_forest_iterate_replace`:
 ```C++
      void                t8_forest_iterate_replace (t8_forest_t forest_new,
@@ -118,4 +118,4 @@ If an element is refined, each child gets the value of its parent. If elements a
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_adapted.PNG" height="400">
 </p>
 
-After this interpolation step, we can set the adapted forest `adapt_forest` as `forest` and keep on working with this forest (for example by calculating a next time step).
+After this interpolation step, we can set the adapted forest `forest_new` as `forest` and keep on working with this forest (for example by calculating a next time step).
