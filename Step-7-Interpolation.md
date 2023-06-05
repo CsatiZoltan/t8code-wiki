@@ -19,7 +19,7 @@ The data elements are stored in a `sc_array`. The data array is independent of t
            t8_forest_get_tree_num_elements (forest, itree);
          /* Inner loop: Iteration over the elements of the local tree */
 
-         for (t8_locidx_t ielem_tree = 0; ielemTree < num_elem; ielem_tree++, ielem++) {
+         for (t8_locidx_t ielem_tree = 0; ielem_tree < num_elem; ielem_tree++, ielem++) {
            /* To calculate the distance to the centroid of an element the element is saved */
            const t8_element_t *element =
              t8_forest_get_element_in_tree (forest, itree, ielem_tree);
