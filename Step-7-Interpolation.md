@@ -14,15 +14,15 @@ We store the distance of each cell to the point (0.5, 0.5, 1) on the forest. In 
 It is important to mention again, that an array is created analogue to the forest elements sorted by the space filling curve. To store the distance we iterate over all trees in the forest and then over all elements of each local tree in the local forest. 
 The data elements are stored in a `sc_array`. The data array is independent of the trees. Thus, the index has to be incremented for each element independent of the tree.
 ```C++
-       for (itree = 0, ielem = 0; itree < numTrees; itree++) {
-         const t8_locidx_t   numElem =
+       for (itree = 0, ielem = 0; itree < num_trees; itree++) {
+         const t8_locidx_t   num_elem =
            t8_forest_get_tree_num_elements (forest, itree);
          /* Inner loop: Iteration over the elements of the local tree */
 
-         for (t8_locidx_t ielemTree = 0; ielemTree < numElem; ielemTree++, ielem++) {
+         for (t8_locidx_t ielem_tree = 0; ielemTree < num_elem; ielem_tree++, ielem++) {
            /* To calculate the distance to the centroid of an element the element is saved */
            const t8_element_t *element =
-             t8_forest_get_element_in_tree (forest, itree, ielemTree);
+             t8_forest_get_element_in_tree (forest, itree, ielem_tree);
 
            /* Get the centroid of the local element. */
            t8_forest_element_centroid (forest, itree, element, centroid);
