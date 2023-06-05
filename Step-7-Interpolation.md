@@ -2,18 +2,18 @@ When a forest with corresponding cell-data is adapted, the data has to be interp
 
 In this example we describe how to interpolate the data on a forest.
 
-You will find the code to this example in the tutorials/general/t8_step7* files and it creates the executable tutorials/general/t8_step7_interpolation.
+You will find the code to this example in the `tutorials/general/t8_step7*` files and it creates the executable `tutorials/general/t8_step7_interpolation`.
 
-In this example we create a forest with one forest. If you create a forest with more than one tree you may have to create ghost data for the communication. How to do this is described in ([Step 4](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)).
+In this example we create a forest with one tree. If you create a forest with more than one tree you may have to create ghost data for the communication. How to do this is described in ([Step 4](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)).
 
 ## Create a forest with corresponding cell data
 As in the previous examples ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) we will use a cube geometry for our coarse mesh. In this example we use a forest consisting of one tree.
 The forest is adapted uniformly in a first step.
 
 We store the distance of each cell to the point (0.5, 0.5, 1) on the forest. In ([Step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data)) it is described how to store data on a forest.
-It is important to mention again, that an array is created analogue to the forest elements sorted by the space filling curve. To store the distance we iterate over all trees in the forest and then over all elements of the local forest. 
-The data elements are stored in a sc_array. The data array is independent of the trees. Thus, the index has to be incremented for each element independent of the tree.
-
+It is important to mention again, that an array is created analogue to the forest elements sorted by the space filling curve. To store the distance we iterate over all trees in the forest and then over all elements of each local tree in the local forest. 
+The data elements are stored in a `sc_array`. The data array is independent of the trees. Thus, the index has to be incremented for each element independent of the tree.
+```C++
        for (itree = 0, ielem = 0; itree < numTrees; itree++) {
          const t8_locidx_t   numElem =
            t8_forest_get_tree_num_elements (forest, itree);
@@ -33,7 +33,7 @@ The data elements are stored in a sc_array. The data array is independent of the
            t8_element_set_element (data, ielem, *elem_data);
          }
        }
-
+```
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_uniform.PNG" height="400">
 </p>
@@ -43,14 +43,15 @@ Now we can start to adapt the forest with corresponding cell data elements. Ther
 
 As in ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-forest)) the refinement criterion will be a geometrical one. We will refine elements if they are within a radius of 0.2 of the point (0.5, 0.5, 1) and we will coarsen elements if they are outside a radius of 0.4.
 
-Now the actual interpolation can start. Therefore, for each cell of the old forest it is 
-Therefore, two forest are given. In one forest the elements are either direct children or parents of the elements in the other forest. These two forests are compared for each refined element or coarsened family in the old forest. Call a callback function providing the local indices of the old and new elements.
-This is done using `t8_forest_iterate_replace`:
+Note, that if we want to interpolate the data, a non-recursive adaptation of the forest is restricted. Hence, all elements in the new forest `adapt_forest` result from an element in `forest` by either refining once, coarsening once, or keeping the element as it is. Thus, the difference in level is at most 1.
 
+With the two forests given, the interpolation of the data actual interpolation can start. These two forests are compared element wise and in each comparison a callback function is called. This callback function providing the local indices of the old and new elements as well as the refinement (if the new element is the child, parent or the the same).
+This is done using `t8_forest_iterate_replace`:
+```C++
      void                t8_forest_iterate_replace (t8_forest_t forest_new,
                                                     t8_forest_t forest_old,
-                                                    t8_forest_replace_t
-                                                    replace_fn);
+                                                    t8_forest_replace_t replace_fn);
+```
 
 | Parameter | Description |
 |-|-|
@@ -58,8 +59,9 @@ This is done using `t8_forest_iterate_replace`:
 | forest_old | The old (not adapted) forest |
 | replace_fn | function to define how to replace the cell elements |
 
-To call this function, it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the function `t8_forest_replace` is defined. Outgoing are the old elements and incoming the new ones.
+To call this function, it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the callback function `t8_forest_replace` is defined. Outgoing are the old elements and incoming the new ones.
 
+```C++
      void
      t8_forest_replace (t8_forest_t forest_old,
                         t8_forest_t forest_new,
@@ -69,6 +71,7 @@ To call this function, it has to be defined how to replace the cell elements of 
                         int num_outgoing,
                         t8_locidx_t first_outgoing,
                         int num_incoming, t8_locidx_t first_incoming)
+```
 
 | Parameter | Description |
 |-|-|
@@ -83,8 +86,8 @@ To call this function, it has to be defined how to replace the cell elements of 
 | first_incoming | index of the new element |
 
 In this example we use the following criteria:
-If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children.
-
+If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children. If an element is unchanged, we also do not change the stored value.
+```C++
      /* Do not adapt or coarsen */
      if (refine == 0) {
          t8_element_set_element (adapt_data_new, first_incoming,
@@ -110,9 +113,9 @@ If an element is refined, each child gets the value of its parent. If elements a
                                tmpValue / num_outgoing);
      }
      t8_forest_set_user_data (forest_new, adapt_data_new);
-
+```
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step7_adapted.PNG" height="400">
 </p>
 
-After this interpolation step, we can set the adapted forest as forest and keep on working with this forest (for example by calculating a next time step).
+After this interpolation step, we can set the adapted forest `adapt_forest` as `forest` and keep on working with this forest (for example by calculating a next time step).
