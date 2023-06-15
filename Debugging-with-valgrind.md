@@ -2,7 +2,7 @@
 
 t8code aims to handle memory with care. Our goal is to avoid any memory-leaks. Nevertheless, memory-leaks can occur during development and it can be challenging to find and fix them. 
 
-A first hint, that something is wrong can be the message:
+A first hint that something is wrong can be the message:
 ```
 Abort: Finalize
 Abort: ../../t8code/sc/src/sc.c:1384
