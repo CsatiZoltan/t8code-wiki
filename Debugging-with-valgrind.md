@@ -1,6 +1,6 @@
 # Debugging with valgrind
 
-t8code aims to handle memory with care. Our goal is to avoid any memory-leaks. Nevertheless, memory-leaks can occur during development and it can be challenging to find and fix them. 
+t8code aims to handle memory with care. Our goal is to avoid any memory leaks. Nevertheless, memory leaks can occur during development and it can be challenging to find and fix them. 
 
 A first hint that something is wrong can be the message:
 ```
@@ -13,9 +13,9 @@ triggered by ```sc_finalize()``` in your code. t8code checks if allocated memory
 
 ## Valgrind 
 
-[valgrind](https://valgrind.org/) is a tool to find and fix memory-leaks and in general bugs in your memory-management. A detailed documentation can be found [here](https://valgrind.org/docs/manual/index.html). This article gives a short introduction in how to find the most common memory-bugs that occur developping t8code. 
+[valgrind](https://valgrind.org/) is a tool to find and fix memory leaks and in general bugs in your memory management. A detailed documentation can be found [here](https://valgrind.org/docs/manual/index.html). This article gives a short introduction in how to find the most common memory bugs that occur while developing t8code. 
 
-For a first brief analysis of your memory-management you can run your code with ```valgrind ./my_program```
+For a first brief analysis of your memory management you can run your code with ```valgrind ./my_program```
 If your program does not have any memory leaks you should get an output like this:
 ```
 ==41686== LEAK SUMMARY:
@@ -27,11 +27,11 @@ If your program does not have any memory leaks you should get an output like thi
 If your program does have a memory leak, valgrind will show non-zero numbers here. 
 
 ## An example
-For a mock-example we can use the tutorial step 1, where we put the line where the cmesh is destroyed in comments. 
-Reruning the program with ```valgrind --leak-check=full --log-file="my_log.txt" ./t8_step1_coarsemesh``` will produce a more detailed analysis of your memory management. Furthermore, the output is put in a logfile. 
-It is easiser to search for the error in a logfile, than on your console. Most t8code related functions start with "t8" so it is a good starting point for the search of our memory-leak. A lot of other output comes from mpi, which can be ignored for memory-leaks concerning t8code. It is even possible to suppress these errors completly. 
+For a mock example we can use the tutorial step 1, where we put the line where the cmesh is destroyed in comments. 
+Rerunning the program with ```valgrind --leak-check=full --log-file="my_log.txt" ./t8_step1_coarsemesh``` will produce a more detailed analysis of your memory management. Furthermore, the output is put in a logfile. 
+It is easiser to search for the error in a logfile, than on your console. Most t8code related functions start with "t8_" so it is a good starting point for the search of our memory leak. A lot of other output comes from MPI, which can be ignored for memory leaks concerning t8code. It is even possible to suppress these errors completely. 
 
-In the logfile, we will find error messages like this:
+In the logfile we will find error messages like this:
 ```
 ==52893==    by 0x4038F6: main (t8_step1_coarsemesh.cxx:102)
 ==52893== 
@@ -42,15 +42,15 @@ In the logfile, we will find error messages like this:
 ==52893==    by 0x40382F: t8_step1_build_tetcube_coarse_mesh(int) (t8_step1_coarsemesh.cxx:63)
 ==52893==    by 0x403982: main (t8_step1_coarsemesh.cxx:120)
 ```
-We see a trace of commands and after having a look at each of them we see that is points us to the place where the cmesh is allocated. This indicates the missing ```t8_cmesh_destroy(&cmesh)``` which we just removed from the file. Handling the destruction of the cmesh properly will fix this problem. 
+We see a trace of commands and after having a look at each of them we see that it points us to the place where the cmesh is allocated. This indicates the missing ```t8_cmesh_destroy(&cmesh)``` which we just removed from the file. Handling the destruction of the cmesh properly will fix this problem. 
 
-## Suppressing error-messages
-As mentioned befor, you can get a lot of mpi-related output in your logfile, which makes it more difficult to analyse the memory management. You can create and use suppression files to ignore this output. 
+## Suppressing error messages
+As mentioned befor, you can get a lot of MPI related output in your logfile, which makes it more difficult to analyse the memory management. You can create and use suppression files to ignore this output. 
 Adding
 ```
 --gen-suppressions=all
 ```
-to your valgrind command will create suppression-patterns for each error looking like this:
+to your valgrind command will create suppression patterns for each error looking like this:
 ```
 {
    <insert_a_suppression_name_here>
@@ -71,8 +71,8 @@ to your valgrind command will create suppression-patterns for each error looking
    fun:main
 }
 ```
-You can add them to a file ending with ```.supp``` and five each of them a proper name. 
-To be less specific you can remove lines and replace them with the frame-level wildcard ```...```. For a lot of error this suppression is sufficient:
+You can add them to a file ending with ```.supp``` and give each of them a proper name. 
+To be less specific you can remove lines and replace them with the frame level wildcard ```...```. For most of error outputs this suppression is sufficient:
 ```
 {
    <mpi_supp_1>
@@ -86,12 +86,12 @@ To be less specific you can remove lines and replace them with the frame-level w
    fun:main
 }
 ```
-Rerunning with ```valgrind --suppressions=./path_to_my_suppression_file.supp ./my_program``` should give an output focussed on t8code related functions. 
+Rerunning with ```valgrind --suppressions=./path_to_my_suppression_file.supp ./my_program``` should give an output focused on t8code related functions. 
 
 ## Valgrind and MPI
-It can be especially painfull debugging a memory-leak that only occurs in a parallel execution. A first memory analysis can be done with
-```mpirun -n num_procs valgrind --valgrind_options ./my_program```, which will also result in an mixed up output. 
+It can be especially painfull debugging a memory leak that only occurs in a parallel execution. A first memory analysis can be done with
+```mpirun -n num_procs valgrind --valgrind_options ./my_program```, which will also result in an mixed-up output. 
 valgrind is aware of process IDs and we can use them to produce seperate logfiles using ```mpirun -n num_procs valgrind --valgrind_options --log-file=logfilename.%p ./my_program```.
-You can find more information about how to use valgrind and mpi [here](https://valgrind.org/docs/manual/mc-manual.html#mc-manual.mpiwrap).
+You can find more information about how to use valgrind and MPI [here](https://valgrind.org/docs/manual/mc-manual.html#mc-manual.mpiwrap).
 
 
