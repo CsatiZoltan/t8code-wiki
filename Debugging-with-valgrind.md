@@ -1,4 +1,3 @@
-# Debugging with valgrind
 
 t8code aims to handle memory with care. Our goal is to avoid any memory leaks. Nevertheless, memory leaks can occur during development and it can be challenging to find and fix them. 
 
