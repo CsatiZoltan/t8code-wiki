@@ -9,7 +9,7 @@ Abort: ../../t8code/sc/src/sc.c:1384
 Abort
 Aborted
 ```
-triggered by ```sc_finalize()``` in your code. t8code checks if allocated memory has been free'd at the end of the code and prints this error message if it isn't case. 
+triggered by ```sc_finalize()``` in your code. t8code checks if allocated memory has been free'd at the end of the code and prints this error message if it isn't the case. 
 
 ## Valgrind 
 
