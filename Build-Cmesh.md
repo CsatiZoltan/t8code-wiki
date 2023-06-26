@@ -158,7 +158,7 @@ The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad i
 Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
 | ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
 |---------------| ----------- |---------------| ----------- |
-| 0 | 1 | 2 | 1 |
+| 0 | 1 | 1 | 2 |
 | 0 | 2 | 0 | 0 |
 | 1 | 3 | 0 | 2 |
 | 2 | 4 | 3 | 2 |
