@@ -20,6 +20,9 @@
  >>> [Step 4   Partition,-Balance,-Ghost](https://github.com/DLR-AMR/t8code/wiki/Step-4---Partition,-Balance,-Ghost)  
  >>> [Step 5   Store element data](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data)  
  >>> [Step 6   Computing stencils](https://github.com/DLR-AMR/t8code/wiki/Step-6-Computing-stencils)  
+ >>> [Step 7   Interpolation](https://github.com/DLR-AMR/t8code/wiki/Step-7-Interpolation)  
+
+ >>> [Build cmesh](https://github.com/DLR-AMR/t8code/wiki/Build-Cmesh)  
  >>> [Search algorithm](https://github.com/DLR-AMR/t8code/wiki/Tutorial:-Search)  
  >>
  >> Features  
@@ -38,5 +41,6 @@
  > [Coding Guidelines](https://github.com/DLR-AMR/t8code/wiki/Coding-Guideline)  
  >> [Known Issues with indent](https://github.com/DLR-AMR/t8code/wiki/Known-issues-with-the-indent-script)
  >>
- > [Debugging with gdb](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-gdb)    
+ > [Debugging with gdb](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-gdb)  
+ > [Debugging with valgrind](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-valgrind)  
  > [Testing with GoogleTest](https://github.com/DLR-AMR/t8code/wiki/Testing-with-GoogleTest)

@@ -73,7 +73,7 @@ Finally, we can now fill the first `num_local_elements` entries of our array.
 
 Until now, each process has computed the data entries for its local elements. In order to get the values for the ghost elements, we use `t8_forest_ghost_exchange_data`. Calling this function will fill all the ghost entries of our element data array with the value on the process that owns the corresponding element. This means that we don't have to iterate over all the elements again. t8code takes care of exchanging the data for us.
 
-However, we have to do a little preparatory work,  since `t8_forest_ghost_exchange_data` expects an `sc_array`. Therfor we wrap our data array to an `sc_array`.
+However, we have to do a little preparatory work,  since `t8_forest_ghost_exchange_data` expects an `sc_array`. Therefore we wrap our data array to an `sc_array`.
 
 ```C++
 sc_array_wrapper = sc_array_new_data (element_data, sizeof(struct t8_step5_data_per_element), num_local_elements + num_ghost_elements);
@@ -90,14 +90,14 @@ Destroy the wrapper array by calling `sc_array_destroy`. This will not free the 
 
 ### Output the volume data to vtu
 
-After creating the `forest` and stored element's volumes and levels in an array we will write the `forest` and the element's volumes out to `.vtu` files in order to view it in `Paraview`. 
+After creating the `forest` and storing elements' volumes and levels in an array we will write the `forest` and the elements' volumes out to `.vtu` files in order to view it in `Paraview`. 
 
 In the last steps we just called the following function 
 
 ```C++
 t8_forest_write_vtk (forest, prefix);
 ```
-to write a forest as `vtu`. But to write also user defined data, we need a extended output function `t8_forest_vtk_write_file`.
+to write a forest as `vtu`. But to write also user defined data, we need an extended output function `t8_forest_vtk_write_file`.
 
 t8code supports writing element based data to `vtu` as long as its stored as `doubles`. Each of the data fields to write has to be provided in its own array of length `num_local_elements`. We support two types: 
 
@@ -147,7 +147,7 @@ Also the name of the field as should be written to the file.
 strcpy (vtk_data.description, "Element volume");
 ```
 
-Finaly copy the elment's volumes from our data array to the output array and pass it to `t8_forest_write_vtk_ext`.
+Finally copy the elements' volumes from our data array to the output array and pass it to `t8_forest_write_vtk_ext`.
 
 We decided to only set `write_treeid`, `write_mpirank`, `write_level` and `write_element_id` true as it would be in `t8_forest_write_vtk`. In this way, the only difference to `t8_forest_vtk_write_file` is the addition of the volume of the elements.
 

@@ -45,7 +45,7 @@ When we now call `partition` to reestablish the load balance, the elements get r
 
 ### Ghost
 
-Many applications require a layer of ghost elements. Ghost element of a process are 
+Many applications require a layer of ghost elements. Ghost elements of a process are 
 those elements that are not local to this process but have a (face) neighbor element that is.
 Telling a forest to create a ghost layer will gather all necessary information and give
 us access to the ghost elements.
