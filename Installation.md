@@ -4,9 +4,15 @@ Here, we will discuss how to install t8code from the github repository on a linu
 
 t8code uses autotools and you will basically need 
 
+- [libsc](https://github.com/cburstedde/libsc) (Included in t8code's git repository)
+- [p4est](https://github.com/cburstedde/p4est) (Included in t8code's git repository)
 - automake
 - libtool
 - make
+
+Optional
+- The VTK library for advanced VTK output (basic VTK output is provided without linking against VTK)
+- The netcdf library for netcdf file output
 
 ## Installation
 
@@ -14,6 +20,10 @@ t8code uses autotools and you will basically need
 
 To install t8code from github on a linux machine, first clone the repository or download the latest release, for example with
 
+```bash
+git clone git@github.com:DLR-AMR/adaptex-website.git
+```
+or
 ```bash
 git clone https://github.com/DLR-AMR/t8code
 ```
@@ -51,7 +61,12 @@ cd ~/t8code_build
 ../t8code/configure [OPTIONS]
 ```
 
-You can choose from various options to configure t8code.
+You can choose from various options to configure t8code.To see a list of possible configure options, call
+ 
+```bash
+ ./configure -h
+```
+
 For a more elaborate overview please see the [Configure options](https://github.com/holke/t8code/wiki/Configure-Options) wiki page.
 
 The most common options are
