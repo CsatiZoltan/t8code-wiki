@@ -120,7 +120,11 @@ In this step all connections (face neighboors) between the different trees are s
 | face2 | The face number of the second tree. |
 | orientation | Specify how face1 and face2 are oriented to each other |
 
-Each face is either 0 or 1 oriented, depending on the order of its vertices. We say a face is 0 oriented, if its normal vector points inwards, 1 oriented otherwise.
+The orientation is determined as follows.  Let my_face and other_face be the two face numbers of the connecting trees.
+We chose a main_face from them as follows: Either both trees have the same element class, then the face with the lower face number is the main_face o the trees belong to different classes in which case the face belonging to the tree with the lower class according to the ordering
+  `triangle < square, hex < tet < prism < pyramid`,
+is the main_face.
+Then face corner 0 of the main_face connects to a face corner k in the other face.  The face orientation is defined as the number k.
 
               // List of all face neighboor connections
               t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
