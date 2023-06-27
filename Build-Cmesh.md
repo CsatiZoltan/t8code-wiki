@@ -223,12 +223,12 @@ As the mesh has no periodic boundaries, there are only direct neighbors. These a
 | 1 | 3 | 4 | 4 |
 | 2 | 5 | 0 | 0 |
 | 3 | 5 | 1 | 1 |
-| 4 | 5 | 4 | 2 |
+| 4 | 5 | 4 | 4 |
 
               // definition of the face neighboors
                 t8_cmesh_set_join (cmesh, 0, 2, 0, 4, 0);
                 t8_cmesh_set_join (cmesh, 1, 3, 0, 4, 0);
                 t8_cmesh_set_join (cmesh, 2, 5, 0, 0, 0);
                 t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
-                t8_cmesh_set_join (cmesh, 4, 5, 4, 2, 0);
+                t8_cmesh_set_join (cmesh, 4, 5, 4, 4, 0);
   
