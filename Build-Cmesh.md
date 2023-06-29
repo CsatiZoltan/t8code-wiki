@@ -10,37 +10,38 @@ In the last tutorials we learned how to create a forest, adapt it, and how to st
 ### 1. Definition of all vertices
 In a first step an array with all is defined. Independent of the fact if a mesh is defined two- or three dimensional, each point is defined by three coordinates. The vertices are ordered in a listing of points for each cell. Thus, there can be duplicates in the list.
 
-             double vertices[numberOfValues] = {
+```C++
+double vertices[numberOfValues] = {
 
-                //point values for tree 1
-                x_1,y_1,z_1         //(x,y,z) of first point of tree 1
-                x_2,y_2,z_2         //(x,y,z) of second point of tree 1
-                    .
-                    .
-                    .
-                x_n,y_n,z_n         //(x,y,z) of nth point (last point) of tree 1
+  //point values for tree 1
+  x_1,y_1,z_1         //(x,y,z) of first point of tree 1
+  x_2,y_2,z_2         //(x,y,z) of second point of tree 1
+      .
+      .
+      .
+  x_n,y_n,z_n         //(x,y,z) of nth point (last point) of tree 1
 
-                //point values for tree 2
-                x_1,y_1,z_1         //(x,y,z) of first point of tree 2
-                x_2,y_2,z_2         //(x,y,z) of second point of tree 2
-                    .
-                    .
-                    .
-                x_m,y_m,z_m         //(x,y,z) of nth point (last point) of tree 2
+  //point values for tree 2
+  x_1,y_1,z_1         //(x,y,z) of first point of tree 2
+  x_2,y_2,z_2         //(x,y,z) of second point of tree 2
+       .
+       .
+       .
+  x_m,y_m,z_m         //(x,y,z) of nth point (last point) of tree 2
 
-                    .
-                    .
-                    .
+       .
+       .
+       .
 
-                //point values for the last tree
-                x_1,y_1,z_1         //(x,y,z) of first point of the last tree
-                x_2,y_2,z_2         //(x,y,z) of second point of the last tree
-                    .
-                    .
-                    .
-                x_o,y_o,z_o         //(x,y,z) of nth point (last point) of the last tree
-              };
-   
+  //point values for the last tree
+  x_1,y_1,z_1         //(x,y,z) of first point of the last tree
+  x_2,y_2,z_2         //(x,y,z) of second point of the last tree
+       .
+       .
+       .
+  x_o,y_o,z_o         //(x,y,z) of nth point (last point) of the last tree
+};
+```
 ### 2. Initialization of the mesh
 Before creating a mesh, it has, of course, to be initialized using `t8_cmesh_init`.
    
@@ -72,21 +73,24 @@ Using the function `t8_cmesh_set_tree_class` the tree class of each tree is set.
 
 Definition of the classes of the different trees - each tree is defined by one cell
 
-              //Class of the first tree
-              t8_cmesh_set_tree_class (cmesh, 0, T8_ECLASS_[TYPE]);
-              //Class of the second tree
-              t8_cmesh_set_tree_class (cmesh, 1, T8_ECLASS_[TYPE]);
-                    .
-                    .
-                    .
-              //Class of the last tree
-              t8_cmesh_set_tree_class (cmesh, x, T8_ECLASS_[TYPE]);
-  
+```C++
+//Class of the first tree
+t8_cmesh_set_tree_class (cmesh, 0, T8_ECLASS_[TYPE]);
+//Class of the second tree
+t8_cmesh_set_tree_class (cmesh, 1, T8_ECLASS_[TYPE]);
+         .
+         .
+         .
+//Class of the last tree
+t8_cmesh_set_tree_class (cmesh, x, T8_ECLASS_[TYPE]);
+```
+ 
 ### 5. Classification of the vertices for each tree
 Vertex IDs for the two two-dimensional trees:
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Cmesh_IDs.png" height="400">
 </p>
+
 Each tree must be assigned its vertices. This is done using `t8_cmesh_set_tree_vertices`.
 It is not allowed to call this function after `t8_cmesh_commit`. The eclass of the tree has to be set before calling this function.
 
@@ -97,16 +101,18 @@ It is not allowed to call this function after `t8_cmesh_commit`. The eclass of t
 | *vertices | Information of all vertices of the tree |
 | num_vertices | Number of the vertices (related to the tree_class) |
 
-              // Vertices of the first tree
-              t8_cmesh_set_tree_vertices (cmesh, 0, [pointerToVerticesOfTreeOne], [numberOfVerticesTreeOne]);
-              // Vertices of the second tree
-              t8_cmesh_set_tree_vertices (cmesh, 1, [pointerToVerticesOfTreeTwo] , [numberOfVerticesTreeTwo]);
-                    .
-                    .
-                    .
-              // Vertices of the last tree
-              t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
-  
+```C++
+// Vertices of the first tree
+t8_cmesh_set_tree_vertices (cmesh, 0, [pointerToVerticesOfTreeOne], [numberOfVerticesTreeOne]);
+// Vertices of the second tree
+t8_cmesh_set_tree_vertices (cmesh, 1, [pointerToVerticesOfTreeTwo] , [numberOfVerticesTreeTwo]);
+     .
+     .
+     .
+// Vertices of the last tree
+t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
+```
+
 ### 6. Definition of the face neighboors between the different trees
 Edge IDs for the corresponding to the vertices can be seen in the previous figure (f_i).
 In this step all connections (face neighboors) between the different trees are set using `t8_cmesh_set_join`.
@@ -126,13 +132,15 @@ We chose a main_face from them as follows: Either both trees have the same eleme
 is the main_face.
 Then face corner 0 of the main_face connects to a face corner k in the other face.  The face orientation is defined as the number k.
 
-              // List of all face neighboor connections
-              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
-              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
-                    .
-                    .
-                    .
-              t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+```C++
+// List of all face neighboor connections
+t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+     .
+     .
+     .
+t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2], [orientation]);
+```
    
 ### 7. Commit the mesh
 The last step of creating a user defined mesh is commiting the mesh using `t8_cmesh_commit`.
@@ -142,6 +150,7 @@ In this two dimensional example four triangles and two quads are used. We will l
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_2D_Vertex_Edge_Id.PNG" height="400">
 </p> 
+
 The vertices of the trees have the following coordinate:
 
 | tree | vertices |
@@ -155,9 +164,11 @@ The vertices of the trees have the following coordinate:
 
 The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad is `T8_ECLASS_QUAD`:
 
-              // definition of the tree classes (you need one classification for each tree)
-              t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_TRIANGLE);
-              t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
+```C++
+// definition of the tree classes (you need one classification for each tree)
+t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_TRIANGLE);
+t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
+```
 
 Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
 | ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
@@ -169,13 +180,15 @@ Each edge of the tree has an ID. The IDs for this example can be seen in the fig
 | 3 | 5 | 1 | 1 |
 | 4 | 5 | 1 | 2 |
 
-              // definition of the face neighboors
-              t8_cmesh_set_join (cmesh, 0, 1, 1, 2, 0);
-              t8_cmesh_set_join (cmesh, 0, 2, 0, 0, 0);
-              t8_cmesh_set_join (cmesh, 1, 3, 0, 2, 1); 
-              t8_cmesh_set_join (cmesh, 2, 4, 3, 2, 0);
-              t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
-              t8_cmesh_set_join (cmesh, 4, 5, 1, 2, 0);
+```C++
+// definition of the face neighboors
+t8_cmesh_set_join (cmesh, 0, 1, 1, 2, 0);
+t8_cmesh_set_join (cmesh, 0, 2, 0, 0, 0);
+t8_cmesh_set_join (cmesh, 1, 3, 0, 2, 1); 
+t8_cmesh_set_join (cmesh, 2, 4, 3, 2, 0);
+t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
+t8_cmesh_set_join (cmesh, 4, 5, 1, 2, 0);
+```
 
 As this cmesh has periodic boundaries, there are also the connections
 | ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
@@ -185,11 +198,13 @@ As this cmesh has periodic boundaries, there are also the connections
 | 2 | 5 | 2 | 0 |
 | 3 | 4 | 0 | 0 |
 
-              // definition of the face neighboors for the periodic boundaries
-              t8_cmesh_set_join (cmesh, 0, 3, 2, 3, 0); 
-              t8_cmesh_set_join (cmesh, 1, 2, 1, 1, 0);
-              t8_cmesh_set_join (cmesh, 2, 5, 2, 0, 1);
-              t8_cmesh_set_join (cmesh, 3, 4, 0, 0, 0);
+```C++
+// definition of the face neighboors for the periodic boundaries
+t8_cmesh_set_join (cmesh, 0, 3, 2, 3, 0); 
+t8_cmesh_set_join (cmesh, 1, 2, 1, 1, 0);
+t8_cmesh_set_join (cmesh, 2, 5, 2, 0, 1);
+t8_cmesh_set_join (cmesh, 3, 4, 0, 0, 0);
+```
 
 ## 3D Example
 <p align="center">
@@ -201,6 +216,7 @@ In this three dimensional example two tetrahedra, two prisms, one pyramid, and o
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Mesh_Vertex_Id.PNG" height="400">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_3D_Mesh_Face_Id.png" height="400">
 </p> 
+
 The vertices of the trees have the following coordinate:
 
 | tree | vertices |
@@ -214,11 +230,13 @@ The vertices of the trees have the following coordinate:
 
 The tree class for the tetrahedra is `T8_ECLASS_TET`, this for the prisms is `T8_ECLASS_PRISM`, and this for the hexahedron is `T8_ECLASS_HEX`:
 
-              // definition of the tree classes (you need one classification for each tree)
-                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_TET);
-                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_PRISM);
-                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_PYRAMID);
-                t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_HEX);
+```C++
+// definition of the tree classes (you need one classification for each tree)
+t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_TET);
+t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_PRISM);
+t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_PYRAMID);
+t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_HEX);
+```
 
 As the mesh has no periodic boundaries, there are only direct neighbors. These are encoded by the face connections between the trees:
 | ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
@@ -229,10 +247,12 @@ As the mesh has no periodic boundaries, there are only direct neighbors. These a
 | 3 | 5 | 1 | 1 |
 | 4 | 5 | 4 | 4 |
 
-              // definition of the face neighboors
-                t8_cmesh_set_join (cmesh, 0, 2, 0, 4, 0);
-                t8_cmesh_set_join (cmesh, 1, 3, 0, 4, 0);
-                t8_cmesh_set_join (cmesh, 2, 5, 0, 0, 0);
-                t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
-                t8_cmesh_set_join (cmesh, 4, 5, 4, 4, 0);
+```C++
+// definition of the face neighboors
+t8_cmesh_set_join (cmesh, 0, 2, 0, 4, 0);
+t8_cmesh_set_join (cmesh, 1, 3, 0, 4, 0);
+t8_cmesh_set_join (cmesh, 2, 5, 0, 0, 0);
+t8_cmesh_set_join (cmesh, 3, 5, 1, 1, 0);
+t8_cmesh_set_join (cmesh, 4, 5, 4, 4, 0);
+```
   
