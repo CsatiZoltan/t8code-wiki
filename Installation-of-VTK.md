@@ -18,7 +18,7 @@ To install VTK on a linux machine, first clone the repository from gitlab.
 git clone https://gitlab.kitware.com/vtk/vtk.git
 ```
 
-We recommend using version 9.1 in combination with t8code, so checkout into the respective branch. 
+We recommend using version 9.1 in combination with t8code, so checkout into the respective branch. An older version of VTK may cause errors.
 ```bash
 cd vtk
 git checkout v9.1.0
