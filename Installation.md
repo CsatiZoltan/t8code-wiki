@@ -28,20 +28,20 @@ or
 git clone https://github.com/DLR-AMR/t8code
 ```
 
-Note: _(Release) tags are not automatically copied to a fork. Therefore, it may be necessary, to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:_
+#### Notes for cloning from a newly created fork
+(Release) tags are not automatically copied to a fork. Therefore, it may be necessary, to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:
 ``` bash
 git fetch --tags upstream
 git push --tags
 ```
-_By enabling the following option, tags get automatically pushed alongside with commits with `git push`. This way the tags will be always updated when the main branch of the fork is updated:_
+By enabling the following option, tags get automatically pushed alongside with commits with `git push`. This way the tags will be always updated when the main branch of the fork is updated:
 ``` bash
 git config push.followTags true
 ```
-_To enable the option globally for all git repositories on the computer just add a `--global`._
+To enable the option globally for all git repositories on the computer just add a `--global`.
 ```bash
 git config --global push.followTags true
 ```
-
 
 ### Initialize the submodules
 
