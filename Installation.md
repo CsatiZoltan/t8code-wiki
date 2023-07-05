@@ -1,4 +1,4 @@
-Here, we will discuss how to install t8code from the github repository on a linux machine.
+Here, we discuss how to install t8code from the github repository on a linux machine.
 
 ## Requirements
 
