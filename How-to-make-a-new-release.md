@@ -43,4 +43,6 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Post an update article on the homepage
 
+- [ ] Tell the DLR-SC PR Team about the release and let them post to Twitter and LinkedIn (for major and minor releases - not needed for patches) 
+
 - [ ] ??? (add new steps, for example homepage texts)
