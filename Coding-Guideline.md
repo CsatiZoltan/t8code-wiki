@@ -5,14 +5,14 @@
 `t8code` comes with its own indentation script `t8indent` that you should use to indent all code files.
 You find it in the `scripts` folder of the main repository.
 
-In order to indent a file `src/t8_foo.c` call
+In order to indent a file `src/t8_foo.c`, call
 
 ```bash
 $ ./scripts/t8indent src/t8_foo.c
 ```
 
 Sometimes the indentation script cannot indent a part of the code properly, or produces ugly results.
-So you need to double check the file after indentation.
+So you need to double-check the file after indentation.
 If you encounter a piece of code that is not indented properly, you can use the `/* *INDENT-OFF* */` and `/* *INDENT-ON* */`
 comments to deactivate indentation for a part of the code:
 
@@ -25,20 +25,27 @@ comments to deactivate indentation for a part of the code:
 /* The code here will be indented by t8indent */
 ```
 
-You can `grep` the code base for these keyword in order to see some of the fails of `t8indent`.
+You can `grep` the code base for these keywords in order to see some of the fails of `t8indent`.
 
 Additional scripts to help with indentation, can be found in the `scripts` folder, see also the corresponding [README file.](https://github.com/holke/t8code/tree/develop/scripts#readme)
 
-### Git indentation workflow
+## Spell checking
 
-We provide a git hook that automatically prevents you from committing unindented files.
+There is a spell checking CI workflow. To satisfy all its needs, we provide a spell checking script `scripts/t8spell_check_and_indent`.
+This script checks all local files for spelling mistakes and, if wanted, also corrects them and indents files afterward.
+The script can be executed from every path in the git repository.
+If there are false positives it may be useful to add them to our list of exceptions `[.typos.toml](https://github.com/DLR-AMR/t8code/blob/main/.typos.toml)`. More information about the spell checker can be found here: https://github.com/crate-ci/typos
+
+### Git indentation and spell checking workflow
+
+We provide a git hook that automatically prevents you from committing unindented files or files with typos.
 You should install this commit hook by copying it to the `.git/hooks` directory.
 
 ```bash
 $ cp ./scripts/pre-commit .git/hooks
 ```
 
-If you now try to commit an indented file you will get a message such as this one:
+If you now try to commit an unindented file, you will get a message such as this one:
 ```bash
 $ git add src/t8_foo.c
 $ git commit -m 'A useful commit message'
@@ -85,7 +92,7 @@ $ git add src/t8_foo.c
 $ git commit -m 'Indented t8_foo.c'
 ```
 
-Despite all effort, the indentation hook sometimes just wont work properly; see also the page on [Know issues with indent](https://github.com/holke/t8code/wiki/Known-issues-with-the-indent-script).
+Despite all effort, the indentation hook sometimes just won't work properly; see also the page on [Know issues with indent](https://github.com/holke/t8code/wiki/Known-issues-with-the-indent-script).
 If you really need to commit code that does not pass the indent test, using `INDENT-OFF/ON` fails, and you know what you are doing, you can use `git commit --no-verify`.
 
 
