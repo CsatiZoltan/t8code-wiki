@@ -34,7 +34,7 @@ Additional scripts to help with indentation, can be found in the `scripts` folde
 There is a spell checking CI workflow. To satisfy all its needs, we provide a spell checking script `scripts/t8spell_check_and_indent`.
 This script checks all local files for spelling mistakes and, if wanted, also corrects them and indents files afterward.
 The script can be executed from every path in the git repository.
-If there are false positives it may be useful to add them to our list of exceptions `[.typos.toml](https://github.com/DLR-AMR/t8code/blob/main/.typos.toml)`. More information about the spell checker can be found here: https://github.com/crate-ci/typos
+If there are false positives it may be useful to add them to our list of exceptions [`.typos.toml`](https://github.com/DLR-AMR/t8code/blob/main/.typos.toml). More information about the spell checker can be found here: https://github.com/crate-ci/typos
 
 ### Git indentation and spell checking workflow
 
