@@ -29,7 +29,7 @@ git clone https://github.com/DLR-AMR/t8code
 ```
 
 #### Notes for cloning from a newly created fork
-(Release) tags are not automatically copied to a fork. But since the configure script determines the t8code version through the git tags, they have to be present. Otherwise the configure and make step will fail. Therefore, it may be necessary, to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:
+(Release) tags are not automatically copied to a fork. But since the configure script determines the t8code version through the git tags, they have to be present. Otherwise the configure and make step will fail. Therefore, it may be necessary to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:
 ``` bash
 git fetch --tags upstream
 git push --tags
