@@ -21,7 +21,7 @@ Optional
 To install t8code from github on a linux machine, first clone the repository or download the latest release, for example with
 
 ```bash
-git clone git@github.com:DLR-AMR/adaptex-website.git
+git clone git@github.com:DLR-AMR/t8code.git
 ```
 or
 ```bash
