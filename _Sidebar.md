@@ -39,8 +39,6 @@
 ### Developer's Guide
 
  > [Coding Guidelines](https://github.com/DLR-AMR/t8code/wiki/Coding-Guideline)  
- >> [Known Issues with indent](https://github.com/DLR-AMR/t8code/wiki/Known-issues-with-the-indent-script)
- >>
  > [Debugging with gdb](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-gdb)  
  > [Debugging with valgrind](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-valgrind)  
  > [Testing with GoogleTest](https://github.com/DLR-AMR/t8code/wiki/Testing-with-GoogleTest)
