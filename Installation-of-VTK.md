@@ -10,7 +10,7 @@
 sudo apt install make build-essential cmake mesa-common-dev mesa-utils freeglut3-dev
 ```
 ## Installation
-The following instalation guid is based on the [documentation](https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/dev/build.md#building-vtk) of VTk.
+The following installation guide is based on the [documentation](https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/dev/build.md#building-vtk) of VTk.
 ### Clone the VTK repository
 
 To install VTK on a linux machine, first clone the repository from gitlab.
