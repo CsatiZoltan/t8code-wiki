@@ -1,9 +1,16 @@
 # Coding Guidelines
 
 ## Contributing
-We welcome contributions to our library, for a successfull contribution to `t8code` we recommend to open up a Draft-PR from the beginning on. That way we can give you tips and discuss your implementation and hopefully avoid big changes in your code after a lot of work has already been done. 
+We welcome all contributions to our library.
+For a successfull contribution to `t8code` we ask you to open up a draft pull request ([Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-requests/)) into https://github.com/DLR-AMR/t8code/ as soon as you start implementing. 
+That way we can give you tips and discuss your implementation while you are working on it and hopefully avoid big changes in your code after a lot of work has already been done. 
 
-PRs can become very big which increases the work for the reviewer. Please seperate big PRs (over 1000 lines of Code) into several smaller ones. Use the label "Follow-up PR" to mark it as piece of your contribution. Use the same name of your branches and an increasing number to show that the PRs are related (for example: "`my_new_feature [2/n]`" for the second PR of `N` for a new feature).
+PRs can become very big which increases the workload of the review process. 
+To avoid big PRs (say > 1000 lines of code) it is good pratice to seperate your work into small PRs.
+For example, you can post a first PR for a new interface/function declarations and a second PR for implementations (which you may split into smaller PRs as well).
+As soon as you consider a part of your work finished, you should post a PR.
+
+Use the label "Follow-up PR" to mark it as piece of your contribution. Use the same name of your branches and an increasing number to show that the PRs are related (for example: "`my_new_feature [2/n]`" for the second PR of `N` for a new feature).
 
 ## Indentation
 
