@@ -6,7 +6,7 @@ For a successfull contribution to `t8code` we ask you to open up a draft pull re
 That way we can give you tips and discuss your implementation while you are working on it and hopefully avoid big changes in your code after a lot of work has already been done. 
 
 PRs can become very big which increases the workload of the review process. 
-To avoid big PRs (say > 1000 lines of code) it is good pratice to seperate your work into small PRs.
+To avoid big PRs (say > 1000 lines of code) it is good pratice to seperate your work into multiple smaller PRs.
 For example, you can post a first PR for a new interface/function declarations and a second PR for implementations (which you may split into smaller PRs as well).
 As soon as you consider a part of your work finished, you should post a PR.
 
