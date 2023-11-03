@@ -1,5 +1,10 @@
 # Coding Guidelines
 
+## Contributing
+We welcome contributions to our library, for a successfull contribution to `t8code` we recommend to open up a Draft-PR from the beginning on. That way we can give you tips and discuss your implementation and hopefully avoid big changes in your code after a lot of work has already been done. 
+
+PRs can become very big which increases the work for the reviewer. Please seperate big PRs (over 1000 lines of Code) into several smaller ones. Use the label "Follow-up PR" to mark it as piece of your contribution. Use the same name of your branches and an increasing number to show that the PRs are related (for example: "`my_new_feature [2/n]`" for the second PR of `N` for a new feature).
+
 ## Indentation
 
 `t8code` comes with its own indentation script `t8indent` that you should use to indent all code files.
