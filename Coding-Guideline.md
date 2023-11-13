@@ -329,4 +329,14 @@ Every API implementation and API consumer MUST follow Postel's law:
 > Be conservative in what you send, be liberal in what you accept.
 – [John Postel](https://en.wikipedia.org/wiki/Robustness_principle)
 
-### To be extended ...
+### Error handling
+
+In general we follow the principle that the caller of a function is responsible for handling errors.
+
+For example if we ask for an element in the tree via `t8_forest_get_element_in_tree` and the element does not exist, then NULL is returned and the calling party is responsible for handling the issue.
+
+Handling the error may mean printing an error message, passing the error on to the calling function (i.e. via NULL return value or similar), or aborting the execution.
+
+If an error occurs that requires abortion of the code, then use one of `SC_ABORT, SC_ABORT_F, SC_ABORT_NOT_REACHED` with an appropriate error message.
+
+Additional error messages can be printed with the `t8_errorf` function.
