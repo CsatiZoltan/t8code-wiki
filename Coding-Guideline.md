@@ -333,7 +333,7 @@ Every API implementation and API consumer MUST follow Postel's law:
 
 In general we follow the principle that the caller of a function is responsible for handling errors.
 
-For example if we ask for an element in the tree via `t8_forest_get_element_in_tree` and the element does not exist, then NULL is returned and the calling party is responsible for handling the issue.
+For example if we ask for an element in the tree via `t8_forest_get_element_in_tree` and the element does not exist, then NULL is returned (this should be mentioned in the documentation of the function) and the calling party is responsible for handling the issue.
 
 Handling the error may mean printing an error message, passing the error on to the calling function (i.e. via NULL return value or similar), or aborting the execution.
 
