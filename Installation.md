@@ -1,8 +1,8 @@
-Here, we discuss how to install t8code from the github repository on a linux machine.
+Here, we discuss how to install t8code from the GitHub repository on a Linux machine.
 
 ## Requirements
 
-t8code uses autotools and you will basically need 
+t8code uses Autotools and you will basically need 
 
 - [libsc](https://github.com/cburstedde/libsc) (Included in t8code's git repository)
 - [p4est](https://github.com/cburstedde/p4est) (Included in t8code's git repository)
@@ -12,13 +12,13 @@ t8code uses autotools and you will basically need
 
 Optional
 - The VTK library for advanced VTK output (basic VTK output is provided without linking against VTK)
-- The netcdf library for netcdf file output
+- The NetCFD library for NetCFD file output
 
 ## Installation
 
-### Clone the repository or download latest release
+### Clone the repository or download the latest release
 
-To install t8code from github on a linux machine, first clone the repository or download the latest release, for example with
+To install t8code from GitHub on a Linux machine, first clone the repository or download the latest release, for example with
 
 ```bash
 git clone git@github.com:DLR-AMR/t8code.git
@@ -29,12 +29,12 @@ git clone https://github.com/DLR-AMR/t8code
 ```
 
 #### Notes for cloning from a newly created fork
-(Release) tags are not automatically copied to a fork. But since the configure script determines the t8code version through the git tags, they have to be present. Otherwise the configure and make step will fail. Therefore, it may be necessary to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:
+(Release) tags are not automatically copied to a fork. But since the configure script determines the t8code version through the git tags, they have to be present. Otherwise, the configure and make step will fail. Therefore, it may be necessary to set the [upsteam](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork) remote repository and to update the tags on the fork:
 ``` bash
 git fetch --tags upstream
 git push --tags
 ```
-By enabling the following option, tags get automatically pushed alongside with commits with `git push`. This way the tags will be always updated when the main branch of the fork is updated:
+By enabling the following option, tags get automatically pushed alongside with commits with `git push`. This way the tags will always be updated when the main branch of the fork is updated:
 ``` bash
 git config push.followTags true
 ```
@@ -76,7 +76,7 @@ cd ~/t8code_build
 ../t8code/configure [OPTIONS]
 ```
 
-You can choose from various options to configure t8code.To see a list of possible configure options, call
+You can choose from various options to configure t8code. To see a list of possible configure options, call
  
 ```bash
  ./configure -h
@@ -86,16 +86,16 @@ For a more elaborate overview please see the [Configure options](https://github.
 
 The most common options are
 
-| Option | Description |
-|-----|-------|
-| --enable-mpi   |  enable MPI parallel code |
-| --enable-debug |  enable debugging mode (Note: This will drastically reduce performance) |
-| --with-LIB/--without-LIB | (enable/disable linking with LIB) |
-| --prefix=PATH   | Provide an installation prefix |
-| CFLAGS=         | Provide C compiler flags |
-| CXXFLAGS=       |   Provide C++ compiler flags |
-| CC=             | Set the C compiler |
-| CXX=            | Set the C++ compiler |
+| Option                   | Description                                                            |
+| ------------------------ | ---------------------------------------------------------------------- |
+| --enable-mpi             | enable MPI parallel code                                               |
+| --enable-debug           | enable debugging mode (Note: This will drastically reduce performance) |
+| --with-LIB/--without-LIB | (enable/disable linking with LIB)                                      |
+| --prefix=PATH            | Provide an installation prefix                                         |
+| CFLAGS=                  | Provide C compiler flags                                               |
+| CXXFLAGS=                | Provide C++ compiler flags                                             |
+| CC=                      | Set the C compiler                                                     |
+| CXX=                     | Set the C++ compiler                                                   |
 
 For a quick release mode configuration we recommend:
 
@@ -142,7 +142,7 @@ If you cannot figure out, what causes the problem, feel free to contact the deve
 To use t8code as an external library and link against it, first you need to install it according to the above instructions or obtain an installation via another way.
 Your code must link against t8code, p4est, libsc, libz and libm.
 Usually 
-[p4est](www.github.com/cburstedde/p4est) and [libsc](www.github.com/cburstedde/sc) are shipped with t8code. If you did not obtain them with t8code you need to install them seperately.
+[p4est](www.github.com/cburstedde/p4est) and [libsc](www.github.com/cburstedde/sc) are shipped with t8code. If you did not obtain them with t8code you need to install them separately.
 
 For the sake of the argument let's say the install folder is $HOME/t8code_install.
 1. Add the library folder to `LD_LIBRARY_PATH`:

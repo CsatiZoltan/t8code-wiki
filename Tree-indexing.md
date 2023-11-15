@@ -28,7 +28,7 @@ We use the `t8_locidx_t` type to store local tree ids and often call variables s
 
 It is important to understand that even if both the coarse mesh and the forest are partitioned, their partitions may not be equal.
 Thus, the forest tree with local id `i` may not be the same as the coarse mesh tree with local id `i`.
-If  a `cmesh` interface function calls for a local tree id then a coarse mesh local tree id must be provided and if a `forest` interface
+If a `cmesh` interface function calls for a local tree id then a coarse mesh local tree id must be provided and if a `forest` interface
 function calls for a local tree id then a forest local tree id must be provided.
 To convert between both, use the functions `t8_forest_ltreeid_to_cmesh_ltreeid` and `t8_forest_cmesh_ltreeid_to_ltreeid`.
 
@@ -73,16 +73,16 @@ You can query ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) and 
 The following table gives an overview on `t8code` function that convert between different
 tree ids:
 
-| Function  | Converts from  | to  | remark |
-|---|---|---|---|
-| t8_forest_ltreeid_to_cmesh_ltreeid  | Forest local id | Cmesh local id  ||
-| t8_forest_cmesh_ltreeid_to_ltreeid  | Cmesh local id  | Forest local id  ||
-| t8_forest_get_local_id | Global id  | Forest local id  | Returns -1 for non-local trees (including ghosts)|
-| t8_forest_global_tree_id | Forest local or ghost id | Global id | Add ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) to ghost index |
-| t8_cmesh_get_local_id | Global id  | Cmesh local or ghost id | Adds ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index|
-| t8_cmesh_get_global_id | Cmesh local or ghost id | Global id | Add ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index |
-| t8_forest_ghost_get_ghost_treeid | Global id | Forest ghost id ||
-| t8_forest_ghost_get_global_treeid | Forest ghost id | Global id ||
+| Function                           | Converts from            | to                      | remark                                                                            |
+| ---------------------------------- | ------------------------ | ----------------------- | --------------------------------------------------------------------------------- |
+| t8_forest_ltreeid_to_cmesh_ltreeid | Forest local id          | Cmesh local id          |                                                                                   |
+| t8_forest_cmesh_ltreeid_to_ltreeid | Cmesh local id           | Forest local id         |                                                                                   |
+| t8_forest_get_local_id             | Global id                | Forest local id         | Returns -1 for non-local trees (including ghosts)                                 |
+| t8_forest_global_tree_id           | Forest local or ghost id | Global id               | Add ![T_pf](http://chart.apis.google.com/chart?cht=tx&chl=T_{pf}) to ghost index  |
+| t8_cmesh_get_local_id              | Global id                | Cmesh local or ghost id | Adds ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index |
+| t8_cmesh_get_global_id             | Cmesh local or ghost id  | Global id               | Add ![T_pc](http://chart.apis.google.com/chart?cht=tx&chl=T_{pc}) to ghost index  |
+| t8_forest_ghost_get_ghost_treeid   | Global id                | Forest ghost id         |                                                                                   |
+| t8_forest_ghost_get_global_treeid  | Forest ghost id          | Global id               |                                                                                   |
 
 Because a global tree can be a forest local tree and ghost tree at the same time a conversion from global id to local or ghost id is not unique.
 Hence, in contrary to the coarse mesh, we need to use two different functions `t8_forest_get_local_id` and `t8_forest_ghost_get_ghost_treeid`

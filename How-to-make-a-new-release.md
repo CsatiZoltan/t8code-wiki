@@ -23,11 +23,11 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Ensure that these changes are in the main branch and the tests pass.
 
-- [ ] Go to the main github page of the repo and click "draft a new release"
+- [ ] Go to the main GitHub page of the repo and click "draft a new release"
 
 - [ ] Write a short release note of all the (important) changes.
 
-- [ ] Add the github generated release notes afterwards.
+- [ ] Add the GitHub generated release notes afterwards.
 
 - [ ] Update the tarball
 
@@ -37,9 +37,9 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
   - [ ] Check that the tarball was build correctly
 
-  - [ ] Upload the tarball to the github release
+  - [ ] Upload the tarball to the GitHub release
 
-- [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
+- [ ] Add the Doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
 
 - [ ] Post an update article on the homepage
 

@@ -1,5 +1,5 @@
-Debugging parallel programs can be a challenge and powerfull debuggers for MPI-parallelized codes are usually very expensive and
-have a steep learning curve. For rather managable debugging sessions on workstations comprising of just a handful of parallel processes the venerable open source debugger `gdb` can be used.
+Debugging parallel programs can be a challenge and powerful debuggers for MPI-parallelized codes are usually very expensive and
+have a steep learning curve. For rather manageable debugging sessions on workstations comprising just a handful of parallel processes the venerable open source debugger `gdb` can be used.
 
 To find an introduction on how to use `gdb` visit http://www.gdbtutorial.com/. A comprehensive documentation
 is available at https://sourceware.org/gdb/onlinedocs/gdb/.
@@ -15,7 +15,7 @@ Run `t8code` in parallel:
 ```
 mpirun -n NUM_PROCS xterm -hold -e "gdb -x FILE my_t8code_application"
 ```
-This opens `NUM_PROCS` `xterm` windows with a `gdb` instance each attached to a MPI sub-process.
+This opens `NUM_PROCS` `xterm` windows with a `gdb` instance each attached to n MPI sub-process.
 
 The command `FILE` might contain
 ```
@@ -39,7 +39,7 @@ your keyboard input to all `gdb` sessions at once.
 ```
 tmpi NUM_PROCS gdb my_t8code_application
 ```
-This opens `NUM_PROCS` `tmux` panes with a `gdb` instance each attached to a MPI sub-process.
+This opens `NUM_PROCS` `tmux` panes with a `gdb` instance each attached to an MPI sub-process.
 
 
 

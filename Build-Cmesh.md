@@ -52,23 +52,23 @@ A cmesh can have different types of geometry which are set using the function `t
 
 `t8code` supports eight different basic tree shapes for the `cmesh`, see also `t8_eclass.h`:
 
-| element shape | description | Number of vertices |
-|---------------| ----------- | ---------------------------|
-| T8_ECLASS_VERTEX | 0D points | 1 |
-| T8_ECLASS_LINE | 1D lines | 2 |
-| T8_ECLASS_TRIANGLE | 2D triangles | 3 |
-| T8_ECLASS_QUAD | 2D quadrilaterals | 4 |
-| T8_ECLASS_TET | 3D tetrahedra | 4 |
-| T8_ECLASS_PYRAMID | 3D pyramids | 5 |
-| T8_ECLASS_PRISM | 3D prisms | 6 |
-| T8_ECLASS_HEX | 3D hexahedra | 8 |
+| element shape      | description       | Number of vertices |
+| ------------------ | ----------------- | ------------------ |
+| T8_ECLASS_VERTEX   | 0D points         | 1                  |
+| T8_ECLASS_LINE     | 1D lines          | 2                  |
+| T8_ECLASS_TRIANGLE | 2D triangles      | 3                  |
+| T8_ECLASS_QUAD     | 2D quadrilaterals | 4                  |
+| T8_ECLASS_TET      | 3D tetrahedra     | 4                  |
+| T8_ECLASS_PYRAMID  | 3D pyramids       | 5                  |
+| T8_ECLASS_PRISM    | 3D prisms         | 6                  |
+| T8_ECLASS_HEX      | 3D hexahedra      | 8                  |
 
 Using the function `t8_cmesh_set_tree_class` the tree class of each tree is set.
 
-| Parameter | Description |
-|---------------| ----------- |
-| cmesh | The cmesh to be updated. |
-| tree_id | The global number of the tree. |
+| Parameter  | Description                     |
+| ---------- | ------------------------------- |
+| cmesh      | The cmesh to be updated.        |
+| tree_id    | The global number of the tree.  |
 | tree_class | The element class of this tree. |
 
 Definition of the classes of the different trees - each tree is defined by one cell
@@ -94,11 +94,11 @@ Vertex IDs for the two two-dimensional trees:
 Each tree must be assigned its vertices. This is done using `t8_cmesh_set_tree_vertices`.
 It is not allowed to call this function after `t8_cmesh_commit`. The eclass of the tree has to be set before calling this function.
 
-| Parameter | Description |
-|---------------| ----------- |
-| cmesh | The cmesh to be updated. |
-| tree_id | The global number of the tree. |
-| *vertices | Information of all vertices of the tree |
+| Parameter    | Description                                        |
+| ------------ | -------------------------------------------------- |
+| cmesh        | The cmesh to be updated.                           |
+| tree_id      | The global number of the tree.                     |
+| *vertices    | Information of all vertices of the tree            |
 | num_vertices | Number of the vertices (related to the tree_class) |
 
 ```C++
@@ -113,17 +113,17 @@ t8_cmesh_set_tree_vertices (cmesh, 1, [pointerToVerticesOfTreeTwo] , [numberOfVe
 t8_cmesh_set_tree_vertices (cmesh, x, [pointerToVerticesOfTree(x+1)] , [numberOfVerticesTree(x+1)]);
 ```
 
-### 6. Definition of the face neighboors between the different trees
+### 6. Definition of the face neighbors between the different trees
 Edge IDs for the corresponding to the vertices can be seen in the previous figure (f_i).
-In this step all connections (face neighboors) between the different trees are set using `t8_cmesh_set_join`.
+In this step all connections (face neighbors) between the different trees are set using `t8_cmesh_set_join`.
 
-| Parameter | Description |
-|---------------| ----------- |
-| cmesh | The cmesh to be updated. |
-| tree1 | The tree id of the first of the two trees. |
-| tree2 | The tree id of the second of the two trees. |
-| face1 | The face number of the first tree. |
-| face2 | The face number of the second tree. |
+| Parameter   | Description                                            |
+| ----------- | ------------------------------------------------------ |
+| cmesh       | The cmesh to be updated.                               |
+| tree1       | The tree id of the first of the two trees.             |
+| tree2       | The tree id of the second of the two trees.            |
+| face1       | The face number of the first tree.                     |
+| face2       | The face number of the second tree.                    |
 | orientation | Specify how face1 and face2 are oriented to each other |
 
 The orientation is determined as follows.  Let my_face and other_face be the two face numbers of the connecting trees.
@@ -143,24 +143,24 @@ t8_cmesh_set_join (cmesh, [treeId1], [treeId2], [faceIdInTree1], [faceIdInTree2]
 ```
    
 ### 7. Commit the mesh
-The last step of creating a user defined mesh is commiting the mesh using `t8_cmesh_commit`.
+The last step of creating a user defined mesh is committing the mesh using `t8_cmesh_commit`.
 
 ## 2D Example
-In this two dimensional example four triangles and two quads are used. We will look at the following example. In the left you can see the order of the vertices and in the right the edge IDs.
+In this two-dimensional example four triangles and two quads are used. We will look at the following example. In the left you can see the order of the vertices and in the right the edge IDs.
 <p align="center">
 <img src="https://github.com/DLR-AMR/t8code/wiki/pictures/tutorials/Step8_2D_Vertex_Edge_Id.PNG" height="400">
 </p> 
 
 The vertices of the trees have the following coordinate:
 
-| tree | vertices |
-|-------------------| ----------- |
-| triangle 1 | {(0, 0, 0), (0.5, 0, 0), (0.5, 0.5, 0)} |
-| triangle 2 | {(0, 0, 0), (0.5, 0.5, 0), (0, 0.5, 0)} |
-| triangle 3 | {(0.5, 0.5, 0), (1, 0.5, 0), (1, 1, 0)} |
-| triangle 4 | {(0.5, 0.5, 0), (1, 1, 0), (0.5, 1, 0)} |
-| quad 1 | {(0.5, 0, 0), (1, 0, 0), (0.5, 0.5, 0), (1, 0.5, 0)} |
-| quad 2 | {(0, 0.5, 0), (0.5, 0.5, 0), (0, 1, 0), (0.5, 1, 0)} |
+| tree       | vertices                                             |
+| ---------- | ---------------------------------------------------- |
+| triangle 1 | {(0, 0, 0), (0.5, 0, 0), (0.5, 0.5, 0)}              |
+| triangle 2 | {(0, 0, 0), (0.5, 0.5, 0), (0, 0.5, 0)}              |
+| triangle 3 | {(0.5, 0.5, 0), (1, 0.5, 0), (1, 1, 0)}              |
+| triangle 4 | {(0.5, 0.5, 0), (1, 1, 0), (0.5, 1, 0)}              |
+| quad 1     | {(0.5, 0, 0), (1, 0, 0), (0.5, 0.5, 0), (1, 0.5, 0)} |
+| quad 2     | {(0, 0.5, 0), (0.5, 0.5, 0), (0, 1, 0), (0.5, 1, 0)} |
 
 The tree class for the triangles is `T8_ECLASS_TRIANGLE` and this for the quad is `T8_ECLASS_QUAD`:
 
@@ -170,15 +170,15 @@ t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_TRIANGLE);
 t8_cmesh_set_tree_class (cmesh, [treeID], T8_ECLASS_QUAD);
 ```
 
-Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighboor information, the following trees are connected:
+Each edge of the tree has an ID. The IDs for this example can be seen in the figure. For the direct neighbor information, the following trees are connected:
 | ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
-|---------------| ----------- |---------------| ----------- |
-| 0 | 1 | 1 | 2 |
-| 0 | 2 | 0 | 0 |
-| 1 | 3 | 0 | 2 |
-| 2 | 4 | 3 | 2 |
-| 3 | 5 | 1 | 1 |
-| 4 | 5 | 1 | 2 |
+| ---------------- | ----------------- | ----------------------- | ------------------------ |
+| 0                | 1                 | 1                       | 2                        |
+| 0                | 2                 | 0                       | 0                        |
+| 1                | 3                 | 0                       | 2                        |
+| 2                | 4                 | 3                       | 2                        |
+| 3                | 5                 | 1                       | 1                        |
+| 4                | 5                 | 1                       | 2                        |
 
 ```C++
 // definition of the face neighboors
@@ -192,11 +192,11 @@ t8_cmesh_set_join (cmesh, 4, 5, 1, 2, 0);
 
 As this cmesh has periodic boundaries, there are also the connections
 | ID of first tree | ID of second tree | ID of face of first tree | ID of face of second tree |
-|---------------| ----------- |---------------| ----------- |
-| 0 | 3 | 2 | 3 |
-| 1 | 2 | 1 | 1 |
-| 2 | 5 | 2 | 0 |
-| 3 | 4 | 0 | 0 |
+| ---------------- | ----------------- | ------------------------ | ------------------------- |
+| 0                | 3                 | 2                        | 3                         |
+| 1                | 2                 | 1                        | 1                         |
+| 2                | 5                 | 2                        | 0                         |
+| 3                | 4                 | 0                        | 0                         |
 
 ```C++
 // definition of the face neighboors for the periodic boundaries
@@ -219,14 +219,14 @@ In this three dimensional example two tetrahedra, two prisms, one pyramid, and o
 
 The vertices of the trees have the following coordinate:
 
-| tree | vertices |
-|---------------| ----------- |
-| tetrahedron 1 | {(0.43, 0, 2), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)} |
-| tetrahedron 2 | {(2.29, 0, 2), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
-| prism 1 | {(0, 0, 0), (0.86, -0.5, 0), (0.86, 0.5, 0), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)} |
-| prism 2 | {(1.86, -0.5, 0), (2.72, 0, 0), (1.86, 0.5, 0), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)} |
-| pyramid | {(0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 0), (1.86, -0.5, 0), (1.36, 0, -0.5)} |
-| hexahedron | {(0.86, -0.5, 0), (1.86, -0.5, 0), (0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 1), (1.86, -0.5, 1),(0.86, 0.5, 1), (1.86, 0.5, 1)} |
+| tree          | vertices                                                                                                                            |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| tetrahedron 1 | {(0.43, 0, 2), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)}                                                                          |
+| tetrahedron 2 | {(2.29, 0, 2), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)}                                                                       |
+| prism 1       | {(0, 0, 0), (0.86, -0.5, 0), (0.86, 0.5, 0), (0, 0, 1), (0.86, -0.5, 1), (0.86, 0.5, 1)}                                            |
+| prism 2       | {(1.86, -0.5, 0), (2.72, 0, 0), (1.86, 0.5, 0), (1.86, -0.5, 1), (2.72, 0, 1), (1.86, 0.5, 1)}                                      |
+| pyramid       | {(0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 0), (1.86, -0.5, 0), (1.36, 0, -0.5)}                                                 |
+| hexahedron    | {(0.86, -0.5, 0), (1.86, -0.5, 0), (0.86, 0.5, 0), (1.86, 0.5, 0), (0.86, -0.5, 1), (1.86, -0.5, 1),(0.86, 0.5, 1), (1.86, 0.5, 1)} |
 
 The tree class for the tetrahedra is `T8_ECLASS_TET`, this for the prisms is `T8_ECLASS_PRISM`, and this for the hexahedron is `T8_ECLASS_HEX`:
 
@@ -240,12 +240,12 @@ t8_cmesh_set_tree_class (cmesh,  [treeID], T8_ECLASS_HEX);
 
 As the mesh has no periodic boundaries, there are only direct neighbors. These are encoded by the face connections between the trees:
 | ID of first tree | ID of second tree | ID of face (first tree) | ID of face (second tree) |
-|---------------| ----------- |---------------| ----------- |
-| 0 | 2 | 0 | 4 |
-| 1 | 3 | 4 | 4 |
-| 2 | 5 | 0 | 0 |
-| 3 | 5 | 1 | 1 |
-| 4 | 5 | 4 | 4 |
+| ---------------- | ----------------- | ----------------------- | ------------------------ |
+| 0                | 2                 | 0                       | 4                        |
+| 1                | 3                 | 4                       | 4                        |
+| 2                | 5                 | 0                       | 0                        |
+| 3                | 5                 | 1                       | 1                        |
+| 4                | 5                 | 4                       | 4                        |
 
 ```C++
 // definition of the face neighboors

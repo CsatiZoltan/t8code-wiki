@@ -88,16 +88,16 @@ int                 t8_step3_adapt_callback (t8_forest_t forest,
 
 This function will be called for each element (or family) while the forest gets adapted.
 Its parameters are
-| Parameter | Description |
-|-|-|
-| forest | The new forest that is currently under construction |
-| forest_from | The old forest that is to be adapted |
-| which_tree | Index of the current tree in `forest_from` |
-| lelement_id | Index of the current element in the elements of the current tree |
-| ts | The refinement scheme for this particular element shape |
-| is_family | 1, if the input are several elements that form a family. 0, if not.  |
+| Parameter    | Description                                                                   |
+| ------------ | ----------------------------------------------------------------------------- |
+| forest       | The new forest that is currently under construction                           |
+| forest_from  | The old forest that is to be adapted                                          |
+| which_tree   | Index of the current tree in `forest_from`                                    |
+| lelement_id  | Index of the current element in the elements of the current tree              |
+| ts           | The refinement scheme for this particular element shape                       |
+| is_family    | 1, if the input are several elements that form a family. 0, if not.           |
 | num_elements | How many elements are currently considered (If >1 the is_family must be true) |
-| elements | The elements that are currently considered for adaptation |
+| elements     | The elements that are currently considered for adaptation                     |
 
 To explain these a bit: A `forest` stores its elements in different arrays. One for each (process local) tree. Thus, in order to find an element we need the number of its tree and the index of it
 within this tree. These are `which_tree` and `lelement_id`.
@@ -184,7 +184,7 @@ In this view we cut into the cube and show how the adaptation criterion affects 
 After calling `t8_forest_new_adapt` the old `forest` object will be destroyed.
 This is due to `t8code`'s internal reference counting.
 Each `forest` counts how often it is referenced, starting with 1 when it is constructed.
-Using a `forest` to construct a new forest from it will decrease this reference count by 1, basically saying 'i do not need this forest anymore'.
+Using a `forest` to construct a new forest from it will decrease this reference count by 1, basically saying 'I do not need this forest anymore'.
 If the reference count reaches 0 the `forest` is destroyed.
 
 Often you will want to keep the `forest` after adapting. For example because you stored element
@@ -195,7 +195,7 @@ t8_forest_ref (forest);
 ```
 before adapting it to manually increase the reference counter and prevent it from destruction.
 
-Analoguously you can dereference a `forest` - and hence also destroy it, if its count reaches 0 - with
+Analogously you can dereference a `forest` - and hence also destroy it, if its count reaches 0 - with
 ```C
 t8_forest_unref (&forest);
 ```

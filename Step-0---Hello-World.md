@@ -2,7 +2,7 @@
 
 In this first tutorial we write the Hello World equivalent of `t8code`.
 We will initalize `t8code` and use it to print a short message on the root process.
-You will find the code in `tutorials/general/t8_step0_helloworld.c` and it creates the executable `tutorials/general/t8_step0_helloworld`.
+You will find the code in `tutorials/general/t8_step0_helloworld.c`, and it creates the executable `tutorials/general/t8_step0_helloworld`.
 
 To initalize `t8code` we need to initialize (in this order) `MPI`, `libsc` and `t8code`.
 
@@ -56,8 +56,8 @@ In short, logging functions of the form `t8_global_*` (`t8_global_essentialf`, `
 The logging level is set with `t8_init` (in the example above it is `SC_LP_PRODUCTION`) and determines which of these get printed.
 The different logging levels are described in `sc.h` in detail. The most common are
 
-| Log level   | description |
-|-------------|------|
-| SC_LP_DEBUG | logs almost everything, in particular `t8_debugf` |
-| SC_LP_PRODUCTION | logs `*_production`, `*_essential` and `*_error` |
-| SC_LP_SILENT | never logs anything |
+| Log level        | description                                       |
+| ---------------- | ------------------------------------------------- |
+| SC_LP_DEBUG      | logs almost everything, in particular `t8_debugf` |
+| SC_LP_PRODUCTION | logs `*_production`, `*_essential` and `*_error`  |
+| SC_LP_SILENT     | never logs anything                               |
