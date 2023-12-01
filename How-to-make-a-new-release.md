@@ -41,6 +41,8 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
 
+- [ ] Add the new version to the docker build configuration
+
 - [ ] Post an update article on the homepage
 
 - [ ] Tell the DLR-SC PR Team about the release and let them post to Twitter and LinkedIn - at best with a nice picture
