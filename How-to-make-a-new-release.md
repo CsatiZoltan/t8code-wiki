@@ -37,6 +37,8 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
   - [ ] Check that the tarball was build correctly
 
+  - [ ] Unpack the tarball, configure and build t8code like a standard user would do.
+
   - [ ] Upload the tarball to the github release
 
 - [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
