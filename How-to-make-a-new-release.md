@@ -37,7 +37,7 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
   - [ ] Check that the tarball was build correctly
 
-  - [ ] Unpack the tarball, configure and build t8code like a standard user would do.
+  - [ ] Unpack the tarball, configure, build and test (`make check`) t8code like a standard user would do.
 
   - [ ] Upload the tarball to the github release
 
