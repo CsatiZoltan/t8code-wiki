@@ -29,6 +29,11 @@ More checks on: [Assertions Reference | GoogleTest](https://google.github.io/goo
 
 Choose the most fitting check for your test. Use `ASSERT_TRUE`, `ASSERT_FALSE`, `EXPECT_TRUE` or `EXPECT_FALSE` only if no other check can be applied.
 
+## Customized Assertions for t8code
+In many test we check the equality for two elements. We implemented a customized EXPECT/ASSERT for that case. It also handles the printing of the elements (coordinates, level, ...). If you want to check if two elements are equal use `EXPECT_ELEM_EQ`. 
+To use this function in your test you have to include the header `test/t8_gtest_custom_assertion.hxx` in your testfile.
+If you find another case, where a customized assertion can be benefitial, have a look at [Advanced Google Test](https://google.github.io/googletest/advanced.html) and [Pretty formatted Google Test Assertions](https://google.github.io/googletest/reference/assertions.html#EXPECT_PRED_FORMAT) to contribute your customized assertion. 
+
 ## Failure message
 If a test fails we would like to know more about the reason for aborting. A failure message, which is connected with an assertion (or expectation) by using `<< “my_string”` throws an information message if the test fails at this point. 
 ```

@@ -37,9 +37,13 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
   - [ ] Check that the tarball was build correctly
 
-  - [ ] Upload the tarball to the GitHub release
+  - [ ] Unpack the tarball, configure, build and test (`make check`) t8code like a standard user would do.
 
-- [ ] Add the Doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
+  - [ ] Upload the tarball to the github release
+
+- [ ] Add the doxygen documentation to the homepage (a corresponding PR in `t8code-website` is automatically created by T8ddy)
+
+- [ ] Add the new version to the [docker build configuration](https://github.com/DLR-AMR/t8code-docker-images/blob/main/.github/workflows/docker-image.yml)
 
 - [ ] Post an update article on the homepage
 
