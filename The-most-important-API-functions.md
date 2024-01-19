@@ -10,12 +10,14 @@ The coarse mesh interface.
 
 ## Creating a cmesh
 
+Use these to create a cmesh from one of the provided examples or a `.msh` file:
+
 ```
 t8_cmesh_new…
 t8_cmesh_from_msh_file
 ```
 
-Use these to create a cmesh from one of the provided examples or a `.msh` file.
+To partition an existing cmesh:
 
 ```
 t8_cmesh_init
@@ -23,7 +25,8 @@ t8_cmesh_set_derive
 t8_cmesh_set_partition_uniform
 t8_cmesh_commit
 ```
-To partition an existing cmesh.
+
+Call these functions between `t8_cmesh_init` and `t8_cmesh_commit` to build a `cmesh` from scratch:
 
 ```
 t8_cmesh_set_tree_class
@@ -31,7 +34,7 @@ t8_cmesh_set_join
 t8_cmesh_register_geometry
 t8_cmesh_set_tree_vertices
 ```
-Call these functions between `t8_cmesh_init` and `t8_cmesh_commit` to build a `cmesh` from scratch.
+
 
 You can find examples for some of these functions in the [Step 1](https://github.com/holke/t8code/wiki/Step-1---Creating-a-coarse-mesh) tutorial.
 
