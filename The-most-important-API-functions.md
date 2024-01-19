@@ -73,7 +73,7 @@ See also the [Step 2](https://github.com/holke/t8code/wiki/Step-2---Creating-a-u
 
 ## Data handling
 
-These are the most important function to deal with user data:
+These are the most important functions to deal with user data:
 
 ```
 t8_forest_iterate_replace
