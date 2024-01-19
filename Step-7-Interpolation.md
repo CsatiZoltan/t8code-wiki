@@ -75,15 +75,15 @@ To call this function, it has to be defined how to replace the cell elements of 
 
 | Parameter | Description |
 |-|-|
-| forest_old | The old (not adapted) forest |
-| forest_new | The new (adapted) forest  |
-| which_tree | tree_id of the analyzed element |
-| ts | eclass sheme  |
-| refine | ==0 - do nothing, == -1 - coarsen, == 1 - refine |
-| num_outgoing | number of the elements not refined forest |
-| first_outgoing | eclass sheme  |
-| num_ingoing | number of the elements corresponding to the element of the not refined forest |
-| first_incoming | index of the new element |
+| forest_old | old (not adapted) forest |
+| forest_new | new (adapted) forest  |
+| which_tree | local tree_id in the old and new forests |
+| ts | element class scheme  |
+| refine | == 0 : copy, == -1 : coarsen, == 1 : refine |
+| num_outgoing | number of elements of the old forest |
+| first_outgoing | index of the first element in the old forest  |
+| num_incoming | number of elements of the new forest |
+| first_incoming | index of the first element in the new forest |
 
 In this example we use the following criteria:
 If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children. If an element is unchanged, we also do not change the stored value.
