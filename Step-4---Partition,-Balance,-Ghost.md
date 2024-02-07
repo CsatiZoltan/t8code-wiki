@@ -1,7 +1,7 @@
 ## Step 4 - Partition, Balance, Ghost
 
 In this tutorial we get to know the other main forest manipulation algorithms besides adapt (See [step 3](https://github.com/holke/t8code/wiki/Step-3---Adapting-a-forest)).
-Additionally we learn more about the forest creation process and how we can perform multiple of these algorithms at the same time (i.e. on the same forest).
+Additionally, we learn more about the forest creation process and how we can perform multiple of these algorithms at the same time (i.e. on the same forest).
 
 We will start with the adapted forest from step 3.
 
@@ -59,7 +59,7 @@ and the adapted forest will not have one.
 In this picture we see the local elements of process 4 in red and its ghost elements in blue.
 We actually print the ghost elements in the vtu files and you can look at them.
 Ghost elements have treeid = -1 in the vtu files. To view the ghosts of a single process (say process 4 as in this picture)
-you can set a threshhold on the MPI rank to view only the elements of process 4 and then set a threshold
+you can set a threshold on the MPI rank to view only the elements of process 4 and then set a threshold
 on treeid to only view those elements with treeid = -1.
 
 ### Balance 
@@ -76,7 +76,7 @@ Our adaptation criterion is such that (usually) after one step of adaptation the
 since we have level l+1 elements in the inner sphere, level l elements in the middle and level l+1 elements
 outside. This may not be the case for very small initial refinement levels or with different radius thresholds (why don't you try it out?).
 Therefore, in this example we will apply the adaptation two times, resulting in level l+2 elements
-in the inner sphere, level l elements in the middle and level l - 2 element in the outer sphere
+in the inner sphere, level l elements in the middle and level l - 2 elements in the outer sphere
 (and probably some, but not many, level l-1 and level l+1 elements in between).
 This forest will be unbalanced and we will then apply the balance routine to it.
 Note that balance changes the local number of elements and thus may also change the load balance
@@ -99,7 +99,7 @@ Right: The forest after `Balance`. Colors represent refinement levels.
 So far we have seen `t8_forest_new_*` functions to create forests.
 These directly returned a new forest.
 However, t8code offers us more control over the creation of forests.
-For example we can control whether or not a forest should have a ghost layer,
+For example, we can control whether or not a forest should have a ghost layer,
 be balanced/partitioned from another forest, etc.
 
 Usually, there are three steps involved in creating a forest:

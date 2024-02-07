@@ -1,4 +1,4 @@
-## How to setup and run t8code on the JUWELS supercomputer
+## How to set up and run t8code on the JUWELS supercomputer
 
 Setting up `t8code` on JUWELS is relatively simple. Basically, you can follow the [Setup guide](https://github.com/holke/t8code/wiki/Installation).
 
@@ -18,7 +18,7 @@ Make sure that these modules are loaded each time you compile or run code.
 
 Use your favourite configure options and run `make`.
 
-If you do not explicitely need to link any `blas` or `lapack` code, deactivate linking with the configure flags
+If you do not explicitly need to link any `blas` or `lapack` code, deactivate linking with the configure flags
 ```
 --without-blas
 --without-lapack

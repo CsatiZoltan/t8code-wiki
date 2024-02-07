@@ -42,7 +42,7 @@ To construct a mesh in t8code we actually need two meshes
 
 Thus, we need to start with a coarse mesh.
 t8code provides some basic coarse meshes to use and the possibility to read
-a coarse mesh from a gmsh TODO: LINK geometry.
+a coarse mesh from Gmsh TODO: LINK geometry.
 
 In our example, we want to compute on a cube geometry and use tetrahedral elements. We can use the
 
@@ -64,12 +64,12 @@ The last 3 zeroes are flags that control (in this order)
 
 1. do_bcast  -  if non-zero, the cmesh will be created only on process 0 and broadcasted to the others.
 2. do_partition - if non-zero, the cmesh will be partitioned among the processes. If zero, each process will have a copy of the cmesh. Since this coarse mesh is
-relatively small (6 tetraeder), we can keep it replicated.
+relatively small (6 tetrahedra), we can keep it replicated.
 We recommend using the partitioned cmesh when the number of elements is larger than a few thousand.
 3. periodic - if non-zero, the geometry will be periodic across the boundaries.
 
 
-After we created this coarse mesh, let us export it in a vtu file to view with paraview.
+After we created this coarse mesh, let us export it in a vtu file to view with ParaView.
 
 ```C++
 TODO: Cmesh vtk

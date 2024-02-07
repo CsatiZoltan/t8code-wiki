@@ -2,11 +2,11 @@
 
 ## Contributing
 We welcome all contributions to our library.
-For a successfull contribution to `t8code` we ask you to open up a draft pull request ([Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-requests/)) into https://github.com/DLR-AMR/t8code/ as soon as you start implementing. 
+For a successful contribution to `t8code` we ask you to open up a draft pull request ([Draft PR](https://github.blog/2019-02-14-introducing-draft-pull-requests/)) into https://github.com/DLR-AMR/t8code/ as soon as you start implementing. 
 That way we can give you tips and discuss your implementation while you are working on it and hopefully avoid big changes in your code after a lot of work has already been done. 
 
 PRs can become very big which increases the workload of the review process. 
-To avoid big PRs (say > 1000 lines of code) it is good pratice to seperate your work into multiple smaller PRs.
+To avoid big PRs (say > 1000 lines of code) it is good practice to separate your work into multiple smaller PRs.
 For example, you can post a first PR for a new interface/function declarations and a second PR for implementations (which you may split into smaller PRs as well).
 As soon as you consider a part of your work finished, you should post a PR.
 
@@ -147,9 +147,9 @@ Of course, short statements, resp. remarks, are also ok.
 Every function should be well documented.
 This includes a description of the function and of its parameters.
 
-We stick to the doxygen style, using `\param` followed by `[in]`, `[out]` or `[in,out]` 
+We stick to the Doxygen style, using `\param` followed by `[in]`, `[out]` or `[in,out]` 
 to describe function parameters and `\return` to describe the return value.
-Do this even in `.c` and `.cxx` files that are not compiled with doxygen.
+Do this even in `.c` and `.cxx` files that are not compiled with Doxygen.
 
 ```C++
 /** Implements the integers identity function.
@@ -235,7 +235,7 @@ Note, however, that these will not be executed in release mode (without `--enabl
 ## Assertions
 
 You can use assertions via the macro `T8_ASSERT (expr)`. This macro is only active in debugging mode.
-If `expr` is true, nothing happens. If `expr` is false the code will abort and provide you with information where the abort occured.
+If `expr` is true, nothing happens. If `expr` is false the code will abort and provide you with information where the abort occurred.
 
 A typical usage of assertions is to check for implicit assumptions.
 Consider a function `void t8_foo (t8_forest_t forest);` that operates on a forest, but requires the forest to be committed.
@@ -248,7 +248,7 @@ void t8_foo (t8_forest_t forest)
   /* Remaining code */
 }
 ```
-This will catch a missusage of the function in debugging mode (but not in release mode).
+This will catch a misuse of the function in debugging mode (but not in release mode).
 
 We recommend to use assertions frequently.
 
@@ -331,7 +331,7 @@ Every API implementation and API consumer MUST follow Postel's law:
 
 ### Error handling
 
-In general we follow the principle that the caller of a function is responsible for handling errors.
+In general, we follow the principle that the caller of a function is responsible for handling errors.
 
 For example if we ask for an element in the tree via `t8_forest_get_element_in_tree` and the element does not exist, then NULL is returned (this should be mentioned in the documentation of the function) and the calling party is responsible for handling the issue.
 

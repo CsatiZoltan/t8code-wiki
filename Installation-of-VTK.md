@@ -10,10 +10,10 @@
 sudo apt install make build-essential cmake mesa-common-dev mesa-utils freeglut3-dev
 ```
 ## Installation
-The following installation guide is based on the [documentation](https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/dev/build.md#building-vtk) of VTk.
+The following installation guide is based on the [documentation](https://gitlab.kitware.com/vtk/vtk/-/blob/master/Documentation/dev/build.md#building-vtk) of VTK.
 ### Clone the VTK repository
 
-To install VTK on a linux machine, first clone the repository from gitlab.
+To install VTK on a Linux machine, first clone the repository from GitLab.
 ```bash
 git clone https://gitlab.kitware.com/vtk/vtk.git
 ```
@@ -33,12 +33,12 @@ cd ~/vtk_build
 ```
 The next step is to choose your configuration and create the Makefiles. There are several settings available for the VTK build, we are mainly interested in two. The first is to enable `VTK_USE_MPI`, since we want to run VTK in parallel. An MPI implementation is required for that. The second one is to set up the install directory by setting up `CMAKE_INSTALL_PREFIX`.
 
-You can either call the cmake interface `ccmake` and set the options up. Afterward, you just call `cmake`. This way you get an overview of all to configure options.
+You can either call the CMake interface `ccmake` and set the options up. Afterward, you just call `cmake`. This way you get an overview of all to configure options.
 ```bash
 ccmake ../vtk
 cmake ../vtk
 ```
-You also can pass the related flags to cmake and do it in one step:
+You also can pass the related flags to CMake and do it in one step:
 ```bash
 cmake -D CMAKE_INSTALL_PREFIX=$HOME/opt/vtk_install -D VTK_USE_MPI=ON ../vtk  
 ```

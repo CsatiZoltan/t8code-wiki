@@ -100,7 +100,7 @@ To output our forest to `.vtu` files we simply call
 
 which will create the file `prefix.pvtu` and for each MPI rank a file `prefix_MPIRANK.vtu`.
 
-In our example `prefix = t8_step2_uniform_forest` and when you open the `t8_step2_uniform_forest.pvtu` file in Paraview you should be able to see this:
+In our example `prefix = t8_step2_uniform_forest` and when you open the `t8_step2_uniform_forest.pvtu` file in ParaView you should be able to see this:
 
 <p align="center">
 <img src="https://github.com/holke/t8code/wiki/pictures/tutorials/Step2_uniformForest_5ranks.png" height="350">

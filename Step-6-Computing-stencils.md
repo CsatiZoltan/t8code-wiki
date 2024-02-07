@@ -4,7 +4,7 @@ In this tutorial we will learn how to gather a stencil consisting of data from t
 
 You will find the code to this example in the `tutorials/general/step6*` files. The executable is named `t8_step6_stencil`. 
 
-In the last tutorials we learned how to create a forest, adapt it, pre-allocate element data arrays, activate the ghost layer and store custom data fields in VTU files. In this tutorial we will start by performing all these operations in one go as shown in [step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data). Then, when we have our forest and built a data array, we gather data for the local elements of our process. Next, we exchange the data values of the ghost elements and compute a stencil from face neighbors in each element. Finally, the output of several custom data fields is written to `.vtu` files.
+In the last tutorials we learned how to create a forest, adapt it, pre-allocate element data arrays, activate the ghost layer and store custom data fields in .vtu files. In this tutorial we will start by performing all these operations in one go as shown in [step 5](https://github.com/DLR-AMR/t8code/wiki/Step-5---Store-element-data). Then, when we have our forest and built a data array, we gather data for the local elements of our process. Next, we exchange the data values of the ghost elements and compute a stencil from face neighbors in each element. Finally, the output of several custom data fields is written to `.vtu` files.
 
 In terms of interacting with t8code, this step mainly builds on the functionality already detailed in the steps 3 to 5. Thus, we focus on the
 new concept of accessing neighboring element data and doing computations with it by reference of simple finite difference computations.
@@ -16,8 +16,8 @@ for convenient and performant finite difference computations yielding numerical 
 
 ![grafik](https://user-images.githubusercontent.com/10619309/215130819-29c92c61-9489-4ce3-b6bf-364a8467d3e8.png)
 
-The data field in our specific case is the physical quantitiy "height" pinned at the midpoint of each mesh element. As an example,
-we compute the schlieren and a rough meassure for the curvature which we define as the norms of the central difference formulas shown in the
+The data field in our specific case is the physical quantity "height" pinned at the midpoint of each mesh element. As an example,
+we compute the schlieren and a rough measure for the curvature which we define as the norms of the central difference formulas shown in the
 figure above. A code snippet doing these calculations for our uniform 2D grid might look like this:
 ```C++
 double stencil[3][3] = {/* ... */}; /* A 3x3 matrix with arbitrary height data. */
@@ -140,18 +140,18 @@ the treatment at non-conforming interfaces with more than one neighboring elemen
 examine the demo code in order to get the full picture.
 
 ### Running the Demo
-If t8code was compiled with MPI support the demo can be exectuted with for example three processes.
+If t8code was compiled with MPI support the demo can be executed with for example three processes.
 ```shell
 $ mpirun -n 3 ${INSTALL_DIR_OF_T8CODE}/bin/t8_step6_stencil
 ```
-This results in three VTU files and a meta PVTU file.
+This results in three .vtu files and a meta .pvtu file.
 ```
 $ ls
 t8_step6_stencil.pvtu  t8_step6_stencil_0000.vtu  t8_step6_stencil_0001.vtu  t8_step6_stencil_0002.vtu
 ```
-Open `t8_step6_stencil.pvtu` in Paraview and visualize the `height` (left figure) and `schlieren` (right figure) data fields. 
+Open `t8_step6_stencil.pvtu` in ParaView and visualize the `height` (left figure) and `schlieren` (right figure) data fields. 
 [Schlieren](https://en.wikipedia.org/wiki/Schlieren_photography) plots are the norm of the gradient of a data field (in our case the `height`). For smoother pictures the inclined reader is encouraged to increase the initial refinement level, recompile and rerun the demo. The visualization of
-the curvature approximation is left as an excersise for the reader.
+the curvature approximation is left as an exercise for the reader.
 
 ![grafik](https://user-images.githubusercontent.com/10619309/215139981-f636c5a9-8d2b-414e-9a93-39011367a760.png)
 ![grafik](https://user-images.githubusercontent.com/10619309/215141420-d89d3b53-3ff0-41a1-8256-a8b08f92e5bf.png)

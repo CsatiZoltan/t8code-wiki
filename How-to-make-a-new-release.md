@@ -23,11 +23,11 @@ These steps should only be carried out by a t8code owner (i.e. Johannes Holke).
 
 - [ ] Ensure that these changes are in the main branch and the tests pass.
 
-- [ ] Go to the main github page of the repo and click "draft a new release"
+- [ ] Go to the main GitHub page of the repo and click "draft a new release"
 
 - [ ] Write a short release note of all the (important) changes.
 
-- [ ] Add the github generated release notes afterwards.
+- [ ] Add the GitHub generated release notes afterwards.
 
 - [ ] Update the tarball
 

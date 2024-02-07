@@ -1,6 +1,6 @@
 On this page we list the functions of t8code that are most important for users to interface with t8code.
 
-This list does not provide a detailed description of all these functions. Please see the code and the doxygen documentation for further details.
+This list does not provide a detailed description of all these functions. Please see the code and the Doxygen documentation for further details.
 
 The list may not be complete. If you feel a function is missing from this list, please contact the developers, or create an issue.
 

@@ -45,7 +45,7 @@ As in ([Step 3](https://github.com/DLR-AMR/t8code/wiki/Step-3---Adapting-a-fores
 
 Note, that if we want to interpolate the data, a non-recursive adaptation of the forest is restricted. Hence, all elements in the new forest `forest_new` result from an element in `forest_old` by either refining once, coarsening once, or keeping the element as it is. Thus, the difference in level is at most 1.
 
-With the two forests given, the interpolation of the data can start. These two forests are compared element wise and in each comparison a callback function is called. This callback function providing the local indices of the old and new elements as well as the refinement (if the new element is the child, parent or the the same).
+With the two forests given, the interpolation of the data can start. These two forests are compared element wise and in each comparison a callback function is called. This callback function providing the local indices of the old and new elements as well as the refinement (if the new element is the child, parent or the same).
 This is done using `t8_forest_iterate_replace`:
 ```C++
      void                t8_forest_iterate_replace (t8_forest_t forest_new,
@@ -53,10 +53,10 @@ This is done using `t8_forest_iterate_replace`:
                                                     t8_forest_replace_t replace_fn);
 ```
 
-| Parameter | Description |
-|-|-|
-| forest_new | The new (adapted) forest  |
-| forest_old | The old (not adapted) forest |
+| Parameter  | Description                                         |
+| ---------- | --------------------------------------------------- |
+| forest_new | The new (adapted) forest                            |
+| forest_old | The old (not adapted) forest                        |
 | replace_fn | function to define how to replace the cell elements |
 
 To call this function, it has to be defined how to replace the cell elements of the old forest for the new forest. Therefore, the callback function `t8_forest_replace` is defined. Outgoing are the old elements and incoming the new ones.
@@ -73,6 +73,7 @@ To call this function, it has to be defined how to replace the cell elements of 
                         int num_incoming, t8_locidx_t first_incoming)
 ```
 
+<<<<<<< HEAD
 | Parameter | Description |
 |-|-|
 | forest_old | old (not adapted) forest |
@@ -84,6 +85,19 @@ To call this function, it has to be defined how to replace the cell elements of 
 | first_outgoing | index of the first element in the old forest  |
 | num_incoming | number of elements of the new forest |
 | first_incoming | index of the first element in the new forest |
+=======
+| Parameter      | Description                                                                   |
+| -------------- | ----------------------------------------------------------------------------- |
+| forest_old     | The old (not adapted) forest                                                  |
+| forest_new     | The new (adapted) forest                                                      |
+| which_tree     | tree_id of the analyzed element                                               |
+| ts             | eclass sheme                                                                  |
+| refine         | ==0 - do nothing, == -1 - coarsen, == 1 - refine                              |
+| num_outgoing   | number of the elements not refined forest                                     |
+| first_outgoing | eclass sheme                                                                  |
+| num_ingoing    | number of the elements corresponding to the element of the not refined forest |
+| first_incoming | index of the new element                                                      |
+>>>>>>> zoltan/master
 
 In this example we use the following criteria:
 If an element is refined, each child gets the value of its parent. If elements are coarsened, the parent gets the average value of the children. If an element is unchanged, we also do not change the stored value.
