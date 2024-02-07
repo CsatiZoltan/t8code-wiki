@@ -9,7 +9,8 @@ configure -h
 For an overview of the full installation process, please see the [Installation](https://github.com/holke/t8code/wiki/Installation) page.
 
 ### Options
-
+     uses a fraction of the test cases to speed up
+                          development (WARNING: use with care)
 
 | Option | Description | Default value (if existing) |
 |-----|-------|---|
@@ -19,6 +20,7 @@ For an overview of the full installation process, please see the [Installation](
 | --enable-static[=PKGS] | build static libraries | yes |
 | --enable-mpi   |  enable MPI parallel code | false |
 | --enable-debug |  enable debugging mode (Note: This will drastically reduce performance) See also the [Developer guidelines](https://github.com/holke/t8code/wiki/Coding-Guideline#debugging-mode).| false |
+| --enable-less-tests | uses a fraction of the test cases to speed up development (WARNING: use with care) | false |
 | --with-LIB[=ARG] | enable linking with LIB | yes |
 | --without-LIB    | disable linking with LIB (same as --with-LIB=no) | |
 | --prefix=PATH   | Provide an installation prefix | |
@@ -56,8 +58,11 @@ For a debugging mode with static linkage (makes using gdb and valgrind more comf
 
 Note: The debugging mode introduces a lot of safetychecks and drastically reduces the code performance. Do not use it
 for production runs.
-If you want to use a debugger or valgrind, but do not want to perform all additional safetychecks of the debugging mode,
+If you want to use a debugger or valgrind, but do not want to perform all additional safety checks of the debugging mode,
 use the above configure line without `--enable-debug`.
+
+Note: If you are developing and need to execute the tests frequently, you can use `--enable-less-tests` to decrease the amount of tests
+and thus the overall test runtime.
 
 For a serial configuration that links against the netcdf library:
 
