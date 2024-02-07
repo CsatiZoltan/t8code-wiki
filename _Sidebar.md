@@ -43,4 +43,5 @@
 > [Debugging with gdb](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-gdb)  
 > [Debugging with valgrind](https://github.com/DLR-AMR/t8code/wiki/Debugging-with-valgrind)  
 > [Test driven development](https://github.com/DLR-AMR/t8code/wiki/Test-driven-development)  
-> [Testing with GoogleTest](https://github.com/DLR-AMR/t8code/wiki/Testing-with-GoogleTest)
+> [Testing with GoogleTest](https://github.com/DLR-AMR/t8code/wiki/Testing-with-GoogleTest)  
+> [How to add a new cmesh-example to the parametrized cmesh tests](https://github.com/DLR-AMR/t8code/wiki/In-Progress:-How-to-add-a-new-cmesh-example-to-the-parametrized-cmesh%E2%80%90testsuite%3F)
